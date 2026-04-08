@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PaperPlane App — Rock Wu</title>
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div class="gradient-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ── Header ──────────────────────────── -->
+    <header>
+      <div class="header-inner">
+        <a href="index.html" class="header-logo">
+          <img src="assets/images/favicon.svg" alt="Rock Wu">
+        </a>
+        <div class="header-right">
+          <nav class="header-nav">
+            <a href="index.html#case-study" class="active">Case Study</a>
+            <a href="index.html#work">Works</a>
+            <a href="about.html">About</a>
+          </nav>
+          <div class="lang-toggle" id="langToggle" role="button" aria-label="切換語言">
+            <span class="active" data-lang="zh">繁中</span>
+            <span data-lang="en">EN</span>
+          </div>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="開啟選單">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ── Hero ─────────────────────────────── -->
+    <div class="cs-hero">
+      <div class="cs-hero-bg" style="background-image: url('assets/images/cs-paperplane-bg.png');"></div>
+      <div class="cs-hero-overlay"></div>
+      <img class="cs-hero-phone" src="assets/images/cs-paperplane-phone-1db3dd.png" alt="PaperPlane App">
+      <div class="cs-hero-content">
+        <!-- Tags / 副標 / 主標 -->
+        <div class="cs-hero-tags">
+          <span class="tag-outline">#新創</span>
+          <span class="tag-outline">#金融支付</span>
+          <span class="tag-outline">#O2O</span>
+        </div>
+        <p class="cs-hero-sub">品牌重新定位的產品改版</p>
+        <h1 class="cs-hero-title">PaperPlane App</h1>
+
+        <!-- Role / Team / Release（hero 底部）-->
+        <div class="cs-hero-meta">
+          <div>
+            <p class="cs-hero-meta-label">Role</p>
+            <p class="cs-hero-meta-value">Product designer / COO</p>
+            <ul class="cs-hero-meta-list">
+              <li>用戶研究</li>
+              <li>產品設計</li>
+              <li>時程資源控管</li>
+              <li>UI 維護更新</li>
+            </ul>
+          </div>
+          <div>
+            <p class="cs-hero-meta-label">Team</p>
+            <p class="cs-hero-meta-value">React Native Dev（外包）<br>BE Engineer team（部分外包）<br>UI Designer（外包）</p>
+          </div>
+          <div>
+            <p class="cs-hero-meta-label">Release</p>
+            <p class="cs-hero-meta-value">V1　2025 / 1<br>V2　2025 / 10</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 內容 ─────────────────────────────── -->
+    <div class="cs-content">
+
+      <!-- Intro（兩欄：文字左、品牌圖右）-->
+      <section class="cs-section">
+        <div class="cs-row-2 cs-row-2-img-right">
+          <div>
+            <p class="cs-section-label">Intro</p>
+            <h2 class="cs-section-title">PaperPlane 酒吧指南／隨行卡</h2>
+            <p>PaperPlane 創立初期為一個 NFT 賦能項目，後期轉型為偏向 Web2 的支付 app，當用戶使用 PaperPlane App 於全台 150+ 合作店家完成付款後，即可取得最高 12% 的紅利回饋，用以折抵下次消費。</p>
+            <p>初期先以設計外包兼顧問的角色，協助規劃機制、流程還有設計產出，同時針對營運面上的問題以不定期會議形式給予創始團隊建議。</p>
+            <p>後於 2025 年四月正式以營運長兼產品設計師的角色加入團隊，負責整體產品的設計規劃與開發規格、時程控管，以及部分的營運決策。同時與外包 UI 團隊定義整體產品視覺基調與 Guideline。</p>
+            <p>PaperPlane App V1.0 版於 2025 年一月正式上線。</p>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:center;">
+            <img src="assets/images/cs-pp-brand.png" alt="PaperPlane Brand" style="width:100%; max-width:360px; object-fit:contain;">
+          </div>
+        </div>
+      </section>
+
+      <!-- Problem & Research -->
+      <section class="cs-section">
+        <p class="cs-section-label">Problem &amp; Research</p>
+        <h2 class="cs-section-title">社群聲量水漲船高，App 留存卻不如預期</h2>
+        <p>隨著大量合作活動以及新店家的簽約，加上每年都會舉辦的頒獎典禮，PaperPlane 的品牌聲量日益增加。但這些社群上的聲量與粉絲數，卻無法實際轉換為使用者，且實際使用的留存數據並不如預期。</p>
+        <p>為了找出原因，我們進行了 8 場用戶訪談、回收近百份問卷調查，並且前往合作酒吧實際觀察使用者的操作行為、現場人員如何推廣，以及實際的結帳流程，在 V2.0 的版本更新中做出了兩個最主要的設計決策。</p>
+        <div class="cs-stats-row">
+          <div class="cs-stat-box">
+            <p class="cs-stat-box-main">8 場</p>
+            <p class="cs-stat-box-sub">用戶訪談</p>
+          </div>
+          <div class="cs-stat-box">
+            <p class="cs-stat-box-main">近百份</p>
+            <p class="cs-stat-box-sub">問卷調查</p>
+          </div>
+          <div class="cs-stat-box">
+            <p class="cs-stat-box-main">現場觀察</p>
+            <p class="cs-stat-box-sub">結帳流程</p>
+          </div>
+          <div class="cs-stat-box">
+            <p class="cs-stat-box-main">推廣人員</p>
+            <p class="cs-stat-box-sub">回饋收集</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Insight -->
+      <section class="cs-section">
+        <p class="cs-section-label">Insight</p>
+        <h2 class="cs-section-title">對於用戶而言，PaperPlane 到底是<span class="accent">什麼</span>？</h2>
+        <p>初期 PaperPlane 的品牌定位仍在對標米其林的「酒吧指南」，以推薦熱門、特色酒吧為主，因此首頁即為地圖式的合作店家點位。</p>
+        <p>在訪談與調查後，我們發現用戶在構思前往消費前，即會透過如 Google Maps 或 Instagram 等軟體決定消費地點。因此開啟 app 時的主要操作就是「付款」，與一般支付軟體更加接近。</p>
+        <p>但實際付款時，因飲酒易導致消費者出現預期外的操作行為，因此需要更強烈、簡易的引導及流程。</p>
+        <div class="cs-focus-tags">
+          <span class="cs-focus-tag">重新定義功能權重</span>
+          <span class="cs-focus-tag">簡化付款流程</span>
+          <span class="cs-focus-tag">微醺操作情境</span>
+        </div>
+      </section>
+
+      <!-- Design：功能權重 + 微醺（兩欄文字區塊）-->
+      <section class="cs-section">
+        <div class="cs-row-2" style="margin-bottom: 40px;">
+          <div>
+            <h3 style="font-size:18px; font-weight:700; color:var(--text); margin-bottom:12px;">重新定義功能權重</h3>
+            <p style="font-size:15px; line-height:1.8;">將首頁佈局與線上支付 app 對齊，將常用功能（支付、儲值、點數兌換、熱門推薦、活動等）根據使用者的需求權重進行策展。</p>
+          </div>
+          <div>
+            <h3 style="font-size:18px; font-weight:700; color:var(--text); margin-bottom:12px;">微醺操作引導</h3>
+            <p style="font-size:15px; line-height:1.8;">因應喝酒後意識模糊，以跳色的大型「付款」常駐於畫面下方，使用戶即便微醺也能順利完成結帳。</p>
+          </div>
+        </div>
+
+        <!-- V1 vs V2 首頁比較 -->
+        <div class="cs-compare-grid">
+          <div>
+            <p class="cs-compare-label">V 1.0 首頁（以地圖為主）</p>
+            <img class="cs-img" src="assets/images/cs-pp-v1-home.png" alt="PaperPlane V1 首頁">
+          </div>
+          <div>
+            <p class="cs-compare-label">V 2.0 首頁（以支付為主）</p>
+            <img class="cs-img" src="assets/images/cs-pp-v2-home.png" alt="PaperPlane V2 首頁">
+          </div>
+        </div>
+      </section>
+
+      <!-- 付款流程簡化 -->
+      <section class="cs-section">
+        <p class="cs-section-label">付款流程簡化</p>
+        <h2 class="cs-section-title">對於用戶而言<br>使用 PaperPlane 最大的阻礙是什麼？</h2>
+        <p>V1.0 沿用過往 web/LINE@ 時期的付款流程，用戶需要先儲值，後付款。但實際觀察推廣現場時發現，即便提供額外儲值優惠（首儲 1,000 送 200），對用戶而言儲值門檻依然過高，操作流程也過於繁瑣。</p>
+        <p>因此在 V2.0 的支付系統中，我們加入了「自動儲值」功能，在用戶付款當下，計算該次付款所需儲值的金額（扣除可用紅利與折扣等），同時完成「儲值」與「付款」，用戶無需預先操作儲值，讓操作流程更加簡便，也降低進入門檻，使活躍用戶數更進一步提升。</p>
+
+        <div class="cs-flow-compare">
+          <div>
+            <p class="cs-flow-col-label">V 1.0 付款流程</p>
+            <div class="cs-flow">
+              <div class="cs-flow-step">下載 / 註冊</div>
+              <div class="cs-flow-step">輸入付款金額</div>
+              <div class="cs-flow-step removed">發現要先儲值</div>
+              <div class="cs-flow-step">信用卡 / Apple Pay</div>
+              <div class="cs-flow-step removed">儲值</div>
+              <div class="cs-flow-step">完成付款</div>
+            </div>
+          </div>
+          <div>
+            <p class="cs-flow-col-label">V 2.0 付款流程</p>
+            <div class="cs-flow">
+              <div class="cs-flow-step">下載 / 註冊</div>
+              <div class="cs-flow-step">輸入付款金額</div>
+              <div class="cs-flow-step new">信用卡 / Apple Pay<br>自動儲值</div>
+              <div class="cs-flow-step new">完成付款</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Result（關鍵數字左 + 學習與反思右）-->
+      <section class="cs-section">
+        <div class="cs-result-row">
+          <!-- 左：Result label + 關鍵數字 + 三個 metric -->
+          <div>
+            <p class="cs-section-label">Result</p>
+            <h2 class="cs-section-title" style="font-size:28px; margin-bottom:40px;">關鍵數字</h2>
+            <div class="cs-metric-stack">
+              <div class="cs-metric-item">
+                <p class="cs-metric-num">61%</p>
+                <p class="cs-metric-context">V2.0 上線後六個月<br>總註冊用戶成長％</p>
+              </div>
+              <div class="cs-metric-item">
+                <p class="cs-metric-num">15%</p>
+                <p class="cs-metric-context">V2.0 上線後六個月<br>付費用戶成長％</p>
+              </div>
+              <div class="cs-metric-item">
+                <p class="cs-metric-num">5場</p>
+                <p class="cs-metric-context">V2.0 上線後六個月<br>異業合作活動</p>
+              </div>
+            </div>
+          </div>
+          <!-- 右：學習與反思 -->
+          <div>
+            <p class="cs-section-label">學習與反思</p>
+            <h2 class="cs-section-title">提高角色定位<br>以研究為本，事先規劃長期戰略</h2>
+            <p>V1.0 版本在外包與時程、資源的限制下，沒有足夠空間進行實際研究，以及對於未來戰略的討論，直到上線後才透過後續研究發現產品定位的根本性問題。</p>
+            <p>實際在酒吧觀察用戶以及現場服務人員結帳的互動是整個改版中最引人入勝的地方，看著一方試圖解釋你的產品，而另一方也實際在操作畫面試圖完成任務，那種感受是任何訪談與問卷都難以取代的設計感知。</p>
+            <p>若能再次規劃產品，我會更早建立可複用的活動後台模板，避免一次性功能累積成技術債，並儘早進行使用者驗證、確實控管規格文件，讓未來的改版與發展都能更加順利。</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- cs-content -->
+
+    <!-- ── Footer ─────────────────────────── -->
+    <footer>
+      <div class="footer-inner">
+        <nav class="footer-nav">
+          <a href="index.html#case-study">Case Study</a>
+          <a href="index.html#work">Works</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="footer-contact">
+          <span class="footer-contact-label">Contact</span>
+          <a href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .page-content -->
+
+  <!-- ── Mobile Menu ──────────────────────── -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-top">
+      <a href="index.html" class="header-logo">
+        <img src="assets/images/favicon.svg" alt="Rock Wu">
+      </a>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="關閉選單">
+        <img src="assets/images/icon-close.svg" alt="關閉">
+      </button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html#case-study" class="active">Case Study</a>
+      <a href="index.html#work">Works</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="mobile-menu-bottom">
+      <div class="lang-toggle" id="langToggleMobile" role="button" aria-label="切換語言">
+        <span class="active" data-lang="zh">繁中</span>
+        <span data-lang="en">EN</span>
+      </div>
+    </div>
+  </div>
+
+  <button id="go-to-top" aria-label="回到頂部">
+    <img src="assets/images/icon-gototop.svg" alt="">
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
