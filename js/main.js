@@ -199,6 +199,11 @@ if (workCards.length && backdrop) {
 
       backdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
+
+      // GA4：追蹤 lightbox 開啟
+      if (typeof gtag === 'function') {
+        gtag('event', 'lightbox_open', { work_title: title });
+      }
     });
   });
 
