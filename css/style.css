@@ -780,7 +780,20 @@ footer {
   transition: opacity 0.2s;
 }
 
+.contact-links a {
+  text-decoration: underline;
+}
+
 .contact-links a:hover { opacity: 0.65; }
+
+.contact-location {
+  font-size: 16px;
+  color: var(--text);
+}
+
+.resume-label {
+  margin-top: 32px;
+}
 
 /* 右欄 */
 .about-right {
