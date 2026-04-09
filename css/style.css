@@ -285,7 +285,7 @@ footer {
 /* ── Case Study 區塊 ──────────────────────── */
 #case-study {
   background: var(--section-bg);
-  padding: 72px 0 88px;
+  padding: 80px 0 88px;
 }
 
 #case-study h1,

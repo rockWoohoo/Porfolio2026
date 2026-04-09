@@ -108,18 +108,31 @@ if (goTopBtn) {
 }
 
 // ── 語言切換（繁中 / EN）───────────────────────
-const langToggle = document.getElementById('langToggle');
-if (langToggle) {
-  const spans = langToggle.querySelectorAll('span');
-  spans.forEach(span => {
-    span.addEventListener('click', () => {
-      spans.forEach(s => s.classList.remove('active'));
-      span.classList.add('active');
-      // 切換語言屬性（預留擴充）
-      document.documentElement.lang = span.dataset.lang === 'en' ? 'en' : 'zh-TW';
-    });
+function applyLang(lang) {
+  const isEn = lang === 'en';
+  document.documentElement.lang = isEn ? 'en' : 'zh-TW';
+
+  // 替換所有帶 data-zh 的元素內容
+  document.querySelectorAll('[data-zh]').forEach(el => {
+    el.innerHTML = isEn ? (el.dataset.en || el.dataset.zh) : el.dataset.zh;
   });
+
+  // 同步所有 toggle span（desktop + mobile）
+  document.querySelectorAll('[data-lang]').forEach(s => {
+    s.classList.toggle('active', s.dataset.lang === lang);
+  });
+
+  localStorage.setItem('lang', lang);
 }
+
+// 頁面載入時套用記憶的語言偏好
+const _savedLang = localStorage.getItem('lang') || 'zh';
+if (_savedLang === 'en') applyLang('en');
+
+// 所有 toggle span 點擊時切換語言
+document.querySelectorAll('[data-lang]').forEach(span => {
+  span.addEventListener('click', () => applyLang(span.dataset.lang));
+});
 
 // ── Works Lightbox ───────────────────────────
 const workCards   = document.querySelectorAll('.work-card');
@@ -129,13 +142,14 @@ const closeBtn    = document.getElementById('lightboxClose');
 if (workCards.length && backdrop) {
   workCards.forEach(card => {
     card.addEventListener('click', () => {
-      const title    = card.dataset.title    || '';
-      const subtitle = card.dataset.subtitle || '';
-      const tags     = card.dataset.tags     || '';
+      const isEn = document.documentElement.lang === 'en';
+      const title    = (isEn && card.dataset.titleEn)    ? card.dataset.titleEn    : (card.dataset.title    || '');
+      const subtitle = (isEn && card.dataset.subtitleEn) ? card.dataset.subtitleEn : (card.dataset.subtitle || '');
+      const tags     = (isEn && card.dataset.tagsEn)     ? card.dataset.tagsEn     : (card.dataset.tags     || '');
       const role     = card.dataset.role     || '';
-      const exec     = card.dataset.exec     || '';
-      const metrics  = card.dataset.metrics  || '';
-      const desc     = card.dataset.desc     || '';
+      const exec     = (isEn && card.dataset.execEn)     ? card.dataset.execEn     : (card.dataset.exec     || '');
+      const metrics  = (isEn && card.dataset.metricsEn)  ? card.dataset.metricsEn  : (card.dataset.metrics  || '');
+      const desc     = (isEn && card.dataset.descEn)     ? card.dataset.descEn     : (card.dataset.desc     || '');
       const image    = card.dataset.image    || '';
       const link     = card.dataset.link     || '';
 
@@ -158,6 +172,19 @@ if (workCards.length && backdrop) {
       document.getElementById('lbExec').textContent     = exec;
       document.getElementById('lbMetrics').textContent  = metrics;
       document.getElementById('lbDesc').textContent     = desc;
+
+      // 更新 lightbox 固定標籤（依語言）
+      const isEnLb = document.documentElement.lang === 'en';
+      const roleLabelEl = document.querySelector('.lightbox-meta-label:first-of-type');
+      const execLabelEl = document.querySelectorAll('.lightbox-meta-label')[1];
+      const metricsLabelEl = document.querySelectorAll('.lightbox-section-label')[0];
+      const descLabelEl    = document.querySelectorAll('.lightbox-section-label')[1];
+      const linkLabelEl    = document.querySelectorAll('.lightbox-section-label')[2];
+      if (roleLabelEl)    roleLabelEl.textContent    = isEnLb ? 'Role'        : '角色';
+      if (execLabelEl)    execLabelEl.textContent    = isEnLb ? 'Scope'       : '執行';
+      if (metricsLabelEl) metricsLabelEl.textContent = isEnLb ? 'Key Metrics' : '關鍵數據';
+      if (descLabelEl)    descLabelEl.textContent    = isEnLb ? 'Overview'    : '說明';
+      if (linkLabelEl)    linkLabelEl.textContent    = isEnLb ? 'Link'        : '連結';
 
       // 連結
       const lbLinkSection = document.getElementById('lbLinkSection');
@@ -217,18 +244,7 @@ if (menuBtn && mobileMenu) {
     a.addEventListener('click', closeMenu);
   });
 
-  // 語言切換（mobile）
-  const mobileLangToggle = document.getElementById('langToggleMobile');
-  if (mobileLangToggle) {
-    const mSpans = mobileLangToggle.querySelectorAll('span');
-    mSpans.forEach(span => {
-      span.addEventListener('click', () => {
-        mSpans.forEach(s => s.classList.remove('active'));
-        span.classList.add('active');
-        document.documentElement.lang = span.dataset.lang === 'en' ? 'en' : 'zh-TW';
-      });
-    });
-  }
+  // 語言切換（mobile）— 由全域 applyLang 統一處理，此處無需額外邏輯
 }
 
 // ── Experience 展開 / 收合 ────────────────────
