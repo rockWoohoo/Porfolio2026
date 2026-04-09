@@ -42,40 +42,49 @@
     </header>
 
     <!-- ── Hero ─────────────────────────────── -->
-    <div class="cs-hero">
-      <div class="cs-hero-bg" style="background-image: url('assets/images/cs-paperplane-bg.png');"></div>
-      <div class="cs-hero-overlay"></div>
-      <img class="cs-hero-phone" src="assets/images/cs-paperplane-phone-1db3dd.png" alt="PaperPlane App">
-      <div class="cs-hero-content">
-        <!-- Tags / 副標 / 主標 -->
-        <div class="cs-hero-tags">
-          <span class="tag-outline">#新創</span>
-          <span class="tag-outline">#金融支付</span>
-          <span class="tag-outline">#O2O</span>
+    <div class="cs-hero-wrap">
+      <!-- 背景裁切層 -->
+      <div class="cs-hero">
+        <div class="cs-hero-bg" style="background-image: url('assets/images/cs-paperplane-bg.png');"></div>
+        <div class="cs-hero-overlay"></div>
+      </div>
+      <!-- 手機破格（兩支，右主左副，向下突破 wrap 底部）-->
+      <div class="cs-hero-inner">
+        <img class="cs-hero-phone-secondary" src="assets/images/cs-pp-hero-phone-dark.png" alt="">
+        <img class="cs-hero-phone" src="assets/images/cs-pp-hero-phone-home.png" alt="PaperPlane App">
+        <!-- 左下文字（tags / subtitle / title）-->
+        <div class="cs-hero-content">
+          <div class="cs-hero-tags">
+            <span class="tag-outline">#新創</span>
+            <span class="tag-outline">#金融支付</span>
+            <span class="tag-outline">#O2O</span>
+          </div>
+          <p class="cs-hero-sub">品牌重新定位的產品改版</p>
+          <h1 class="cs-hero-title">PaperPlane App</h1>
         </div>
-        <p class="cs-hero-sub">品牌重新定位的產品改版</p>
-        <h1 class="cs-hero-title">PaperPlane App</h1>
+      </div>
+    </div>
 
-        <!-- Role / Team / Release（hero 底部）-->
-        <div class="cs-hero-meta">
-          <div>
-            <p class="cs-hero-meta-label">Role</p>
-            <p class="cs-hero-meta-value">Product designer / COO</p>
-            <ul class="cs-hero-meta-list">
-              <li>用戶研究</li>
-              <li>產品設計</li>
-              <li>時程資源控管</li>
-              <li>UI 維護更新</li>
-            </ul>
-          </div>
-          <div>
-            <p class="cs-hero-meta-label">Team</p>
-            <p class="cs-hero-meta-value">React Native Dev（外包）<br>BE Engineer team（部分外包）<br>UI Designer（外包）</p>
-          </div>
-          <div>
-            <p class="cs-hero-meta-label">Release</p>
-            <p class="cs-hero-meta-value">V1　2025 / 1<br>V2　2025 / 10</p>
-          </div>
+    <!-- ── Role / Team / Release ────────────── -->
+    <div class="cs-info">
+      <div class="cs-info-inner">
+        <div>
+          <p class="cs-hero-meta-label">Role</p>
+          <p class="cs-hero-meta-value">Product designer / COO</p>
+          <ul class="cs-hero-meta-list">
+            <li>用戶研究</li>
+            <li>產品設計</li>
+            <li>時程資源控管</li>
+            <li>UI 維護更新</li>
+          </ul>
+        </div>
+        <div>
+          <p class="cs-hero-meta-label">Team</p>
+          <p class="cs-hero-meta-value">React Native Dev（外包）<br>BE Engineer team（部分外包）<br>UI Designer（外包）</p>
+        </div>
+        <div>
+          <p class="cs-hero-meta-label">Release</p>
+          <p class="cs-hero-meta-value">V1　2025 / 1<br>V2　2025 / 10</p>
         </div>
       </div>
     </div>
@@ -83,55 +92,59 @@
     <!-- ── 內容 ─────────────────────────────── -->
     <div class="cs-content">
 
-      <!-- Intro（兩欄：文字左、品牌圖右）-->
+      <!-- Intro -->
       <section class="cs-section">
         <div class="cs-row-2 cs-row-2-img-right">
           <div>
             <p class="cs-section-label">Intro</p>
             <h2 class="cs-section-title">PaperPlane 酒吧指南／隨行卡</h2>
-            <p>PaperPlane 創立初期為一個 NFT 賦能項目，後期轉型為偏向 Web2 的支付 app，當用戶使用 PaperPlane App 於全台 150+ 合作店家完成付款後，即可取得最高 12% 的紅利回饋，用以折抵下次消費。</p>
+            <p>PaperPlane 創立初期為一個 NFT 賦能項目，後期轉型為偏向<span class="accent"> Web2 的支付 app</span>，當用戶使用 PaperPlane App 於<span class="accent">全台 150+ 合作店家</span>完成付款後，即可取得最高 12% 的紅利回饋，用以<span class="accent">折抵下次消費</span>。</p>
             <p>初期先以設計外包兼顧問的角色，協助規劃機制、流程還有設計產出，同時針對營運面上的問題以不定期會議形式給予創始團隊建議。</p>
             <p>後於 2025 年四月正式以營運長兼產品設計師的角色加入團隊，負責整體產品的設計規劃與開發規格、時程控管，以及部分的營運決策。同時與外包 UI 團隊定義整體產品視覺基調與 Guideline。</p>
             <p>PaperPlane App V1.0 版於 2025 年一月正式上線。</p>
           </div>
-          <div style="display:flex; align-items:center; justify-content:center;">
-            <img src="assets/images/cs-pp-brand.png" alt="PaperPlane Brand" style="width:100%; max-width:360px; object-fit:contain;">
+          <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:24px;">
+            <img src="assets/images/cs-pp-brand.png" alt="PaperPlane Brand" style="width:100%; max-width:320px; object-fit:contain;">
+            <div class="cs-store-badges">
+              <img src="assets/images/cs-pp-appstore.svg" alt="App Store">
+              <img src="assets/images/cs-pp-googleplay.svg" alt="Google Play">
+            </div>
           </div>
         </div>
       </section>
 
       <!-- Problem & Research -->
-      <section class="cs-section">
+      <section class="cs-section cs-section--narrow">
         <p class="cs-section-label">Problem &amp; Research</p>
         <h2 class="cs-section-title">社群聲量水漲船高，App 留存卻不如預期</h2>
         <p>隨著大量合作活動以及新店家的簽約，加上每年都會舉辦的頒獎典禮，PaperPlane 的品牌聲量日益增加。但這些社群上的聲量與粉絲數，卻無法實際轉換為使用者，且實際使用的留存數據並不如預期。</p>
-        <p>為了找出原因，我們進行了 8 場用戶訪談、回收近百份問卷調查，並且前往合作酒吧實際觀察使用者的操作行為、現場人員如何推廣，以及實際的結帳流程，在 V2.0 的版本更新中做出了兩個最主要的設計決策。</p>
+        <p>為了找出原因，我們進行了<span class="accent"> 8 場用戶訪談</span>、回收近百份<span class="accent">問卷調查</span>，並且前往合作酒吧<span class="accent">實際觀察使用者的操作行為</span>、現場人員如何推廣，以及實際的結帳流程，在 V2.0 的版本更新中做出了兩個最主要的設計決策。</p>
         <div class="cs-stats-row">
           <div class="cs-stat-box">
-            <p class="cs-stat-box-main">8 場</p>
-            <p class="cs-stat-box-sub">用戶訪談</p>
+            <img class="cs-stat-icon" src="assets/images/cs-pp-stat-icon-1.svg" alt="">
+            <p class="cs-stat-box-label">8 場用戶訪談</p>
           </div>
           <div class="cs-stat-box">
-            <p class="cs-stat-box-main">近百份</p>
-            <p class="cs-stat-box-sub">問卷調查</p>
+            <img class="cs-stat-icon" src="assets/images/cs-pp-stat-icon-2.svg" alt="">
+            <p class="cs-stat-box-label">近百份問卷</p>
           </div>
           <div class="cs-stat-box">
-            <p class="cs-stat-box-main">現場觀察</p>
-            <p class="cs-stat-box-sub">結帳流程</p>
+            <img class="cs-stat-icon" src="assets/images/cs-pp-stat-icon-3.svg" alt="">
+            <p class="cs-stat-box-label">現場觀察流程</p>
           </div>
           <div class="cs-stat-box">
-            <p class="cs-stat-box-main">推廣人員</p>
-            <p class="cs-stat-box-sub">回饋收集</p>
+            <img class="cs-stat-icon" src="assets/images/cs-pp-stat-icon-4.svg" alt="">
+            <p class="cs-stat-box-label">推廣人員回饋</p>
           </div>
         </div>
       </section>
 
       <!-- Insight -->
-      <section class="cs-section">
+      <section class="cs-section cs-section--narrow">
         <p class="cs-section-label">Insight</p>
         <h2 class="cs-section-title">對於用戶而言，PaperPlane 到底是<span class="accent">什麼</span>？</h2>
-        <p>初期 PaperPlane 的品牌定位仍在對標米其林的「酒吧指南」，以推薦熱門、特色酒吧為主，因此首頁即為地圖式的合作店家點位。</p>
-        <p>在訪談與調查後，我們發現用戶在構思前往消費前，即會透過如 Google Maps 或 Instagram 等軟體決定消費地點。因此開啟 app 時的主要操作就是「付款」，與一般支付軟體更加接近。</p>
+        <p><span class="accent">初期 PaperPlane 的品牌定位仍在對標米其林的「酒吧指南」</span>，以推薦熱門、特色酒吧為主，因此首頁即為地圖式的合作店家點位。</p>
+        <p>在訪談與調查後，我們發現用戶在構思前往消費前，即會透過如 Google Maps 或 Instagram 等軟體決定消費地點。因此開啟 app 時的<span class="accent">主要操作就是「付款」，與一般支付軟體更加接近</span>。</p>
         <p>但實際付款時，因飲酒易導致消費者出現預期外的操作行為，因此需要更強烈、簡易的引導及流程。</p>
         <div class="cs-focus-tags">
           <span class="cs-focus-tag">重新定義功能權重</span>
@@ -140,82 +153,101 @@
         </div>
       </section>
 
-      <!-- Design：功能權重 + 微醺（兩欄文字區塊）-->
+      <!-- Design：功能權重 + 微醺 -->
       <section class="cs-section">
+        <p class="cs-section-label">Design</p>
         <div class="cs-row-2" style="margin-bottom: 40px;">
           <div>
-            <h3 style="font-size:18px; font-weight:700; color:var(--text); margin-bottom:12px;">重新定義功能權重</h3>
-            <p style="font-size:15px; line-height:1.8;">將首頁佈局與線上支付 app 對齊，將常用功能（支付、儲值、點數兌換、熱門推薦、活動等）根據使用者的需求權重進行策展。</p>
+            <h3 style="font-size:18px; font-weight:700; color:var(--accent); margin-bottom:12px;">重新定義功能權重</h3>
+            <p>將首頁佈局與<span class="accent">線上支付 app 對齊</span>，將常用功能（支付、儲值、點數兌換、熱門推薦、活動等）根據使用者的需求權重進行策展。</p>
           </div>
           <div>
-            <h3 style="font-size:18px; font-weight:700; color:var(--text); margin-bottom:12px;">微醺操作引導</h3>
-            <p style="font-size:15px; line-height:1.8;">因應喝酒後意識模糊，以跳色的大型「付款」常駐於畫面下方，使用戶即便微醺也能順利完成結帳。</p>
+            <h3 style="font-size:18px; font-weight:700; color:var(--accent); margin-bottom:12px;">微醺操作引導</h3>
+            <p>因應<span class="accent">酒後意識模糊</span>，以跳色的大型「付款」常駐於畫面下方，使用戶即便微醺也能順利完成結帳。</p>
           </div>
         </div>
 
         <!-- V1 vs V2 首頁比較 -->
         <div class="cs-compare-grid">
           <div>
-            <p class="cs-compare-label">V 1.0 首頁（以地圖為主）</p>
+            <div style="margin-bottom:12px;"><span class="cs-compare-label">V 1.0 首頁（以地圖為主）</span></div>
             <img class="cs-img" src="assets/images/cs-pp-v1-home.png" alt="PaperPlane V1 首頁">
           </div>
           <div>
-            <p class="cs-compare-label">V 2.0 首頁（以支付為主）</p>
-            <img class="cs-img" src="assets/images/cs-pp-v2-home.png" alt="PaperPlane V2 首頁">
+            <div style="margin-bottom:12px;"><span class="cs-compare-label cs-compare-label-accent">V 2.0 首頁（以支付為主）</span></div>
+            <img class="cs-img" src="assets/images/cs-pp-v2-annotated.png" alt="PaperPlane V2 首頁">
           </div>
         </div>
       </section>
 
       <!-- 付款流程簡化 -->
-      <section class="cs-section">
+      <section class="cs-section cs-section--narrow">
         <p class="cs-section-label">付款流程簡化</p>
-        <h2 class="cs-section-title">對於用戶而言<br>使用 PaperPlane 最大的阻礙是什麼？</h2>
-        <p>V1.0 沿用過往 web/LINE@ 時期的付款流程，用戶需要先儲值，後付款。但實際觀察推廣現場時發現，即便提供額外儲值優惠（首儲 1,000 送 200），對用戶而言儲值門檻依然過高，操作流程也過於繁瑣。</p>
-        <p>因此在 V2.0 的支付系統中，我們加入了「自動儲值」功能，在用戶付款當下，計算該次付款所需儲值的金額（扣除可用紅利與折扣等），同時完成「儲值」與「付款」，用戶無需預先操作儲值，讓操作流程更加簡便，也降低進入門檻，使活躍用戶數更進一步提升。</p>
+        <h2 class="cs-section-title">對於用戶而言<br>使用 PaperPlane <span class="accent">最大的阻礙</span>是什麼？</h2>
+        <p>V1.0 沿用過往 web/LINE@ 時期的付款流程，用戶需要先儲值，後付款。但實際觀察推廣現場時發現，即便提供額外儲值優惠（首儲 1,000 送 200），對用戶而言<span class="accent">儲值門檻依然過高</span>，操作流程也過於繁瑣。</p>
+        <p>因此在 V2.0 的支付系統中，我們加入了<span class="accent">「自動儲值」</span>功能，在用戶付款當下，計算該次付款所需儲值的金額（扣除可用紅利與折扣等），<span class="accent">同時完成「儲值」與「付款」</span>，用戶無需預先操作儲值，讓操作流程更加簡便，也降低進入門檻，使活躍用戶數更進一步提升。</p>
 
-        <div class="cs-flow-compare">
+        <div class="cs-flow-with-screens">
+          <!-- V1 流程 -->
           <div>
-            <p class="cs-flow-col-label">V 1.0 付款流程</p>
+            <div style="margin-bottom:16px;"><span class="cs-flow-col-label">V 1.0 付款流程</span></div>
             <div class="cs-flow">
               <div class="cs-flow-step">下載 / 註冊</div>
+              <div class="cs-flow-arrow">↓</div>
               <div class="cs-flow-step">輸入付款金額</div>
+              <div class="cs-flow-arrow">↓</div>
               <div class="cs-flow-step removed">發現要先儲值</div>
+              <div class="cs-flow-arrow">↓</div>
               <div class="cs-flow-step">信用卡 / Apple Pay</div>
+              <div class="cs-flow-arrow">↓</div>
               <div class="cs-flow-step removed">儲值</div>
+              <div class="cs-flow-arrow">↓</div>
               <div class="cs-flow-step">完成付款</div>
             </div>
           </div>
+          <!-- V2 流程 -->
           <div>
-            <p class="cs-flow-col-label">V 2.0 付款流程</p>
+            <div style="margin-bottom:16px;"><span class="cs-flow-col-label cs-flow-col-label-accent">V 2.0 付款流程</span></div>
             <div class="cs-flow">
               <div class="cs-flow-step">下載 / 註冊</div>
+              <div class="cs-flow-arrow">↓</div>
               <div class="cs-flow-step">輸入付款金額</div>
+              <div class="cs-flow-arrow">↓</div>
               <div class="cs-flow-step new">信用卡 / Apple Pay<br>自動儲值</div>
+              <div class="cs-flow-arrow">↓</div>
               <div class="cs-flow-step new">完成付款</div>
             </div>
+          </div>
+          <!-- 右側手機截圖 -->
+          <div class="cs-flow-screens">
+            <img src="assets/images/cs-pp-payment-flow1.png" alt="PaperPlane 付款畫面">
+            <img src="assets/images/cs-pp-payment-flow2.png" alt="PaperPlane 付款完成">
           </div>
         </div>
       </section>
 
-      <!-- Result（關鍵數字左 + 學習與反思右）-->
+      <!-- Result + 學習與反思 -->
       <section class="cs-section">
         <div class="cs-result-row">
-          <!-- 左：Result label + 關鍵數字 + 三個 metric -->
-          <div>
+          <!-- 左：深色卡片 - Result + 關鍵數字 + 裝飾圖 + 數字 -->
+          <div class="cs-result-card">
             <p class="cs-section-label">Result</p>
-            <h2 class="cs-section-title" style="font-size:28px; margin-bottom:40px;">關鍵數字</h2>
-            <div class="cs-metric-stack">
-              <div class="cs-metric-item">
-                <p class="cs-metric-num">61%</p>
-                <p class="cs-metric-context">V2.0 上線後六個月<br>總註冊用戶成長％</p>
-              </div>
-              <div class="cs-metric-item">
-                <p class="cs-metric-num">15%</p>
-                <p class="cs-metric-context">V2.0 上線後六個月<br>付費用戶成長％</p>
-              </div>
-              <div class="cs-metric-item">
-                <p class="cs-metric-num">5場</p>
-                <p class="cs-metric-context">V2.0 上線後六個月<br>異業合作活動</p>
+            <h2 class="cs-section-title">關鍵數字</h2>
+            <div class="cs-result-inner">
+              <img class="cs-result-deco" src="assets/images/cs-pp-icon-wine.png" alt="">
+              <div class="cs-metric-stack">
+                <div class="cs-metric-item">
+                  <p class="cs-metric-num">61%</p>
+                  <p class="cs-metric-context">V2.0上線後六個月<br>總註冊用戶成長％</p>
+                </div>
+                <div class="cs-metric-item">
+                  <p class="cs-metric-num">15%</p>
+                  <p class="cs-metric-context">V2.0上線後六個月<br>付費用戶成長％</p>
+                </div>
+                <div class="cs-metric-item">
+                  <p class="cs-metric-num">5場</p>
+                  <p class="cs-metric-context">V2.0上線後六個月<br>異業合作活動</p>
+                </div>
               </div>
             </div>
           </div>
@@ -231,6 +263,9 @@
       </section>
 
     </div><!-- cs-content -->
+
+    <!-- ── 保密聲明 ───────────────────────── -->
+    <p class="cs-disclaimer">涉及公司營運相關數字持保密原則，僅以比例呈現</p>
 
     <!-- ── Footer ─────────────────────────── -->
     <footer>

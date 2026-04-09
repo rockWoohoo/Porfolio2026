@@ -118,7 +118,7 @@ ul  { list-style: none; }
 }
 
 /* ── 版面 ─────────────────────────────────── */
-.page-content { position: relative; z-index: 1; }
+.page-content { position: relative; z-index: 1; padding-top: 50px; }
 
 .container {
   max-width: 1440px;
@@ -128,8 +128,10 @@ ul  { list-style: none; }
 
 /* ── Header ───────────────────────────────── */
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 100;
   height: 50px;
   background: #000;
@@ -894,13 +896,22 @@ footer {
 
 /* ── Case Study 內頁 ──────────────────────── */
 
-/* Hero（背景全寬，Role/Team/Release 內置於 hero 底部）*/
-.cs-hero {
+/* Hero 外層 wrap：margin-top -50px 延伸至 header 下方，height 補回 50px 保持可見高度不變 */
+.cs-hero-wrap {
   position: relative;
-  height: 620px;
-  overflow: hidden;
+  margin-top: -50px;
+  height: calc(70vh + 50px);
+  z-index: 2;
   display: flex;
   align-items: flex-end;
+}
+
+/* 背景裁切層（只裁 bg + overlay）*/
+.cs-hero {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
 }
 
 .cs-hero-bg {
@@ -908,6 +919,8 @@ footer {
   inset: 0;
   background-size: cover;
   background-position: center;
+  filter: blur(10px);
+  transform: scale(1.05);
 }
 
 .cs-hero-overlay {
@@ -916,26 +929,63 @@ footer {
   background: rgba(0, 0, 0, 0.6);
 }
 
+/* 主手機（右側）：從 wrap 頂端延伸，破出底部 */
 .cs-hero-phone {
   position: absolute;
+  top: 10%;
   right: 10%;
-  bottom: 0;
   height: 112%;
   width: auto;
-  object-fit: contain;
-  object-position: bottom;
-  z-index: 2;
+  z-index: 5;
   pointer-events: none;
 }
 
-/* hero 底部內容：tags → subtitle → title → meta */
+/* 副手機（左側）：稍低起點，與主手機有重疊 */
+.cs-hero-phone-secondary {
+  position: absolute;
+  top: 16%;
+  right: 24%;
+  height: 96%;
+  width: auto;
+  z-index: 4;
+  pointer-events: none;
+  opacity: 0.92;
+}
+
+/* 1000px 內容容器：phones + 文字皆受此約束，bg 仍全寬 */
+.cs-hero-inner {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+/* hero 底部內容：tags → subtitle → title（meta 已移出）*/
 .cs-hero-content {
   position: relative;
   z-index: 3;
-  padding: 0 80px 40px;
-  max-width: 1440px;
+  padding: 0 40px 32px;
+  max-width: 55%;
+}
+
+/* Role / Team / Release 獨立區塊 */
+.cs-info {
+  position: relative;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.cs-info-inner {
+  max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
+  padding: 36px 48px 48px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
 }
 
 .cs-hero-tags {
@@ -953,11 +1003,13 @@ footer {
 }
 
 .cs-hero-title {
-  font-size: 56px;
+  font-size: 48px;
   font-weight: 700;
-  color: var(--text);    /* 白色，不用 accent */
+  color: var(--accent);
   line-height: 1.1;
   margin-bottom: 28px;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 
 /* Role / Team / Release（hero 底部分隔線後）*/
@@ -977,9 +1029,9 @@ footer {
 }
 
 .cs-hero-meta-value {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 400;
-  color: var(--text);
+  color: rgba(255, 255, 255, 0.5);
   line-height: 1.8;
 }
 
@@ -990,8 +1042,8 @@ footer {
 }
 
 .cs-hero-meta-list li {
-  font-size: 14px;
-  color: var(--text);
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.5);
   padding-left: 12px;
   position: relative;
   line-height: 1.6;
@@ -1006,9 +1058,9 @@ footer {
 
 /* 主要內容容器 */
 .cs-content {
-  max-width: 1440px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 80px 80px 120px;
+  padding: 80px 48px 120px;
 }
 
 /* 通用段落區塊 */
@@ -1020,8 +1072,7 @@ footer {
   font-size: 14px;
   font-weight: 700;
   color: var(--accent);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  line-height: 1.2;
   margin-bottom: 12px;
 }
 
@@ -1034,17 +1085,48 @@ footer {
 }
 
 .cs-section p {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 400;
-  color: var(--text);
-  line-height: 1.8;
-  margin-bottom: 16px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.85;
+  margin-bottom: 20px;
 }
 
 .cs-section p:last-child { margin-bottom: 0; }
 
+/* 強制讓 section label 顏色不被 .cs-section p 覆蓋（提升 specificity）*/
+.cs-section p.cs-section-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
 /* accent inline span */
 .accent { color: var(--accent); }
+
+/* 段落窄版：限制直接子層文字寬度並置中 */
+.cs-section--narrow > p,
+.cs-section--narrow > h2 {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* stats row 與 focus tags 也縮進置中 */
+.cs-section--narrow > .cs-stats-row {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cs-section--narrow > .cs-focus-tags {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
 
 /* 兩欄通用 grid */
 .cs-row-2 {
@@ -1063,8 +1145,8 @@ footer {
 
 /* 圖文兩欄：圖右較窄 */
 .cs-row-2-img-right  { grid-template-columns: 3fr 2fr; }
-/* 圖文兩欄：圖左較窄 */
-.cs-row-2-img-left   { grid-template-columns: 2fr 3fr; }
+/* 圖文兩欄：圖左較窄（1:2） */
+.cs-row-2-img-left   { grid-template-columns: 1fr 2fr; }
 
 /* 設計重點 pill 標籤 */
 .cs-focus-tags {
@@ -1093,22 +1175,16 @@ footer {
 
 .cs-stat-box {
   text-align: center;
-  padding: 20px 12px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
 }
 
-.cs-stat-box-main {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 6px;
-}
-
-.cs-stat-box-sub {
+.cs-stat-box-label {
   font-size: 13px;
   color: var(--muted);
+  white-space: nowrap;
   line-height: 1.4;
 }
 
@@ -1121,12 +1197,19 @@ footer {
 }
 
 .cs-flow-col-label {
+  display: inline-block;
   font-size: 12px;
   font-weight: 700;
   color: var(--muted);
-  letter-spacing: 0.04em;
-  text-align: center;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+  padding: 4px 14px;
   margin-bottom: 16px;
+}
+
+.cs-flow-col-label-accent {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .cs-flow {
@@ -1145,8 +1228,9 @@ footer {
 }
 
 .cs-flow-step.removed {
-  opacity: 0.35;
-  text-decoration: line-through;
+  color: rgba(255, 90, 80, 0.9);
+  background: rgba(220, 50, 50, 0.12);
+  border: 1px solid rgba(255, 80, 70, 0.35);
 }
 
 .cs-flow-step.new {
@@ -1155,34 +1239,145 @@ footer {
   border: 1px solid rgba(255, 214, 138, 0.3);
 }
 
-/* Result 區塊（metrics 左 + 反思 右）*/
+/* 流程圖步驟之間的箭頭（獨立 div 避免 ::before 跑進 box 內）*/
+.cs-flow-arrow {
+  text-align: center;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1;
+  padding: 4px 0;
+  flex-shrink: 0;
+}
+
+/* 流程圖 + 右側手機截圖：流程兩欄合佔 1/3，截圖佔 2/3 */
+.cs-flow-with-screens {
+  display: grid;
+  grid-template-columns: 1fr 1fr 4fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 32px;
+}
+.cs-flow-screens {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+.cs-flow-screens img {
+  flex: 1;
+  width: 0;
+  min-width: 0;
+  height: auto;
+  max-height: 480px;
+  object-fit: contain;
+  border-radius: 16px;
+}
+
+/* Stat icon */
+.cs-stat-icon {
+  width: 54px;
+  height: 54px;
+  object-fit: contain;
+  display: block;
+}
+
+/* 保密聲明（footer 上方置中）*/
+.cs-disclaimer {
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 24px 16px 40px;
+}
+
+/* App Store / Google Play 徽章 */
+.cs-store-badges {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+.cs-store-badges img {
+  height: 36px;
+  width: auto;
+}
+
+/* Result 裝飾 icon（coin/wine）*/
+.cs-metric-icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  display: block;
+  margin-bottom: 0;
+}
+
+/* Result 區塊：左（深色卡片）+ 右（反思文字）兩欄 */
 .cs-result-row {
   display: grid;
-  grid-template-columns: 240px 1fr;
-  gap: 80px;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 64px;
   align-items: start;
 }
 
-.cs-metric-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+/* 卡片內標題（比 cs-section-title 小）*/
+.cs-result-card .cs-section-title {
+  font-size: 24px;
+  margin-bottom: 0;
 }
 
-.cs-metric-item {}
+/* 左欄：深色卡片 */
+.cs-result-card {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 28px 28px 32px;
+}
+
+/* 卡片內：裝飾圖片 + 數字堆疊 */
+.cs-result-inner {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.cs-result-deco {
+  width: 160px;
+  height: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.cs-metric-stack {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cs-metric-item {
+  text-align: center;
+}
 
 .cs-metric-num {
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 700;
   color: var(--accent);
   line-height: 1;
 }
 
 .cs-metric-context {
-  font-size: 12px;
-  color: var(--muted);
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.5);
   margin-top: 6px;
   line-height: 1.5;
+}
+
+/* 台電 V1 亮點 — 整體深色卡片容器 */
+.cs-v1-wrapper {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 28px 32px 32px;
+  margin-top: 24px;
 }
 
 /* 台電 V1 亮點卡片 */
@@ -1190,53 +1385,71 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  margin-top: 32px;
 }
 
 .cs-v1-card {
-  background: rgba(255, 255, 255, 0.04);
-  border-radius: 10px;
-  padding: 24px;
+  background: none;
+  border-radius: 0;
+  padding: 0;
+}
+
+.cs-v1-card .cs-v1-card-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  padding: 36px 0;
+  margin: 0;
 }
 
 .cs-v1-card-img {
   width: 100%;
-  height: 160px;
+  height: 200px;
   object-fit: contain;
   object-position: center;
   display: block;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
 }
 
-.cs-v1-card-title {
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--text);
-  margin-bottom: 10px;
-}
-
-.cs-v1-card p {
+.cs-v1-card p:not(.cs-v1-card-title) {
   font-size: 14px;
   color: var(--text);
   line-height: 1.7;
   margin: 0;
+  text-align: center;
 }
 
-/* 台電 V1 上線後成長（大字） */
+/* 台電 V1 上線後成長 */
 .cs-v1-result {
-  margin-top: 48px;
-  padding-top: 40px;
+  margin-top: 32px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 28px 0 0;
+  text-align: center;
 }
 
-.cs-v1-result-line {
-  font-size: 28px;
+.cs-v1-result-header {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.cs-v1-result .cs-v1-result-line {
+  font-size: 24px;
   font-weight: 700;
   color: var(--text);
-  line-height: 1.4;
+  line-height: 1.6;
 }
 
-.cs-v1-result-line .accent { font-size: 32px; }
+.cs-v1-but {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-top: 20px;
+  text-align: center;
+}
 
 /* 台電 Problem 兩欄 */
 .cs-problem-grid {
@@ -1252,8 +1465,8 @@ footer {
 
 .cs-problem-item:last-child { margin-bottom: 0; }
 
-.cs-problem-num {
-  font-size: 32px;
+.cs-problem-item .cs-problem-num {
+  font-size: 24px;
   font-weight: 700;
   color: var(--text);
   margin-bottom: 16px;
@@ -1291,26 +1504,49 @@ footer {
 
 .cs-design-phone {
   width: 100%;
-  max-width: 280px;
+  max-width: 240px;
   border-radius: 12px;
   display: block;
   margin: 0 auto;
 }
 
 .cs-design-icon {
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   object-fit: contain;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  display: block;
 }
 
 .cs-design-label {
   font-size: 12px;
   font-weight: 700;
   color: var(--accent);
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
   margin-bottom: 10px;
+}
+
+/* 兩支手機交疊（連續登入區塊） */
+.cs-phones-overlap {
+  position: relative;
+  height: 580px;
+}
+.cs-phone-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  border-radius: 20px;
+  z-index: 1;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+}
+.cs-phone-front {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 240px;
+  border-radius: 20px;
+  z-index: 2;
+  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
 }
 
 .cs-design-title {
@@ -1335,6 +1571,40 @@ footer {
 }
 
 /* 台電 result 4 大數字 */
+.cs-section--result-bg {
+  position: relative;
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+.cs-section--result-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 0;
+}
+.cs-section--result-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* 窄版內容容器（800px），用於台電 case study */
+.cs-content--narrow {
+  max-width: 900px;
+}
+
+/* 讓特定區塊突破 800px 限制，擴展至 1200px */
+.cs-section--breakout {
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1200px, calc(100vw - 48px));
+}
+
 .cs-result-4 {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -1342,24 +1612,23 @@ footer {
   margin-top: 24px;
 }
 
-.cs-result-4-num {
-  font-size: 56px;
+.cs-result-4 > div {
+  text-align: center;
+}
+
+.cs-result-4 .cs-result-4-num {
+  font-size: 48px;
   font-weight: 700;
   color: var(--accent);
   line-height: 1;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.cs-result-4-context {
-  font-size: 12px;
+.cs-result-4 .cs-result-4-desc {
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.5;
-  margin-bottom: 4px;
-}
-
-.cs-result-4-label {
-  font-size: 14px;
-  color: var(--text);
+  line-height: 1.1;
+  margin: 0;
 }
 
 /* 圖片通用 */
@@ -1369,20 +1638,37 @@ footer {
   display: block;
 }
 
-/* 比較兩欄（V1 vs V2）*/
+/* 比較兩欄（V1 vs V2）等寬 */
 .cs-compare-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
   margin-top: 32px;
+  align-items: start;
+}
+
+.cs-compare-grid .cs-img {
+  width: 100%;
+  height: 420px;
+  object-fit: contain;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 10px;
 }
 
 .cs-compare-label {
+  display: inline-block;
   font-size: 12px;
   font-weight: 700;
   color: var(--muted);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 100px;
+  padding: 4px 14px;
   margin-bottom: 12px;
-  letter-spacing: 0.04em;
+}
+
+.cs-compare-label-accent {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 /* ── RWD ──────────────────────────────────── */
@@ -1415,19 +1701,24 @@ footer {
   .contact-links { justify-content: center; }
 
   /* Case Study 內頁 RWD */
-  .cs-hero              { height: 500px; }
-  .cs-hero-phone        { height: 90%; right: 4%; }
-  .cs-hero-content      { padding: 0 32px 32px; }
-  .cs-hero-meta         { grid-template-columns: 1fr 1fr; gap: 24px; }
-  .cs-content           { padding: 48px 32px 60px; }
+  .cs-hero-wrap         { height: calc(65vh + 50px); }
+  .cs-hero-phone        { height: 112%; right: 10%; top: 10%; }
+  .cs-hero-phone-secondary { height: 96%; right: 24%; top: 16%; }
+  .cs-hero-content      { padding: 0 24px 28px; }
+  .cs-info-inner        { padding: 36px 24px 40px; gap: 16px; }
+  .cs-content           { padding: 48px 24px 60px; }
   .cs-row-2, .cs-row-2-img-right, .cs-row-2-img-left { grid-template-columns: 1fr; gap: 40px; }
   .cs-compare-grid      { grid-template-columns: 1fr; }
   .cs-design-row        { grid-template-columns: 1fr; }
+  .cs-phones-overlap    { height: 380px; }
   .cs-result-row        { grid-template-columns: 1fr; gap: 48px; }
   .cs-result-4          { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .cs-v1-wrapper        { padding: 20px 16px 24px; }
   .cs-v1-grid           { grid-template-columns: 1fr; }
   .cs-problem-grid      { grid-template-columns: 1fr; gap: 40px; }
   .cs-flow-compare      { grid-template-columns: 1fr; }
+  .cs-flow-with-screens { grid-template-columns: 1fr 1fr; }
+  .cs-flow-screens      { display: none; }
 }
 
 /* ── Mobile Menu Button ───────────────────── */
@@ -1530,16 +1821,20 @@ footer {
   .lightbox-title { font-size: 22px; }
 
   /* Case Study 內頁 small RWD */
-  .cs-hero              { height: 380px; }
-  .cs-hero-title        { font-size: 36px; }
-  .cs-hero-phone        { height: 70%; right: 0; }
-  .cs-hero-content      { padding: 0 20px 24px; }
-  .cs-hero-meta         { grid-template-columns: 1fr; gap: 16px; padding-top: 16px; }
-  .cs-content           { padding: 36px 20px 48px; }
+  .cs-hero-wrap         { height: calc(55vh + 50px); min-height: 350px; }
+  .cs-hero-title        { font-size: 32px; }
+  .cs-hero-phone        { height: 110%; right: 8%; top: 10%; }
+  .cs-hero-phone-secondary { display: none; }
+  .cs-hero-content      { padding: 0 16px 20px; max-width: 55%; }
+  .cs-info-inner        { flex-direction: column; align-items: flex-start; padding: calc(12vh + 16px) 20px 32px; gap: 20px; }
+  .cs-content           { padding: 36px 16px 48px; }
+  .cs-result-row        { gap: 36px; }
+  .cs-result-inner      { flex-direction: column; }
+  .cs-result-deco       { width: 80px; }
   .cs-section-title     { font-size: 24px; }
   .cs-result-4          { grid-template-columns: repeat(2, 1fr); }
-  .cs-result-4-num      { font-size: 40px; }
+  .cs-result-4 .cs-result-4-num { font-size: 36px; }
   .cs-metric-num        { font-size: 48px; }
-  .cs-v1-result-line    { font-size: 22px; }
+  .cs-v1-result-line    { font-size: 18px; }
   .cs-stats-row         { grid-template-columns: repeat(2, 1fr); }
 }
