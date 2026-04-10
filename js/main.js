@@ -1,5 +1,29 @@
 // Rock Wu 作品集 — 互動邏輯
 
+// ── Page Loader ───────────────────────────────
+(function() {
+  const loader = document.createElement('div');
+  loader.id = 'page-loader';
+  loader.innerHTML = `
+    <div class="loader-orb loader-orb-1"></div>
+    <div class="loader-orb loader-orb-2"></div>
+    <div class="loader-orb loader-orb-3"></div>
+  `;
+  document.documentElement.appendChild(loader);
+
+  const MIN_DISPLAY = 800; // 最短顯示時間（ms）
+  const startTime = Date.now();
+
+  window.addEventListener('load', () => {
+    const elapsed = Date.now() - startTime;
+    const delay = Math.max(0, MIN_DISPLAY - elapsed);
+    setTimeout(() => {
+      loader.classList.add('fade-out');
+      setTimeout(() => loader.remove(), 400);
+    }, delay);
+  });
+})();
+
 // ── 背景光暈滑鼠視差 ─────────────────────────
 const orbsContainer = document.querySelector('.gradient-orbs');
 if (orbsContainer) {

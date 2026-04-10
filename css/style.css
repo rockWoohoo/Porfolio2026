@@ -1871,6 +1871,60 @@ footer {
   .cs-design-row--phone-left > *:last-child  { order: 1; }
 }
 
+/* ── Page Loader ──────────────────────────── */
+#page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--bg);
+  z-index: 9999;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+#page-loader.fade-out {
+  opacity: 0;
+}
+
+.loader-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0;
+  animation: loaderOrbDrop 0.5s ease forwards;
+}
+
+.loader-orb-1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(113, 69, 206, 0.75), transparent 70%);
+  top: 10%;
+  left: 15%;
+  animation-delay: 0s;
+}
+
+.loader-orb-2 {
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, rgba(255, 174, 60, 0.55), transparent 70%);
+  top: 25%;
+  right: 15%;
+  animation-delay: 0.18s;
+}
+
+.loader-orb-3 {
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(113, 69, 206, 0.45), transparent 70%);
+  bottom: 20%;
+  left: 40%;
+  animation-delay: 0.36s;
+}
+
+@keyframes loaderOrbDrop {
+  from { opacity: 0; transform: translateY(-200px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* ── Focus / Keyboard Navigation ─────────── */
 :focus-visible {
   outline: 2px solid var(--accent);
