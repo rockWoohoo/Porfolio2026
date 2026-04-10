@@ -1870,3 +1870,32 @@ footer {
   .cs-design-row--phone-left > *:first-child { order: 2; }
   .cs-design-row--phone-left > *:last-child  { order: 1; }
 }
+
+/* ── Focus / Keyboard Navigation ─────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* ── Print 樣式 ───────────────────────────── */
+@media print {
+  /* 隱藏非內容元素 */
+  header, footer, .gradient-orbs, #go-to-top,
+  .mobile-menu, #lightboxBackdrop,
+  .cs-hero-phone, .cs-hero-phone-secondary { display: none !important; }
+
+  body { background: #fff; color: #000; font-size: 12pt; }
+  a { color: #000; text-decoration: underline; }
+
+  /* 展開所有隱藏區塊 */
+  #expHidden { display: block !important; }
+
+  /* 避免卡片在換頁時被切斷 */
+  .cs-card, .work-card, .cs-section,
+  .exp-item, .about-me-section { break-inside: avoid; }
+
+  /* 移除背景色，節省墨水 */
+  .cs-hero-wrap, .cs-section--result-bg,
+  .cs-v1-wrapper { background: none !important; }
+}

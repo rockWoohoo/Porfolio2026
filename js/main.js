@@ -219,8 +219,24 @@ if (workCards.length && backdrop) {
     if (e.target === backdrop) closeLightbox();
   });
 
+  // Focus trap：Tab 鍵在 lightbox 內循環
+  const lightboxBox = document.querySelector('.lightbox-box');
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'Escape') {
+      closeLightbox();
+      return;
+    }
+    if (!backdrop.classList.contains('open') || e.key !== 'Tab') return;
+    const focusable = lightboxBox.querySelectorAll(
+      'a[href], button, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+    }
   });
 }
 
@@ -250,6 +266,22 @@ if (menuBtn && mobileMenu) {
   });
 
   // 語言切換（mobile）— 由全域 applyLang 統一處理，此處無需額外邏輯
+
+  // Focus trap：Tab 鍵在 mobile menu 內循環
+  mobileMenu.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') { closeMenu(); menuBtn.focus(); return; }
+    if (e.key !== 'Tab') return;
+    const focusable = mobileMenu.querySelectorAll(
+      'a[href], button, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusable[0];
+    const last  = focusable[focusable.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+    }
+  });
 }
 
 // ── Experience 展開 / 收合 ────────────────────
