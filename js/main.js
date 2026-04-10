@@ -377,6 +377,9 @@ if (menuBtn && mobileMenu) {
     updateContent(stage, false);
     backdrop.classList.add('open');
     document.body.style.overflow = 'hidden';
+    if (typeof gtag === 'function') {
+      gtag('event', 'idle_prompt', { idle_stage: stage.sec, button: 'view' });
+    }
   }
 
   function updateIdle(stage) {
