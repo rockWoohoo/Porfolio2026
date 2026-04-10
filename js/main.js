@@ -308,6 +308,147 @@ if (menuBtn && mobileMenu) {
   });
 }
 
+// ── Idle Lightbox ─────────────────────────────
+(function() {
+  const STAGES = [
+    {
+      sec: 90,
+      zh: '朋友，90秒過去了\n你還有什麼煩惱嗎？',
+      en: 'Hey friend, 90 seconds have passed.\nIs there anything bothering you?'
+    },
+    {
+      sec: 120,
+      zh: '在AI驅動的時代\n每120秒就有2分鐘會過去',
+      en: '120 seconds just went by.\nmeans 2 minutes has past.'
+    },
+    {
+      sec: 180,
+      zh: '朋友，泡麵都煮好了\n你加減動一下吧',
+      en: 'Even the instant noodles are done by now.\nCome on, just move a little?'
+    }
+  ];
+
+  // 注入 HTML
+  const backdrop = document.createElement('div');
+  backdrop.id = 'idle-backdrop';
+  backdrop.innerHTML = `
+    <div class="idle-box">
+      <img class="idle-img" src="assets/images/idle-waiting.webp" alt="waiting">
+      <div class="idle-content">
+        <p class="idle-title" id="idleTitle"></p>
+        <div class="idle-btns">
+          <button class="idle-btn idle-btn-ok" id="idleBtnOk">OK 👍</button>
+          <button class="idle-btn idle-btn-dismiss" id="idleBtnDismiss">管好你自己</button>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(backdrop);
+
+  let elapsed = 0;
+  let interval = null;
+  let currentStage = null;
+
+  const titleEl    = document.getElementById('idleTitle');
+  const btnOk      = document.getElementById('idleBtnOk');
+  const btnDismiss = document.getElementById('idleBtnDismiss');
+
+  function getLang() {
+    return document.documentElement.lang === 'en' ? 'en' : 'zh';
+  }
+
+  function updateContent(stage, animate) {
+    const lang = getLang();
+    if (animate) {
+      titleEl.style.opacity = '0';
+      setTimeout(() => {
+        titleEl.textContent = stage[lang];
+        titleEl.style.opacity = '1';
+      }, 350);
+    } else {
+      titleEl.textContent = stage[lang];
+    }
+    btnOk.textContent      = 'OK 👍';
+    btnDismiss.textContent = lang === 'en' ? 'Mind your own business' : '管好你自己';
+  }
+
+  function openIdle(stage) {
+    currentStage = stage;
+    updateContent(stage, false);
+    backdrop.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function updateIdle(stage) {
+    currentStage = stage;
+    updateContent(stage, true);
+    if (typeof gtag === 'function') {
+      gtag('event', 'idle_prompt', { idle_stage: stage.sec, button: 'view' });
+    }
+  }
+
+  function closeIdle(buttonType) {
+    if (!backdrop.classList.contains('open')) return;
+    backdrop.classList.remove('open');
+    // 若 works lightbox 未開啟才解鎖 scroll
+    const worksBackdrop = document.getElementById('lightboxBackdrop');
+    if (!worksBackdrop || !worksBackdrop.classList.contains('open')) {
+      document.body.style.overflow = '';
+    }
+    if (typeof gtag === 'function' && currentStage) {
+      gtag('event', 'idle_prompt', { idle_stage: currentStage.sec, button: buttonType });
+    }
+    resetTimer();
+  }
+
+  function resetTimer() {
+    elapsed = 0;
+    clearInterval(interval);
+    startTimer();
+  }
+
+  function startTimer() {
+    interval = setInterval(() => {
+      elapsed++;
+      const stage = STAGES.find(s => s.sec === elapsed);
+      if (!stage) return;
+      if (!backdrop.classList.contains('open')) {
+        openIdle(stage);
+      } else {
+        updateIdle(stage);
+      }
+    }, 1000);
+  }
+
+  // 用戶操作 → 重置（idle lightbox 開啟中不重置）
+  ['scroll', 'click', 'keypress', 'mousemove', 'touchstart'].forEach(evt => {
+    document.addEventListener(evt, () => {
+      if (!backdrop.classList.contains('open')) resetTimer();
+    }, { passive: true });
+  });
+
+  btnOk.addEventListener('click', (e) => { e.stopPropagation(); closeIdle('ok'); });
+  btnDismiss.addEventListener('click', (e) => { e.stopPropagation(); closeIdle('dismiss'); });
+
+  // 點擊 backdrop 外框關閉（不記錄 GA）
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) {
+      backdrop.classList.remove('open');
+      const worksBackdrop = document.getElementById('lightboxBackdrop');
+      if (!worksBackdrop || !worksBackdrop.classList.contains('open')) {
+        document.body.style.overflow = '';
+      }
+      resetTimer();
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && backdrop.classList.contains('open')) closeIdle('dismiss');
+  });
+
+  startTimer();
+})();
+
 // ── Experience 展開 / 收合 ────────────────────
 const expandBtn = document.getElementById('expExpandBtn');
 const expHidden = document.getElementById('expHidden');

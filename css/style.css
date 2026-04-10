@@ -1933,6 +1933,101 @@ footer {
 }
 
 /* ── Print 樣式 ───────────────────────────── */
+/* ── Idle Lightbox ───────────────────────────── */
+#idle-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  z-index: 10000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+#idle-backdrop.open { display: flex; }
+
+.idle-box {
+  background: #232327;
+  border-radius: 16px;
+  display: flex;
+  gap: 40px;
+  max-width: 780px;
+  width: 100%;
+  overflow: hidden;
+  padding: 40px;
+  align-items: center;
+}
+
+.idle-img {
+  width: 320px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.idle-content { flex: 1; }
+
+.idle-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.4;
+  margin-bottom: 32px;
+  white-space: pre-line;
+  transition: opacity 0.35s ease;
+}
+
+.idle-btns {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.idle-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: opacity 0.2s;
+}
+.idle-btn:hover { opacity: 0.85; }
+
+.idle-btn-ok {
+  background: var(--purple);
+  color: #fff;
+}
+
+.idle-btn-dismiss {
+  background: rgba(255,255,255,0.15);
+  color: var(--text);
+}
+
+@media (max-width: 600px) {
+  #idle-backdrop { align-items: flex-start; padding: 0; overflow-y: auto; }
+  .idle-box {
+    flex-direction: column;
+    padding: 0 0 40px 0;
+    gap: 0;
+    border-radius: 0;
+    width: 100%;
+    min-height: 100vh;
+    background: #232327;
+  }
+  .idle-img {
+    width: calc(100% - 32px);
+    margin: 32px 16px 0;
+    border-radius: 10px;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .idle-content { padding: 28px 24px 0; width: 100%; text-align: center; }
+  .idle-title { font-size: 20px; }
+}
+
 @media print {
   /* 隱藏非內容元素 */
   header, footer, .gradient-orbs, #go-to-top,
