@@ -1369,7 +1369,7 @@ footer {
   text-align: center;
 }
 
-.cs-metric-num {
+.cs-section .cs-metric-num {
   font-size: 48px;
   font-weight: 700;
   color: var(--accent);
@@ -1569,6 +1569,12 @@ footer {
   margin-bottom: 16px;
 }
 
+.cs-inline-link {
+  color: var(--accent);
+  text-decoration: underline;
+}
+.cs-inline-link:hover { opacity: 0.75; }
+
 .cs-design-body {
   font-size: 15px;
   color: var(--text);
@@ -1714,15 +1720,24 @@ footer {
 
   /* Case Study 內頁 RWD */
   .cs-hero-wrap         { height: calc(65vh + 50px); }
-  .cs-hero-phone        { height: 112%; right: 10%; top: 10%; }
-  .cs-hero-phone-secondary { height: 96%; right: 24%; top: 16%; }
+  .cs-hero-phone        { height: 80%; right: 4%; top: auto; bottom: 0; }
+  .cs-hero-phone-secondary { height: 68%; right: 22%; top: auto; bottom: 0; }
   .cs-hero-content      { padding: 0 24px 28px; }
   .cs-info-inner        { padding: 36px 24px 40px; gap: 16px; }
   .cs-content           { padding: 48px 24px 60px; }
   .cs-row-2, .cs-row-2-img-right, .cs-row-2-img-left { grid-template-columns: 1fr; gap: 40px; }
+  .cs-row-2-img-left > *:first-child { order: 2; }
+  .cs-row-2-img-left > *:last-child  { order: 1; }
   .cs-compare-grid      { grid-template-columns: 1fr; }
   .cs-design-row        { grid-template-columns: 1fr; }
-  .cs-phones-overlap    { height: 380px; }
+  .cs-phones-overlap    { height: 380px; overflow: hidden; }
+  .cs-phone-back        { width: 46%; }
+  .cs-phone-front       { width: 46%; }
+
+  /* 圖左文右：手機版圖移到文字下方 */
+  .cs-design-row--phone-left > *:first-child { order: 2; }
+  .cs-design-row--phone-left > *:last-child  { order: 1; }
+
   .cs-result-row        { grid-template-columns: 1fr; gap: 48px; }
   .cs-result-4          { grid-template-columns: repeat(2, 1fr); gap: 24px; }
   .cs-v1-wrapper        { padding: 20px 16px 24px; }
@@ -1835,7 +1850,7 @@ footer {
   /* Case Study 內頁 small RWD */
   .cs-hero-wrap         { height: calc(55vh + 50px); min-height: 350px; }
   .cs-hero-title        { font-size: 32px; }
-  .cs-hero-phone        { height: 110%; right: 8%; top: 10%; }
+  .cs-hero-phone        { height: 72%; right: 2%; top: auto; bottom: 0; }
   .cs-hero-phone-secondary { display: none; }
   .cs-hero-content      { padding: 0 16px 20px; max-width: 55%; }
   .cs-info-inner        { flex-direction: column; align-items: flex-start; padding: calc(12vh + 16px) 20px 32px; gap: 20px; }
@@ -1846,7 +1861,12 @@ footer {
   .cs-section-title     { font-size: 24px; }
   .cs-result-4          { grid-template-columns: repeat(2, 1fr); }
   .cs-result-4 .cs-result-4-num { font-size: 36px; }
-  .cs-metric-num        { font-size: 48px; }
+  .cs-section .cs-metric-num { font-size: 48px; }
   .cs-v1-result-line    { font-size: 18px; }
   .cs-stats-row         { grid-template-columns: repeat(2, 1fr); }
+  .cs-phones-overlap    { height: 320px; }
+  .cs-phone-back        { width: 44%; }
+  .cs-phone-front       { width: 44%; }
+  .cs-design-row--phone-left > *:first-child { order: 2; }
+  .cs-design-row--phone-left > *:last-child  { order: 1; }
 }
