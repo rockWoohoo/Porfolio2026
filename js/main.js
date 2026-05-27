@@ -24,6 +24,39 @@
   });
 })();
 
+// ── Hero 浮動粒子（CSS animation）────────────
+(function() {
+  const hero = document.getElementById('hero');
+  if (!hero) return;
+
+  const wrap = document.createElement('div');
+  wrap.className = 'hero-particles-wrap';
+  hero.insertBefore(wrap, hero.firstChild);
+
+  function rand(a, b) { return Math.random() * (b - a) + a; }
+
+  const COUNT = 55;
+  for (let i = 0; i < COUNT; i++) {
+    const dot = document.createElement('span');
+    dot.className = 'hero-particle';
+    // 尺寸分大中小三層
+    const tier = Math.random();
+    const size = tier > 0.8 ? rand(2.5, 4) : tier > 0.4 ? rand(1.5, 2.5) : rand(1, 2);
+    const glow = size * 3;
+    const dur  = rand(4, 10);
+    dot.style.cssText = [
+      `left:${rand(2, 98)}%`,
+      `top:${rand(5, 92)}%`,       // 隨機散佈在 hero 內部
+      `width:${size.toFixed(1)}px`,
+      `height:${size.toFixed(1)}px`,
+      `box-shadow:0 0 ${glow.toFixed(0)}px rgba(255,255,255,0.4)`,
+      `animation-duration:${dur.toFixed(1)}s`,
+      `animation-delay:-${rand(0, dur).toFixed(1)}s`
+    ].join(';');
+    wrap.appendChild(dot);
+  }
+})();
+
 // ── 背景光暈滑鼠視差 ─────────────────────────
 const orbsContainer = document.querySelector('.gradient-orbs');
 if (orbsContainer) {
