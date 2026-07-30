@@ -2304,13 +2304,10 @@ footer {
 }
 
 @media print {
-  /* 隱藏非內容元素 */
+  /* 隱藏非內容元素（導覽、彈窗等網站介面元件，不屬於作品內容本身） */
   header, footer, .gradient-orbs, #go-to-top,
   .mobile-menu, #lightboxBackdrop,
   .cs-hero-phone, .cs-hero-phone-secondary { display: none !important; }
-
-  body { background: #fff; color: #000; font-size: 12pt; }
-  a { color: #000; text-decoration: underline; }
 
   /* 展開所有隱藏區塊 */
   #expHidden { display: block !important; }
@@ -2319,7 +2316,6 @@ footer {
   .cs-card, .work-card, .cs-section,
   .exp-item, .about-me-section { break-inside: avoid; }
 
-  /* 移除背景色，節省墨水 */
-  .cs-hero-wrap, .cs-section--result-bg,
-  .cs-v1-wrapper { background: none !important; }
+  /* 保留網站原本的深色底／白字視覺，不做省墨轉換，
+     PDF／列印輸出需與網站畫面完全一致 */
 }
