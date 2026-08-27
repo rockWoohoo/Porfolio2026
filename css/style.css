@@ -562,7 +562,10 @@ footer {
 .cs-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  column-gap: 32px;
+  /* row-gap 需大於 .cs-card-phone 突破卡片底部的量（1280px 實測約 74.6px）＋ 舒適留白，
+     避免下方 .cs-card--wide 蓋到上排手機截圖；150px 讓上排手機與寬卡斜放手機間留白約 70px */
+  row-gap: 150px;
   overflow: visible;
 }
 
@@ -662,6 +665,35 @@ footer {
   font-size: 24px;
   font-weight: 700;
   color: var(--accent);
+}
+
+/* 寬版第 3 張卡片（橫跨兩欄，手機為斜放浮圖）*/
+.cs-card--wide {
+  grid-column: 1 / -1;
+  aspect-ratio: 1000 / 336;
+}
+
+.cs-card--wide .cs-card-overlay {
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+.cs-card--wide .cs-card-content {
+  right: auto;
+  max-width: 60%;
+}
+
+.cs-card--wide .cs-card-phone {
+  top: 6%;
+  right: 9%;
+  width: 21%;
+  transform: rotate(14deg);
+  transform-origin: top center;
+}
+
+.cs-card--wide:hover .cs-card-phone {
+  transform: rotate(14deg) translateY(6px);
 }
 
 /* ── Works 區塊 ───────────────────────────── */
@@ -1222,6 +1254,27 @@ footer {
   z-index: 4;
   pointer-events: none;
   opacity: 0.92;
+}
+
+/* 健身紀錄 hero 手機：依 Figma node 716:1481（前）/ 716:1482（後）於 1279px 寬 hero 容器內的
+   實際座標精確還原，覆蓋共用 .cs-hero-phone 預設值（其他 case study 頁不受影響）*/
+.cs-fitness-hero-wrap .cs-hero-phone-secondary {
+  top: 92px;
+  right: auto;
+  left: 50.5%;
+  width: 28.2%;
+  height: auto;
+  aspect-ratio: 361 / 602;
+  opacity: 1;
+}
+
+.cs-fitness-hero-wrap .cs-hero-phone {
+  top: 145px;
+  right: auto;
+  left: 69.4%;
+  width: 24.3%;
+  height: auto;
+  aspect-ratio: 311 / 592;
 }
 
 /* 1000px 內容容器：phones + 文字皆受此約束，bg 仍全寬 */
@@ -1949,12 +2002,200 @@ footer {
   border-color: var(--accent);
 }
 
+/* ══════════════════════════════════════════
+   健身紀錄 Case Study 專用元件
+   ══════════════════════════════════════════ */
+
+/* 深色圓角面板（流程框 / Problem 區 / Vibe coding 區共用）*/
+.cs-fitness-panel {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 40px 48px 48px;
+  margin: 32px 0;
+}
+
+.cs-fitness-panel .cs-section-label,
+.cs-fitness-panel .cs-section-title { margin-left: 0; margin-right: 0; }
+
+/* Problem & Research / Vibe coding：改為滿版水平深色背景（沿用 .cs-section--result-bg 的
+   100vw 出血手法），不再是侷限於 .cs-content--narrow 內的圓角卡片 */
+.cs-fitness-panel.cs-section--result-bg {
+  background: none;
+  border-radius: 0;
+}
+
+/* Intro 段落文字與下方紀錄流程圖之間收緊為 36px（覆蓋預設 section 間距 80px；
+   利用 margin collapse：Intro margin-bottom 歸零，流程圖 margin-top 設為 36px，collapse 後即為 36px）*/
+.cs-fitness-intro { margin-bottom: 0; }
+.cs-fitness-panel--after-intro { margin-top: 36px; }
+
+/* Vibe coding 區塊內的保密註記：左對齊、貼合內文，取代 .cs-disclaimer 預設的置中滿版樣式 */
+.cs-fitness-panel .cs-disclaimer {
+  text-align: left;
+  padding: 24px 0 0;
+  margin: 0;
+}
+
+/* 小型灰字圖說（資訊架構 / Wireframe 截圖上方）*/
+.cs-fitness-caption {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+/* 設計重點：橫向 pill 排列（沿用 .cs-focus-pill 樣式，容器改為橫排）*/
+.cs-fitness-focus-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+/* Problem 區：4 欄 icon 版本 */
+.cs-problem-grid--4 {
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 36px;
+}
+
+.cs-problem-item--icon {
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.cs-problem-item--icon .cs-problem-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 16px;
+}
+
+.cs-problem-item--icon .cs-problem-num {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text);
+  margin-bottom: 0;
+}
+
+/* 紀錄 / 計時操作流程：步驟 pill + 菱形連接點 + 手機截圖 */
+.cs-fitness-flow-inner {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+  align-items: flex-start;
+  margin-top: 28px;
+}
+
+.cs-fitness-step-flow {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.cs-fitness-step {
+  width: 135px;
+  padding: 11px 14px;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 5px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  text-align: center;
+  line-height: 1.3;
+}
+
+.cs-fitness-step-dot {
+  width: 0;
+  height: 0;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 8px solid rgba(255, 255, 255, 0.4);
+  margin: 12px 0;
+  flex-shrink: 0;
+}
+
+.cs-fitness-flow-images {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* 手機截圖：依 Figma 實際尺寸 200×433 的直向比例還原（避免被 flex 拉寬變成矮胖矩形）*/
+.cs-fitness-flow-images img {
+  flex: 0 1 200px;
+  width: 200px;
+  max-width: 45%;
+  aspect-ratio: 200 / 433;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+/* Tech stack 三卡片列 */
+.cs-fitness-tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 36px;
+}
+
+.cs-fitness-tech-card {
+  background: rgba(0, 0, 0, 0.34);
+  border-radius: 10px;
+  padding: 24px 24px 26px;
+}
+
+.cs-fitness-tech-card-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+
+.cs-fitness-tech-card-desc {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.6;
+}
+
+/* 學習與反思：部位 icon 格 + 文字兩欄 */
+.cs-fitness-reflect-row {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cs-fitness-bodypart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 26px 52px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 30px;
+}
+
+.cs-fitness-bodypart-grid img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  display: block;
+}
+
 /* ── RWD ──────────────────────────────────── */
 @media (max-width: 1100px) {
   .container    { padding: 0 48px; }
   .header-inner { padding: 0 48px; }
   .footer-inner { padding: 0 48px; }
-  .cs-grid      { gap: 20px; }
+  .cs-grid      { column-gap: 20px; row-gap: 150px; }
   .cs-hero-content  { padding: 0 48px 36px; }
   .cs-info-inner    { padding: 32px 48px; gap: 32px; }
   .cs-content       { padding: 60px 48px 80px; }
@@ -1971,7 +2212,8 @@ footer {
   .stat-num     { font-size: 26px; }
   /* hero-scroll-hint 手機保留 */
 
-  .cs-grid    { grid-template-columns: 1fr; }
+  /* 單欄堆疊後，手機截圖仍會突破卡片底部（實測約 114~118px），row-gap 需加大避免被下一張卡蓋到 */
+  .cs-grid    { grid-template-columns: 1fr; row-gap: 150px; }
   .works-grid { grid-template-columns: repeat(2, 1fr); }
 
   .about-layout {
@@ -2011,6 +2253,16 @@ footer {
   .cs-flow-compare      { grid-template-columns: 1fr; }
   .cs-flow-with-screens { grid-template-columns: 1fr 1fr; }
   .cs-flow-screens      { display: none; }
+
+  /* 健身紀錄 Case Study */
+  .cs-fitness-panel      { padding: 28px 24px 32px; }
+  .cs-problem-grid--4    { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .cs-fitness-flow-inner { flex-direction: column; align-items: center; }
+  .cs-fitness-flow-images { width: 100%; justify-content: center; }
+  .cs-fitness-flow-images img { width: 160px; max-width: 42%; }
+  .cs-fitness-tech-grid  { grid-template-columns: 1fr; }
+  .cs-fitness-reflect-row { grid-template-columns: 1fr; gap: 32px; }
+  .cs-fitness-bodypart-grid { max-width: 320px; margin: 0 auto; }
 }
 
 /* ── Mobile Menu Button ───────────────────── */
@@ -2114,11 +2366,16 @@ footer {
 
   .works-grid   { grid-template-columns: 1fr; }
   /* aspect-ratio 搭配固定 height 會算出過寬的 width，強制 100% 修正靠右偏移 */
-  .cs-card      { height: 260px; width: 100%; aspect-ratio: auto; }
+  .cs-card, .cs-card--wide { height: 260px; width: 100%; aspect-ratio: auto; }
   /* phone mockup 維持桌面版右側定位關係 */
   .cs-card-phone { width: 30%; top: 15%; right: 10%; transform: none; }
   .cs-card:hover .cs-card-phone { transform: translateY(6px); }
+  /* 手機版改用直式手機圖，取消桌面版的斜放角度，與其他兩張卡片一致 */
+  .cs-card--wide .cs-card-phone { width: 30%; top: 15%; right: 10%; transform: none; }
+  .cs-card--wide:hover .cs-card-phone { transform: translateY(6px); }
   .cs-card-content { right: 48%; }
+  /* 手機版現在也有破格手機圖，內容寬度要跟著讓開，不能再套用「無手機圖」時期的 90% */
+  .cs-card--wide .cs-card-content { right: 44%; max-width: none; }
   .lightbox-body { padding: 18px 20px 24px; }
   .lightbox-title { font-size: 22px; }
 
@@ -2144,6 +2401,15 @@ footer {
   .cs-phone-front       { width: 44%; }
   .cs-design-row--phone-left > *:first-child { order: 2; }
   .cs-design-row--phone-left > *:last-child  { order: 1; }
+
+  /* 健身紀錄 Case Study */
+  .cs-fitness-panel      { padding: 24px 16px 28px; }
+  .cs-problem-grid--4    { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .cs-fitness-step       { width: 110px; font-size: 13px; padding: 9px 10px; }
+  .cs-fitness-flow-images img { width: 120px; max-width: 42%; }
+  .cs-fitness-tech-card  { padding: 20px; }
+  .cs-fitness-bodypart-grid { padding: 20px; gap: 18px 32px; }
+  .cs-fitness-bodypart-grid img { width: 64px; height: 64px; }
 }
 
 /* ── Page Loader ──────────────────────────── */

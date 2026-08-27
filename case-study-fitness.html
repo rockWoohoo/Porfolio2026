@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>健身紀錄 Web App — Rock Wu</title>
+  <meta name="description" content="從個人需求出發的自主開發實驗：與 AI 協作打造的個人健身紀錄 Web App，一個 UX 設計師的 side project 開發紀實。">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://rockisworking.tw/case-study-fitness.html">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="article">
+  <meta property="og:url"         content="https://rockisworking.tw/case-study-fitness.html">
+  <meta property="og:title"       content="健身紀錄 Web App — Rock Wu">
+  <meta property="og:description" content="從個人需求出發的自主開發實驗：與 AI 協作打造的個人健身紀錄 Web App，一個 UX 設計師的 side project 開發紀實。">
+  <meta property="og:image"       content="https://rockisworking.tw/assets/images/cs-fitness-bg.webp">
+  <meta property="og:image:width"  content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="健身紀錄 Web App — Rock Wu">
+  <meta name="twitter:description" content="從個人需求出發的自主開發實驗：與 AI 協作打造的個人健身紀錄 Web App，一個 UX 設計師的 side project 開發紀實。">
+  <meta name="twitter:image"       content="https://rockisworking.tw/assets/images/cs-fitness-bg.webp">
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WFPJKY6EG"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-4WFPJKY6EG');
+  </script>
+</head>
+<body>
+
+  <div class="gradient-orbs" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+    <div class="orb orb-4"></div>
+  </div>
+
+  <div class="page-content">
+
+    <!-- ── Header ──────────────────────────── -->
+    <header>
+      <div class="header-inner">
+        <a href="index.html" class="header-logo">
+          <img src="assets/images/favicon.svg" alt="Rock Wu">
+        </a>
+        <div class="header-right">
+          <nav class="header-nav">
+            <a href="index.html#case-study" class="active">Case Study</a>
+            <a href="index.html#work">Works</a>
+            <a href="about.html">About</a>
+          </nav>
+          <div class="lang-toggle" id="langToggle" role="button" aria-label="切換語言">
+            <span class="active" data-lang="zh">繁中</span>
+            <span data-lang="en">EN</span>
+          </div>
+        </div>
+        <button class="menu-btn" id="menuBtn" aria-label="開啟選單">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- ── Hero ─────────────────────────────── -->
+    <div class="cs-hero-wrap cs-fitness-hero-wrap">
+      <div class="cs-hero">
+        <div class="cs-hero-bg" style="background-image: url('assets/images/cs-fitness-bg.webp');"></div>
+        <div class="cs-hero-overlay"></div>
+      </div>
+      <div class="cs-hero-inner">
+        <img class="cs-hero-phone-secondary" src="assets/images/cs-fitness-hero-phone-1.webp" alt="">
+        <img class="cs-hero-phone" src="assets/images/cs-fitness-hero-phone-2.webp" alt="健身紀錄 Web App">
+        <div class="cs-hero-content">
+          <div class="cs-hero-tags">
+            <span class="tag-outline">#AI</span>
+            <span class="tag-outline" data-zh="#健身紀錄" data-en="#FitnessTracker">#健身紀錄</span>
+            <span class="tag-outline">#PWA</span>
+          </div>
+          <p class="cs-hero-sub" data-zh="從個人需求出發的自主開發實驗" data-en="A Self-Initiated Build, Born from Personal Need">從個人需求出發的自主開發實驗</p>
+          <h1 class="cs-hero-title" data-zh="健身紀錄 Web App" data-en="Fitness Tracker Web App">健身紀錄 Web App</h1>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Role / Team / Release ────────────── -->
+    <div class="cs-info">
+      <div class="cs-info-inner">
+        <div>
+          <p class="cs-hero-meta-label">Role</p>
+          <p class="cs-hero-meta-value">Product designer</p>
+        </div>
+        <div>
+          <p class="cs-hero-meta-label">Team</p>
+          <p class="cs-hero-meta-value">Claude code</p>
+        </div>
+        <div>
+          <p class="cs-hero-meta-label">Release</p>
+          <p class="cs-hero-meta-value">Personal Only</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── 內容 ─────────────────────────────── -->
+    <div class="cs-content cs-content--narrow">
+
+      <!-- Intro -->
+      <section class="cs-section cs-fitness-intro">
+        <p class="cs-section-label">Intro</p>
+        <h2 class="cs-section-title" data-zh="健身紀錄 Web App" data-en="Fitness Tracker Web App">健身紀錄 Web App</h2>
+        <p data-zh="健身紀錄是一款能精細紀錄訓練內容的 Web app，以身體各大部位為根基，可以往下&lt;span class=&quot;accent&quot;&gt;自定義每個動作&lt;/span&gt;，分別記錄每次的&lt;span class=&quot;accent&quot;&gt;訓練組數、次數與重量&lt;/span&gt;，並額外設計了『帶入』功能，&lt;span class=&quot;accent&quot;&gt;直接帶入上次訓練紀錄&lt;/span&gt;，只需依當次訓練內容進行細部修改，即可完成一天的紀錄。&lt;br&gt;在填寫紀錄同時也提供&lt;span class=&quot;accent&quot;&gt;組間休息計時器&lt;/span&gt;的功能，以突兀的大量留白跳窗進行視覺上的提醒，以確保不干擾耳機內的音樂播放。&lt;br&gt;同時也包含記錄體重/體脂、&lt;span class=&quot;accent&quot;&gt;日曆熱力圖&lt;/span&gt;與&lt;span class=&quot;accent&quot;&gt;資料輸出功能&lt;/span&gt;，以滿足我個人的完整訓練需求。" data-en="Fitness Tracker is a web app for precisely logging every workout detail. Built around major body parts, it lets you drill down to &lt;span class=&quot;accent&quot;&gt;customize each exercise&lt;/span&gt;, recording &lt;span class=&quot;accent&quot;&gt;sets, reps, and weight&lt;/span&gt; individually every time. A dedicated &amp;lsquo;Carry Over&amp;rsquo; feature &lt;span class=&quot;accent&quot;&gt;pulls in your last session&amp;rsquo;s data&lt;/span&gt; instantly, so you only need to tweak today&amp;rsquo;s numbers to finish a log.&lt;br&gt;While logging, it also offers a &lt;span class=&quot;accent&quot;&gt;rest timer between sets&lt;/span&gt; — a jarringly blank full-screen popup gives a visual cue without interrupting whatever's playing through your headphones.&lt;br&gt;It also tracks body weight/fat percentage, a &lt;span class=&quot;accent&quot;&gt;calendar heatmap&lt;/span&gt;, and &lt;span class=&quot;accent&quot;&gt;data export&lt;/span&gt;, covering my full training needs.">健身紀錄是一款能精細紀錄訓練內容的 Web app，以身體各大部位為根基，可以往下<span class="accent">自定義每個動作</span>，分別記錄每次的<span class="accent">訓練組數、次數與重量</span>，並額外設計了『帶入』功能，<span class="accent">直接帶入上次訓練紀錄</span>，只需依當次訓練內容進行細部修改，即可完成一天的紀錄。<br>在填寫紀錄同時也提供<span class="accent">組間休息計時器</span>的功能，以突兀的大量留白跳窗進行視覺上的提醒，以確保不干擾耳機內的音樂播放。<br>同時也包含記錄體重/體脂、<span class="accent">日曆熱力圖</span>與<span class="accent">資料輸出功能</span>，以滿足我個人的完整訓練需求。</p>
+      </section>
+
+      <!-- 紀錄操作流程 -->
+      <div class="cs-section--breakout cs-fitness-panel cs-fitness-panel--after-intro">
+        <span class="cs-flow-col-label cs-flow-col-label-accent" data-zh="紀錄操作流程" data-en="Logging Flow">紀錄操作流程</span>
+        <div class="cs-fitness-flow-inner">
+          <div class="cs-fitness-step-flow">
+            <div class="cs-fitness-step" data-zh="選擇訓練部位" data-en="Select body part">選擇訓練部位</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="選擇訓練動作" data-en="Select exercise">選擇訓練動作</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="帶入前次訓練資料" data-en="Carry over last session">帶入前次訓練資料</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="依該日狀況微調" data-en="Fine-tune for the day">依該日狀況微調</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="輸入即儲存" data-en="Auto-saves on input">輸入即儲存</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="完成紀錄" data-en="Log complete">完成紀錄</div>
+          </div>
+          <div class="cs-fitness-flow-images">
+            <img src="assets/images/cs-fitness-flow-record-1.webp" alt="紀錄操作流程截圖 1">
+            <img src="assets/images/cs-fitness-flow-record-mid.webp" alt="紀錄操作流程截圖 2">
+            <img src="assets/images/cs-fitness-flow-record-2.webp" alt="紀錄操作流程截圖 3">
+          </div>
+        </div>
+      </div>
+
+      <!-- 計時操作流程 -->
+      <div class="cs-section--breakout cs-fitness-panel">
+        <span class="cs-flow-col-label cs-flow-col-label-accent" data-zh="計時操作流程" data-en="Timer Flow">計時操作流程</span>
+        <div class="cs-fitness-flow-inner">
+          <div class="cs-fitness-step-flow">
+            <div class="cs-fitness-step" data-zh="點擊『計時』" data-en="Tap 'Timer'">點擊『計時』</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="進入倒數狀態" data-en="Countdown starts">進入倒數狀態</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="可提前終止" data-en="Can end early">可提前終止</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="終止時大跳窗提示" data-en="Full-screen alert on end">終止時大跳窗提示</div>
+            <div class="cs-fitness-step-dot"></div>
+            <div class="cs-fitness-step" data-zh="回到紀錄頁面" data-en="Back to log">回到紀錄頁面</div>
+          </div>
+          <div class="cs-fitness-flow-images">
+            <img src="assets/images/cs-fitness-flow-timer-1.webp" alt="計時操作流程截圖 1">
+            <img src="assets/images/cs-fitness-flow-timer-2.webp" alt="計時操作流程截圖 2">
+            <img src="assets/images/cs-fitness-flow-timer-3.webp" alt="計時操作流程截圖 3">
+          </div>
+        </div>
+      </div>
+
+      <!-- Problem & Research -->
+      <div class="cs-section--result-bg cs-fitness-panel">
+        <p class="cs-section-label">Problem &amp; Research</p>
+        <h2 class="cs-section-title" data-zh="沒有一個看得懂，不如自己做一個" data-en="None of Them Made Sense, So I Built My Own">沒有一個看得懂，不如自己做一個</h2>
+        <p data-zh="開始認真進行體態管理後，先是請 Claude AI 扮演我的健身教練，在飲食與訓練上給予執行計劃外，為了能讓成果更顯著，且有&lt;span class=&quot;accent&quot;&gt;量化的資料&lt;/span&gt;可以讓健身教練 AI 作為後續調整或提供建議的依據，針對重量訓練就想要有更細緻的記錄方式。" data-en="When I got serious about body composition, I first had Claude AI act as my personal trainer, laying out diet and training plans. To make progress more visible — and to give that AI trainer &lt;span class=&quot;accent&quot;&gt;quantified data&lt;/span&gt; to base future adjustments and advice on — I wanted a much more granular way to log strength training.">開始認真進行體態管理後，先是請 Claude AI 扮演我的健身教練，在飲食與訓練上給予執行計劃外，為了能讓成果更顯著，且有<span class="accent">量化的資料</span>可以讓健身教練 AI 作為後續調整或提供建議的依據，針對重量訓練就想要有更細緻的記錄方式。</p>
+        <p data-zh="但市面上多數的健身app普遍存在幾個問題，因此即使已經存在眾多健身app，我還是決定設計一套專屬於我自己的健身紀錄軟體。" data-en="But most fitness apps on the market share a handful of common problems — so even with plenty of options already out there, I decided to design a fitness-tracking tool built entirely for myself.">但市面上多數的健身app普遍存在幾個問題，因此即使已經存在眾多健身app，我還是決定設計一套專屬於我自己的健身紀錄軟體。</p>
+        <div class="cs-problem-grid cs-problem-grid--4">
+          <div class="cs-problem-item cs-problem-item--icon">
+            <img class="cs-problem-icon" src="assets/images/icon-window-restore.svg" alt="">
+            <p class="cs-problem-num" data-zh="功能過多介面繁雜" data-en="Too many features, cluttered UI">功能過多介面繁雜</p>
+          </div>
+          <div class="cs-problem-item cs-problem-item--icon">
+            <img class="cs-problem-icon" src="assets/images/icon-money-bill-wave.svg" alt="">
+            <p class="cs-problem-num" data-zh="需年費或月費" data-en="Requires annual/monthly fees">需年費或月費</p>
+          </div>
+          <div class="cs-problem-item cs-problem-item--icon">
+            <img class="cs-problem-icon" src="assets/images/icon-wpforms.svg" alt="">
+            <p class="cs-problem-num" data-zh="資料匯出較麻煩" data-en="Data export is a hassle">資料匯出較麻煩</p>
+          </div>
+          <div class="cs-problem-item cs-problem-item--icon">
+            <img class="cs-problem-icon" src="assets/images/icon-user-alt.svg" alt="">
+            <p class="cs-problem-num" data-zh="操作流程不符需求" data-en="Workflow doesn't fit my needs">操作流程不符需求</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- How -->
+      <section class="cs-section">
+        <p class="cs-section-label">How</p>
+        <h2 class="cs-section-title" data-zh="對於自己，我的&lt;span class=&quot;accent&quot;&gt;訓練方式與流程&lt;/span&gt;是如何？" data-en="What Does My Own &lt;span class=&quot;accent&quot;&gt;Training Routine and Flow&lt;/span&gt; Actually Look Like?">對於自己，我的<span class="accent">訓練方式與流程</span>是如何？</h2>
+        <p data-zh="基本上每週一、四訓練胸部與肩膀；每週二、五訓練背部與手臂；每週六訓練腿部，此外還有常態性的有氧與腹部訓練。&lt;br&gt;每個動作會有 3~4 組，10~12 下，另外再多加一組&lt;span class=&quot;accent&quot;&gt;『降重組』&lt;/span&gt;，藉由較低的負重減少受傷的風險，並且完整達到力竭。" data-en="Roughly speaking: chest and shoulders on Mon/Thu, back and arms on Tue/Fri, legs on Sat, plus regular cardio and core work on the side.&lt;br&gt;Each exercise gets 3–4 sets of 10–12 reps, plus one extra &lt;span class=&quot;accent&quot;&gt;'drop set'&lt;/span&gt; at a lower weight — lowering injury risk while still training to full fatigue.">基本上每週一、四訓練胸部與肩膀；每週二、五訓練背部與手臂；每週六訓練腿部，此外還有常態性的有氧與腹部訓練。<br>每個動作會有 3~4 組，10~12 下，另外再多加一組<span class="accent">『降重組』</span>，藉由較低的負重減少受傷的風險，並且完整達到力竭。</p>
+        <p data-zh="因此隨著每天的狀態不同，或是訓練計劃的調整，我希望能&lt;span class=&quot;accent&quot;&gt;精確的分別計算每組的重量與次數&lt;/span&gt;，並將&lt;span class=&quot;accent&quot;&gt;降重組獨立&lt;/span&gt;出來紀錄，由此得到最完整的訓練量（Volume）數據。" data-en="Since my condition varies day to day, and plans get adjusted, I wanted to &lt;span class=&quot;accent&quot;&gt;precisely track the weight and reps of every set individually&lt;/span&gt; and &lt;span class=&quot;accent&quot;&gt;log drop sets separately&lt;/span&gt; — giving me the most complete training volume data possible.">因此隨著每天的狀態不同，或是訓練計劃的調整，我希望能<span class="accent">精確的分別計算每組的重量與次數</span>，並將<span class="accent">降重組獨立</span>出來紀錄，由此得到最完整的訓練量（Volume）數據。</p>
+        <p data-zh="此外，在每組訓練的中間，希望能有一個&lt;span class=&quot;accent&quot;&gt;倒數工具&lt;/span&gt;來避免我休息時間過長或過短，同時&lt;span class=&quot;accent&quot;&gt;不干擾到耳機裡音樂的播放&lt;/span&gt;。" data-en="On top of that, between sets I wanted a &lt;span class=&quot;accent&quot;&gt;countdown tool&lt;/span&gt; to keep rest periods from running too long or too short, without &lt;span class=&quot;accent&quot;&gt;interrupting whatever's playing through my headphones&lt;/span&gt;.">此外，在每組訓練的中間，希望能有一個<span class="accent">倒數工具</span>來避免我休息時間過長或過短，同時<span class="accent">不干擾到耳機裡音樂的播放</span>。</p>
+      </section>
+
+      <!-- 設計重點 -->
+      <section class="cs-section">
+        <p class="cs-section-label" data-zh="設計重點" data-en="Design Focus">設計重點</p>
+        <div class="cs-fitness-focus-row">
+          <span class="cs-focus-pill" data-zh="根據部位紀錄" data-en="Log by body part">根據部位紀錄</span>
+          <span class="cs-focus-pill" data-zh="組數次數分別計算" data-en="Track sets &amp; reps separately">組數次數分別計算</span>
+          <span class="cs-focus-pill" data-zh="降重組額外紀錄" data-en="Separate drop-set logging">降重組額外紀錄</span>
+          <span class="cs-focus-pill" data-zh="組間休息計時" data-en="Rest timer between sets">組間休息計時</span>
+        </div>
+      </section>
+
+      <!-- Start from scratch -->
+      <section class="cs-section">
+        <p class="cs-section-label">Start from scratch</p>
+        <h2 class="cs-section-title" data-zh="工人智慧先行，AI 只是輔助" data-en="Human Intelligence First, AI as Assistant">工人智慧先行，AI 只是輔助</h2>
+        <p data-zh="在功能與流程構思期間，腦中已經有了產品介面與操作動線的雛形，因此直接進入&lt;span class=&quot;accent&quot;&gt;資訊架構設計環節&lt;/span&gt;。&lt;br&gt;一邊想著自己實際的&lt;span class=&quot;accent&quot;&gt;使用情境&lt;/span&gt;，一邊&lt;span class=&quot;accent&quot;&gt;跟AI討論哪些欄位&lt;/span&gt;能更有助於未來的分析，以此盤點畫面上的每個欄位以及操作方式" data-en="While working through features and flow, I already had a rough shape of the interface and interaction paths in mind, so I went straight into &lt;span class=&quot;accent&quot;&gt;information architecture design&lt;/span&gt;.&lt;br&gt;While picturing my own &lt;span class=&quot;accent&quot;&gt;actual use case&lt;/span&gt;, I &lt;span class=&quot;accent&quot;&gt;discussed with AI which fields&lt;/span&gt; would be most useful for future analysis — mapping out every field and interaction on screen along the way">在功能與流程構思期間，腦中已經有了產品介面與操作動線的雛形，因此直接進入<span class="accent">資訊架構設計環節</span>。<br>一邊想著自己實際的<span class="accent">使用情境</span>，一邊<span class="accent">跟AI討論哪些欄位</span>能更有助於未來的分析，以此盤點畫面上的每個欄位以及操作方式</p>
+      </section>
+
+      <!-- 資訊架構示意畫面 -->
+      <div class="cs-section">
+        <p class="cs-fitness-caption" data-zh="資訊架構示意畫面" data-en="IA Sketch">資訊架構示意畫面</p>
+        <img class="cs-img" src="assets/images/cs-fitness-ia.webp" alt="資訊架構示意畫面">
+      </div>
+
+      <!-- Wireframe -->
+      <div class="cs-section">
+        <p data-zh="當所有欄位與重點功能皆思考完整後，為了確保後續AI產出的內容與我腦中所想的產品樣貌能&lt;span class=&quot;accent&quot;&gt;準確對齊&lt;/span&gt;，我依然使&lt;span class=&quot;accent&quot;&gt;用Figma進行Wireframe的設計&lt;/span&gt;，並將每個欄位、判斷、輸入指令、功能內容以及不同狀態、頁面排版等完整產出，且&lt;span class=&quot;accent&quot;&gt;留下明確的頁面編碼，以利後續與AI溝通&lt;/span&gt;。" data-en="Once every field and key feature was fully thought through, to make sure what AI would later produce &lt;span class=&quot;accent&quot;&gt;accurately matched&lt;/span&gt; the product I had in mind, I still &lt;span class=&quot;accent&quot;&gt;built the wireframe in Figma&lt;/span&gt; — laying out every field, condition, input prompt, feature, state, and page layout in full, and &lt;span class=&quot;accent&quot;&gt;leaving clear page IDs to make talking to AI easier later on&lt;/span&gt;.">當所有欄位與重點功能皆思考完整後，為了確保後續AI產出的內容與我腦中所想的產品樣貌能<span class="accent">準確對齊</span>，我依然使<span class="accent">用Figma進行Wireframe的設計</span>，並將每個欄位、判斷、輸入指令、功能內容以及不同狀態、頁面排版等完整產出，且<span class="accent">留下明確的頁面編碼，以利後續與AI溝通</span>。</p>
+        <p class="cs-fitness-caption" style="margin-top:32px;" data-zh="Wireframe 示意畫面" data-en="Wireframe Sketch">Wireframe 示意畫面</p>
+        <img class="cs-img" src="assets/images/cs-fitness-wireframe.webp" alt="Wireframe 示意畫面">
+      </div>
+
+      <!-- Vibe coding + 保密註記 + Tech stack -->
+      <div class="cs-section--result-bg cs-fitness-panel">
+        <p class="cs-section-label">Vibe coding</p>
+        <h2 class="cs-section-title" data-zh="人工智慧登場&lt;br&gt;開發事前規劃、視覺與實際開發" data-en="Enter AI&lt;br&gt;Pre-Dev Planning, Visuals, and the Actual Build">人工智慧登場<br>開發事前規劃、視覺與實際開發</h2>
+        <p data-zh="感謝Figma MCP，可以讓 &lt;span class=&quot;accent&quot;&gt;Claude code&lt;/span&gt; 直接讀取 Figma 的頁面與內容。&lt;br&gt;接下來與 AI 討論實際的程式開發環節，例如Native app與Web app的效能差異、&lt;span class=&quot;accent&quot;&gt;伺服器建置&lt;/span&gt;、*參照的UI範本，並請 AI 表列出是否有標示不清的部分，以排除幻覺、超譯或是不需要的小驚喜，&lt;span class=&quot;accent&quot;&gt;確保能完整還原 WF 上的所有內容&lt;/span&gt;。" data-en="Thanks to Figma MCP, &lt;span class=&quot;accent&quot;&gt;Claude Code&lt;/span&gt; can read Figma pages and content directly.&lt;br&gt;From there I discussed the actual build with AI — things like the performance gap between native and web apps, &lt;span class=&quot;accent&quot;&gt;server setup&lt;/span&gt;, and the referenced UI templates — and had AI list out anything unclear, to rule out hallucinations, over-interpretation, or unwanted little 'surprises,' &lt;span class=&quot;accent&quot;&gt;making sure every piece of the WF got fully restored&lt;/span&gt;.">感謝Figma MCP，可以讓 <span class="accent">Claude code</span> 直接讀取 Figma 的頁面與內容。<br>接下來與 AI 討論實際的程式開發環節，例如Native app與Web app的效能差異、<span class="accent">伺服器建置</span>、*參照的UI範本，並請 AI 表列出是否有標示不清的部分，以排除幻覺、超譯或是不需要的小驚喜，<span class="accent">確保能完整還原 WF 上的所有內容</span>。</p>
+        <p data-zh="一切到位後，即進行開發環節、驗證與細部修正。&lt;br&gt;鑑於WF的完整性與功能簡潔，&lt;span class=&quot;accent&quot;&gt;初版即完整還原約90%的內容&lt;/span&gt;，後續僅剩一些字體大小、icon的細部調整。&lt;br&gt;整個專案從發想到 V1.0版產出，約&lt;span class=&quot;accent&quot;&gt;耗時4個小時&lt;/span&gt;。" data-en="With everything in place, I moved into development, verification, and fine-tuning.&lt;br&gt;Given how complete and simple the WF was, &lt;span class=&quot;accent&quot;&gt;the first build already restored about 90% of the content&lt;/span&gt; — what remained was just some font-size and icon touch-ups.&lt;br&gt;The whole project, from idea to V1.0, took about &lt;span class=&quot;accent&quot;&gt;4 hours&lt;/span&gt;.">一切到位後，即進行開發環節、驗證與細部修正。<br>鑑於WF的完整性與功能簡潔，<span class="accent">初版即完整還原約90%的內容</span>，後續僅剩一些字體大小、icon的細部調整。<br>整個專案從發想到 V1.0版產出，約<span class="accent">耗時4個小時</span>。</p>
+        <p class="cs-disclaimer" data-zh="＊註：此產品僅個人使用，因此請AI直接延續作品集網站的視覺元素與風格，以簡潔易讀為原則即可。" data-en="*Note: This product is for personal use only, so I had AI simply carry over the portfolio site's existing visual style, prioritizing clarity and readability.">＊註：此產品僅個人使用，因此請AI直接延續作品集網站的視覺元素與風格，以簡潔易讀為原則即可。</p>
+        <div class="cs-fitness-tech-grid">
+          <div class="cs-fitness-tech-card">
+            <p class="cs-fitness-tech-card-title">Web app （PWA）</p>
+            <p class="cs-fitness-tech-card-desc" data-zh="更新及時，可加到桌面滿版顯示，且免上架" data-en="Instant updates, adds to the home screen full-bleed, no app store submission needed">更新及時，可加到桌面滿版顯示，且免上架</p>
+          </div>
+          <div class="cs-fitness-tech-card">
+            <p class="cs-fitness-tech-card-title">Local Storage</p>
+            <p class="cs-fitness-tech-card-desc" data-zh="考量費用與安全性，不另開server 處理" data-en="No dedicated server, for cost and security reasons">考量費用與安全性，不另開server 處理</p>
+          </div>
+          <div class="cs-fitness-tech-card">
+            <p class="cs-fitness-tech-card-title" data-zh="版本更新自帶版號" data-en="Version-tagged updates">版本更新自帶版號</p>
+            <p class="cs-fitness-tech-card-desc" data-zh="iOS WebKit 會依 URL 快取資源，每次改動都會自動 bump" data-en="iOS WebKit caches assets by URL, so the version number auto-bumps with every change">iOS WebKit 會依 URL 快取資源，每次改動都會自動 bump</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Refine -->
+      <section class="cs-section">
+        <p class="cs-section-label">Refine</p>
+        <h2 class="cs-section-title" data-zh="白老鼠是我&lt;br&gt;實際進入情境中做測試並優化" data-en="I'm My Own Guinea Pig&lt;br&gt;Testing and Refining in the Real Situation">白老鼠是我<br>實際進入情境中做測試並優化</h2>
+        <p data-zh="V1.0 完成的隔天即到健身房進行&lt;span class=&quot;accent&quot;&gt;實地測試&lt;/span&gt;，絕大多數使用流程都在預想範圍內。&lt;br&gt;但同時也發現，在剛訓練完的&lt;span class=&quot;accent&quot;&gt;疲憊狀態&lt;/span&gt;時，部分的&lt;span class=&quot;accent&quot;&gt;按鈕點擊範圍過小&lt;/span&gt;，需要額外調大，操作上會更方便&lt;br&gt;以此為開端，每次使用時遇到小問題就會即時請AI協助修正，一直到&lt;span class=&quot;accent&quot;&gt;目前的V8版本&lt;/span&gt;，已經成為我每次訓練時必備的軟體了。" data-en="The day after finishing V1.0, I took it straight to the gym for &lt;span class=&quot;accent&quot;&gt;real-world testing&lt;/span&gt; — most of the flow worked as expected.&lt;br&gt;But I also found that when &lt;span class=&quot;accent&quot;&gt;exhausted right after a workout&lt;/span&gt;, some &lt;span class=&quot;accent&quot;&gt;tap targets were too small&lt;/span&gt; and needed to be enlarged for easier use.&lt;br&gt;That set the pattern: whenever a small issue came up in real use, I'd have AI fix it right away — all the way to &lt;span class=&quot;accent&quot;&gt;the current V8&lt;/span&gt;, which has become a tool I can't train without.">V1.0 完成的隔天即到健身房進行<span class="accent">實地測試</span>，絕大多數使用流程都在預想範圍內。<br>但同時也發現，在剛訓練完的<span class="accent">疲憊狀態</span>時，部分的<span class="accent">按鈕點擊範圍過小</span>，需要額外調大，操作上會更方便<br>以此為開端，每次使用時遇到小問題就會即時請AI協助修正，一直到<span class="accent">目前的V8版本</span>，已經成為我每次訓練時必備的軟體了。</p>
+      </section>
+
+      <!-- 學習與反思（部位 icon 格 + 文字）-->
+      <section class="cs-section" style="margin-bottom:0;">
+        <div class="cs-fitness-reflect-row">
+          <div class="cs-fitness-bodypart-grid">
+            <img src="assets/images/cs-fitness-bodypart-arm.webp" alt="手臂訓練">
+            <img src="assets/images/cs-fitness-bodypart-back.webp" alt="背部訓練">
+            <img src="assets/images/cs-fitness-bodypart-leg.webp" alt="腿部訓練">
+            <img src="assets/images/cs-fitness-bodypart-shoulder.webp" alt="肩膀訓練">
+            <img src="assets/images/cs-fitness-bodypart-abs.webp" alt="腹部訓練">
+            <img src="assets/images/cs-fitness-bodypart-chest.webp" alt="胸部訓練">
+            <img src="assets/images/cs-fitness-bodypart-other.webp" alt="其他訓練">
+          </div>
+          <div>
+            <p class="cs-section-label" data-zh="學習與反思" data-en="Learnings &amp; Reflections">學習與反思</p>
+            <h2 class="cs-section-title" data-zh="從作品集到健身紀錄&lt;br&gt;回頭運用每次的新知識與工具" data-en="From Portfolio to Fitness Tracker&lt;br&gt;Carrying Forward Every New Skill and Tool">從作品集到健身紀錄<br>回頭運用每次的新知識與工具</h2>
+            <p data-zh="當初在設計這個&lt;span class=&quot;accent&quot;&gt;作品集網站&lt;/span&gt;時，&lt;span class=&quot;accent&quot;&gt;Figma MCP 尚未成熟&lt;/span&gt;，且沒有需要即時紀錄或是輸出的功能，因此較著重在 &lt;span class=&quot;accent&quot;&gt;AI 與設計稿間的還原度&lt;/span&gt;。" data-en="When I originally designed this &lt;span class=&quot;accent&quot;&gt;portfolio site&lt;/span&gt;, &lt;span class=&quot;accent&quot;&gt;Figma MCP wasn't mature yet&lt;/span&gt;, and there was no need for real-time logging or data export, so the focus was mainly on &lt;span class=&quot;accent&quot;&gt;how faithfully AI could restore the design&lt;/span&gt;.">當初在設計這個<span class="accent">作品集網站</span>時，<span class="accent">Figma MCP 尚未成熟</span>，且沒有需要即時紀錄或是輸出的功能，因此較著重在 <span class="accent">AI 與設計稿間的還原度</span>。</p>
+            <p data-zh="從作品集的經驗，認知到 &lt;span class=&quot;accent&quot;&gt;WF 標示清楚程度對於 AI 開發的還原程度有著絕大的幫助&lt;/span&gt;，因此也沿用到這次的設計開發流程中。" data-en="From that experience, I learned that &lt;span class=&quot;accent&quot;&gt;how clearly a WF is annotated has a huge effect on how faithfully AI can build from it&lt;/span&gt; — so I carried that lesson into this project's workflow too.">從作品集的經驗，認知到 <span class="accent">WF 標示清楚程度對於 AI 開發的還原程度有著絕大的幫助</span>，因此也沿用到這次的設計開發流程中。</p>
+            <p data-zh="此外，在討論健身紀錄工具專案的實作方式時，也同時&lt;span class=&quot;accent&quot;&gt;請 AI 協助檢查我個人的 Google cloud 設定&lt;/span&gt;，意外的發現可以透過更改機型、使用 Cloud Run 等方式，讓&lt;span class=&quot;accent&quot;&gt;雲端花費瞬間歸零&lt;/span&gt;，是一個意外的小驚喜，是一個兼具實用與學習性的小專案，很期待下次的小專案。" data-en="On top of that, while discussing how to build the fitness tracker, I also &lt;span class=&quot;accent&quot;&gt;had AI help review my own Google Cloud setup&lt;/span&gt; and discovered, to my surprise, that switching instance types and using Cloud Run could &lt;span class=&quot;accent&quot;&gt;drop my cloud costs to basically zero&lt;/span&gt; — a nice little bonus. It's been a small project that's both useful and a great learning experience, and I'm already looking forward to the next one.">此外，在討論健身紀錄工具專案的實作方式時，也同時<span class="accent">請 AI 協助檢查我個人的 Google cloud 設定</span>，意外的發現可以透過更改機型、使用 Cloud Run 等方式，讓<span class="accent">雲端花費瞬間歸零</span>，是一個意外的小驚喜，是一個兼具實用與學習性的小專案，很期待下次的小專案。</p>
+          </div>
+        </div>
+      </section>
+
+    </div><!-- cs-content -->
+
+    <!-- ── Footer ─────────────────────────── -->
+    <footer>
+      <div class="footer-inner">
+        <nav class="footer-nav">
+          <a href="index.html#case-study">Case Study</a>
+          <a href="index.html#work">Works</a>
+          <a href="about.html">About</a>
+        </nav>
+        <div class="footer-contact">
+          <span class="footer-contact-label">Contact</span>
+          <a href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- .page-content -->
+
+  <!-- ── Mobile Menu ──────────────────────── -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu-top">
+      <a href="index.html" class="header-logo">
+        <img src="assets/images/favicon.svg" alt="Rock Wu">
+      </a>
+      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="關閉選單">
+        <img src="assets/images/icon-close.svg" alt="關閉">
+      </button>
+    </div>
+    <nav class="mobile-nav">
+      <a href="index.html#case-study" class="active">Case Study</a>
+      <a href="index.html#work">Works</a>
+      <a href="about.html">About</a>
+    </nav>
+    <div class="mobile-menu-bottom">
+      <div class="lang-toggle" id="langToggleMobile" role="button" aria-label="切換語言">
+        <span class="active" data-lang="zh">繁中</span>
+        <span data-lang="en">EN</span>
+      </div>
+    </div>
+  </div>
+
+  <button id="go-to-top" aria-label="回到頂部">
+    <img src="assets/images/icon-gototop.svg" alt="">
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
