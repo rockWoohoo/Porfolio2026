@@ -2229,6 +2229,9 @@ footer {
   .cs-hero-wrap         { height: calc(65vh + 50px); }
   .cs-hero-phone        { height: 80%; right: 4%; top: auto; bottom: 0; }
   .cs-hero-phone-secondary { height: 68%; right: 22%; top: auto; bottom: 0; }
+  /* 健身紀錄 hero 手機的桌面版絕對定位覆蓋不該延伸到這個斷點，改回跟其他 case study 頁一致的比例 */
+  .cs-fitness-hero-wrap .cs-hero-phone { height: 80%; width: auto; right: 4%; left: auto; top: auto; bottom: 0; aspect-ratio: auto; }
+  .cs-fitness-hero-wrap .cs-hero-phone-secondary { height: 68%; width: auto; right: 22%; left: auto; top: auto; bottom: 0; aspect-ratio: auto; }
   .cs-hero-content      { padding: 0 24px 28px; }
   .cs-info-inner        { padding: 36px 24px 40px; gap: 16px; }
   .cs-content           { padding: 48px 24px 60px; }
@@ -2384,6 +2387,8 @@ footer {
   .cs-hero-title        { font-size: 32px; }
   .cs-hero-phone        { height: 72%; right: 2%; top: auto; bottom: 0; }
   .cs-hero-phone-secondary { display: none; }
+  /* 同上，健身紀錄 hero 手機在小螢幕斷點也要改回跟其他 case study 頁一致的比例 */
+  .cs-fitness-hero-wrap .cs-hero-phone { height: 72%; width: auto; right: 2%; left: auto; top: auto; bottom: 0; aspect-ratio: auto; }
   .cs-hero-content      { padding: 0 16px 20px; max-width: 55%; }
   .cs-info-inner        { flex-direction: column; align-items: flex-start; padding: calc(12vh + 16px) 20px 32px; gap: 20px; }
   .cs-content           { padding: 36px 16px 48px; }
