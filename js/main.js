@@ -345,19 +345,14 @@ if (menuBtn && mobileMenu) {
 (function() {
   const STAGES = [
     {
-      sec: 90,
-      zh: '朋友，90秒過去了\n你還有什麼煩惱嗎？',
-      en: 'Hey friend, 90 seconds have passed.\nIs there anything bothering you?'
-    },
-    {
       sec: 120,
       zh: '在AI驅動的時代\n每120秒就有2分鐘會過去',
       en: '120 seconds just went by.\nmeans 2 minutes has past.'
     },
     {
       sec: 180,
-      zh: '朋友，泡麵都煮好了\n你加減動一下吧',
-      en: 'Even the instant noodles are done by now.\nCome on, just move a little?'
+      zh: '朋友，180秒過去了\n你還在煩惱什麼呢？',
+      en: "Hey friend, 180 seconds have passed.\nWhat's still on your mind?"
     }
   ];
 
