@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>電力即點 App — Rock Wu</title>
   <meta name="description" content="Redesigning a government utility app to break free from its bureaucratic image — a UX case study on gamification by Rock Wu.">
-
   <!-- Canonical -->
   <link rel="canonical" href="https://rockisworking.tw/case-study-tapower.html">
 
@@ -25,327 +24,295 @@
   <meta name="twitter:image"       content="https://rockisworking.tw/assets/images/cs-tapower-bg.webp">
 
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WFPJKY6EG"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/v2.css?v=1795504133">
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4WFPJKY6EG');
+    /* Google Analytics（GA4）：本機預覽不送資料，只把事件印在 console 與 window.__gaDebug 方便檢查 */
+    (function () {
+      var id = 'G-4WFPJKY6EG';
+      var local = ['localhost', '127.0.0.1', '[::1]'].indexOf(location.hostname) > -1;
+      window.dataLayer = window.dataLayer || [];
+      if (local) {
+        window.gtag = function () { var a = [].slice.call(arguments); (window.__gaDebug = window.__gaDebug || []).push(a); console.info('[GA debug]', a); };
+        return;
+      }
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date()); gtag('config', id);
+      var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id; document.head.appendChild(s);
+    })();
   </script>
 </head>
-<body>
+<body data-root="">
 
-  <div class="gradient-orbs" aria-hidden="true">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="orb orb-4"></div>
-  </div>
+  <header class="bar">
+    <div class="bar-inner">
+      <a class="logo" href="index.html" aria-label="Rock Wu">
+        <img src="assets/images/favicon.svg" alt="">
+      </a>
+      <nav class="bar-nav" aria-label="主選單">
+        <a class="active" href="index.html#case-study">Case Study</a>
+        <a href="index.html#work">Works</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="lang" role="group" aria-label="語言"><span class="on" data-lang="zh" role="button" tabindex="0">繁中</span><span data-lang="en" role="button" tabindex="0">EN</span></div>
+    </div>
+  </header>
 
-  <div class="page-content">
+<main>
 
-    <!-- ── Header ──────────────────────────── -->
-    <header>
-      <div class="header-inner">
-        <a href="index.html" class="header-logo">
-          <img src="assets/images/favicon.svg" alt="Rock Wu">
-        </a>
-        <div class="header-right">
-          <nav class="header-nav">
-            <a href="index.html#case-study" class="active">Case Study</a>
-            <a href="index.html#work">Works</a>
-            <a href="about.html">About</a>
-          </nav>
-          <div class="lang-toggle" id="langToggle" role="button" aria-label="切換語言">
-            <span class="active" data-lang="zh">繁中</span>
-            <span data-lang="en">EN</span>
-          </div>
-        </div>
-        <button class="menu-btn" id="menuBtn" aria-label="開啟選單">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </header>
-
-    <!-- ── Hero ─────────────────────────────── -->
-    <div class="cs-hero-wrap">
-      <div class="cs-hero">
-        <div class="cs-hero-bg" style="background-image: url('assets/images/cs-tapower-bg.webp');"></div>
-        <div class="cs-hero-overlay"></div>
-      </div>
+    <!-- Hero -->
+    <section class="cs-hero">
       <div class="cs-hero-inner">
-        <img class="cs-hero-phone-secondary" src="assets/images/cs-tapower-hero-phone-left.webp" alt="">
-        <img class="cs-hero-phone" src="assets/images/cs-tapower-v3-map.webp" alt="電力即點 App">
-        <div class="cs-hero-content">
-          <div class="cs-hero-tags">
-            <span class="tag-outline" data-zh="#公部門" data-en="#Government">#公部門</span>
-            <span class="tag-outline" data-zh="#遊戲化" data-en="#Gamification">#遊戲化</span>
-            <span class="tag-outline" data-zh="#持續改版" data-en="#IterativeRedesign">#持續改版</span>
+        <div>
+          <div class="cs-tags">
+            <span data-zh="#公部門" data-en="#Government">#公部門</span><span data-zh="#遊戲化" data-en="#Gamification">#遊戲化</span><span data-zh="#持續改版" data-en="#IterativeRedesign">#持續改版</span>
           </div>
-          <p class="cs-hero-sub" data-zh="擺脫公部門既有形象" data-en="Breaking Free from a Government App Stereotype">擺脫公部門既有形象</p>
-          <h1 class="cs-hero-title" data-zh="電力即點 App" data-en="Taipower Points App">電力即點 App</h1>
+          <p class="cs-sub" data-zh="擺脫公部門既有形象" data-en="Breaking Free from a Government App Stereotype">擺脫公部門既有形象</p>
+          <h1 class="cs-title" data-zh="電力即點&lt;small&gt;App&lt;/small&gt;" data-en="Taipower Points&lt;small&gt;App&lt;/small&gt;">電力即點<small>App</small></h1>
+        </div>
+        <div class="cs-media">
+          <img class="bg" src="assets/images/cs-tapower-bg.webp" alt="">
+          <img class="ph ph-side" src="assets/images/cs-tapower-hero-phone-left.webp" alt="">
+          <img class="ph ph-main" src="assets/images/cs-tapower-v3-map.webp" alt="電力即點 App">
         </div>
       </div>
-    </div>
+    </section>
 
-    <!-- ── Role / Team / Release ────────────── -->
-    <div class="cs-info">
-      <div class="cs-info-inner">
+    <!-- Role / Team / Release -->
+    <div class="info">
+      <div>
+        <h2>Role</h2>
+        <p class="role-main">UX designer</p>
+        <ul>
+          <li data-zh="市場研究" data-en="Market Research">市場研究</li>
+          <li data-zh="產品設計" data-en="Product Design">產品設計</li>
+          <li data-zh="商業提案" data-en="Business Pitching">商業提案</li>
+          <li data-zh="管理後台設計" data-en="Admin Backend Design">管理後台設計</li>
+        </ul>
+      </div>
+      <div>
+        <h2>Team</h2>
+        <p>UI Designer<br>Project Manager<br>App Dev Team<br>BE Dev Team</p>
+      </div>
+      <div>
+        <h2>Release</h2>
+        <p data-zh="V1　2020&lt;br&gt;V2　2022&lt;br&gt;V3　2023&lt;br&gt;&lt;span class=&quot;muted&quot;&gt;現已下架&lt;/span&gt;" data-en="V1　2020&lt;br&gt;V2　2022&lt;br&gt;V3　2023&lt;br&gt;&lt;span class=&quot;muted&quot;&gt;Delisted&lt;/span&gt;">V1　2020<br>V2　2022<br>V3　2023<br><span class="muted">現已下架</span></p>
+      </div>
+    </div>
+    <div class="info-gap"></div>
+
+    <!-- Intro -->
+    <section class="wrap sec">
+      <div class="intro">
         <div>
-          <p class="cs-hero-meta-label">Role</p>
-          <p class="cs-hero-meta-value">UX designer</p>
-          <ul class="cs-hero-meta-list">
-            <li data-zh="市場研究" data-en="Market Research">市場研究</li>
-            <li data-zh="產品設計" data-en="Product Design">產品設計</li>
-            <li data-zh="商業提案" data-en="Business Pitching">商業提案</li>
-            <li data-zh="管理後台設計" data-en="Admin Backend Design">管理後台設計</li>
+          <p class="note" style="display:inline-block">Intro</p>
+          <h2 class="sec-title" data-zh="節能省電多散步，電力即點集點數" data-en="Save Energy, Walk More, Earn Points">節能省電多散步，電力即點集點數</h2>
+        </div>
+        <div>
+          <p data-zh="電力即點是一款類 Ingress 的地圖式尋寶遊戲，由台灣電力公司委託，期望能進行全面的改版，以增加用戶數以及使用量。" data-en="Taipower Points is an Ingress-style map-based treasure hunt game, commissioned by Taiwan Power Company with the goal of a comprehensive redesign to grow its user base and engagement.">電力即點是一款類 Ingress 的地圖式尋寶遊戲，由台灣電力公司委託，期望能進行全面的改版，以增加用戶數以及使用量。</p>
+          <p data-zh="在此案件中，我&lt;span class=&quot;accent&quot;&gt;規劃整個遊戲背景、故事架構與機制&lt;/span&gt;，用更吸引用戶的方式傳達節電的理念。" data-en="In this project, I&lt;span class=&quot;accent&quot;&gt; designed the entire game narrative, world-building, and mechanics&lt;/span&gt; — using an engaging format to communicate energy-saving values.">在此案件中，我<span class="accent">規劃整個遊戲背景、故事架構與機制</span>，用更吸引用戶的方式傳達節電的理念。</p>
+          <p data-zh="在我們初次的改版中，以台電新的&lt;span class=&quot;accent&quot;&gt;吉祥物們陪伴使用者&lt;/span&gt;，透過分布在地圖上的寶藏點位，培養民眾出門散步的習慣，以及每日問答任務，將節電相關知識&lt;span class=&quot;accent&quot;&gt;潛移默化&lt;/span&gt;進入用戶的心中。使用者完成任務後皆可獲得遊戲代幣，並兌換不同類別的獎項或折抵電費。" data-en="In the first redesign, Taipower&#x27;s new&lt;span class=&quot;accent&quot;&gt; mascot characters guide users&lt;/span&gt; through treasure spots on the map, encouraging daily walks, while trivia challenges&lt;span class=&quot;accent&quot;&gt; subtly embed energy-saving knowledge&lt;/span&gt;. Completing tasks earns in-game tokens redeemable for prizes or bill discounts.">在我們初次的改版中，以台電新的<span class="accent">吉祥物們陪伴使用者</span>，透過分布在地圖上的寶藏點位，培養民眾出門散步的習慣，以及每日問答任務，將節電相關知識<span class="accent">潛移默化</span>進入用戶的心中。使用者完成任務後皆可獲得遊戲代幣，並兌換不同類別的獎項或折抵電費。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- V1.0 亮點 -->
+    <section class="wrap sec">
+      <div class="sec-head"><h2 class="sec-title" data-zh="V1.0 亮點" data-en="V1.0 Highlights">V1.0 亮點</h2></div>
+      <div class="v1">
+        <article class="v1-card">
+          <h3 data-zh="新版吉祥物大量曝光" data-en="New Mascots in the Spotlight">新版吉祥物大量曝光</h3>
+          <div class="shot"><img src="assets/images/cs-tapower-mascot-v1.webp" alt="電力即點吉祥物" loading="lazy"></div>
+          <p data-zh="建立背景故事，讓每個角色有其負責的功能項目與用戶對話，並加入升級機制，與用戶一同成長。" data-en="Built a backstory so each character owns specific features and interacts with users, with a leveling system that grows alongside them.">建立背景故事，讓每個角色有其負責的功能項目與用戶對話，並加入升級機制，與用戶一同成長。</p>
+        </article>
+        <article class="v1-card">
+          <h3 data-zh="介面全新改版" data-en="Full UI Redesign">介面全新改版</h3>
+          <div class="shot"><img src="assets/images/cs-tapower-v1-ui.webp" alt="電力即點 V1 介面" loading="lazy"></div>
+          <p data-zh="大範圍參考遊戲介面，建立屬於電力即點世界的全新視覺風格，改變公部門數位產品的形象。" data-en="Drew heavily from game UI conventions to establish a distinct visual style for the Taipower Points world — reshaping the image of a government digital product.">大範圍參考遊戲介面，建立屬於電力即點世界的全新視覺風格，改變公部門數位產品的形象。</p>
+        </article>
+        <article class="v1-card">
+          <h3 data-zh="管理後台改版" data-en="Admin Backend Redesign">管理後台改版</h3>
+          <div class="shot"><img src="assets/images/cs-tapower-backend.webp" alt="電力即點管理後台" loading="lazy"></div>
+          <p data-zh="針對問答題庫，用戶數據與寶箱點位等功能建立完整管理後台，提升承辦人員管理效率。" data-en="Built a comprehensive admin backend covering the question bank, user data, and treasure box locations — significantly improving operational efficiency for staff.">針對問答題庫，用戶數據與寶箱點位等功能建立完整管理後台，提升承辦人員管理效率。</p>
+        </article>
+      </div>
+
+      <div class="v1-result">
+        <p class="head" data-zh="V1.0 版本上線後" data-en="After V1.0 Launch">V1.0 版本上線後</p>
+        <p class="line" data-zh="總用戶達改版前 &lt;span class=&quot;accent&quot;&gt;5 倍以上&lt;/span&gt;成長" data-en="Total users grew by &lt;span class=&quot;accent&quot;&gt;5x+&lt;/span&gt; vs. pre-redesign">總用戶達改版前 <span class="accent">5 倍以上</span>成長</p>
+        <p class="line" data-zh="日活躍用戶數達 &lt;span class=&quot;accent&quot;&gt;9 倍以上&lt;/span&gt;成長" data-en="Daily active users grew by &lt;span class=&quot;accent&quot;&gt;9x+&lt;/span&gt; vs. pre-redesign">日活躍用戶數達 <span class="accent">9 倍以上</span>成長</p>
+        <p class="v1-but">But...</p>
+      </div>
+    </section>
+
+    <!-- Problem & Research -->
+    <section class="wrap sec">
+      <div class="sec-head"><h2 class="sec-title">Problem &amp; Research</h2></div>
+      <div class="prob">
+        <div class="prob-list">
+          <article class="prob-item">
+            <h3 data-zh="1. 採購流程繁瑣，兌換品項不足" data-en="1. Procurement Bottlenecks &amp; Insufficient Redemption Items">1. 採購流程繁瑣，兌換品項不足</h3>
+            <p data-zh="公部門預算編列以季為單位，且採購流程繁瑣，民眾早已積蓄大量點數。導致可兌換品項上架時被瞬間兌換完畢，使得民眾徒有點數卻無法使用。" data-en="Government budgets are allocated quarterly, and procurement is slow — meaning users had accumulated large point balances by the time items were available. When items finally went live, they sold out instantly, leaving users with points they couldn&#x27;t spend.">公部門預算編列以季為單位，且採購流程繁瑣，民眾早已積蓄大量點數。導致可兌換品項上架時被瞬間兌換完畢，使得民眾徒有點數卻無法使用。</p>
+          </article>
+          <article class="prob-item">
+            <h3 data-zh="2. 寶箱點位過少且不均" data-en="2. Too Few Treasure Boxes, Poorly Distributed">2. 寶箱點位過少且不均</h3>
+            <p data-zh="為避免爭議，寶箱多為公家單位 GPS 點位，導致數量較少，且分配不均。超過半數用戶無法順利達成每日開啟數量，無法取得應有的經驗值，導致無法體驗後續成長內容。" data-en="To avoid disputes, treasure boxes were limited to government-owned GPS locations — resulting in low quantity and uneven distribution. Over half of users couldn&#x27;t hit their daily open quota, missing out on XP and the game&#x27;s progression content.">為避免爭議，寶箱多為公家單位 GPS 點位，導致數量較少，且分配不均。超過半數用戶無法順利達成每日開啟數量，無法取得應有的經驗值，導致無法體驗後續成長內容。</p>
+          </article>
+        </div>
+        <aside class="focus">
+          <h3 data-zh="設計重點" data-en="Design Focus">設計重點</h3>
+          <ul>
+            <li data-zh="提供升級協助或獎勵" data-en="Assist or Reward Leveling Up">提供升級協助或獎勵</li>
+            <li data-zh="強化內在遊玩動機" data-en="Strengthen Intrinsic Play Motivation">強化內在遊玩動機</li>
+            <li data-zh="創造民眾互動" data-en="Create Player Interaction">創造民眾互動</li>
           </ul>
-        </div>
-        <div>
-          <p class="cs-hero-meta-label">Team</p>
-          <p class="cs-hero-meta-value">UI Designer<br>Project Manager<br>App Dev Team<br>BE Dev Team</p>
-        </div>
-        <div>
-          <p class="cs-hero-meta-label">Release</p>
-          <p class="cs-hero-meta-value" data-zh="V1　2020&lt;br&gt;V2　2022&lt;br&gt;V3　2023&lt;br&gt;&lt;span style=&quot;color:var(--muted);&quot;&gt;現已下架&lt;/span&gt;" data-en="V1　2020&lt;br&gt;V2　2022&lt;br&gt;V3　2023&lt;br&gt;&lt;span style=&quot;color:var(--muted);&quot;&gt;Delisted&lt;/span&gt;">V1　2020<br>V2　2022<br>V3　2023<br><span style="color:var(--muted);">現已下架</span></p>
-        </div>
+          <img src="assets/images/cs-tapower-box-icons.webp" alt="寶箱" loading="lazy">
+        </aside>
       </div>
-    </div>
+    </section>
 
-    <!-- ── 內容 ─────────────────────────────── -->
-    <div class="cs-content cs-content--narrow">
-
-      <!-- Intro -->
-      <section class="cs-section">
-        <p class="cs-section-label">Intro</p>
-        <h2 class="cs-section-title" data-zh="節能省電多散步，電力即點集點數" data-en="Save Energy, Walk More, Earn Points">節能省電多散步，電力即點集點數</h2>
-        <p data-zh="電力即點是一款類 Ingress 的地圖式尋寶遊戲，由台灣電力公司委託，期望能進行全面的改版，以增加用戶數以及使用量。" data-en="Taipower Points is an Ingress-style map-based treasure hunt game, commissioned by Taiwan Power Company with the goal of a comprehensive redesign to grow its user base and engagement.">電力即點是一款類 Ingress 的地圖式尋寶遊戲，由台灣電力公司委託，期望能進行全面的改版，以增加用戶數以及使用量。</p>
-        <p data-zh="在此案件中，我&lt;span class=&quot;accent&quot;&gt;規劃整個遊戲背景、故事架構與機制&lt;/span&gt;，用更吸引用戶的方式傳達節電的理念。" data-en="In this project, I&lt;span class=&quot;accent&quot;&gt; designed the entire game narrative, world-building, and mechanics&lt;/span&gt; — using an engaging format to communicate energy-saving values.">在此案件中，我<span class="accent">規劃整個遊戲背景、故事架構與機制</span>，用更吸引用戶的方式傳達節電的理念。</p>
-        <p data-zh="在我們初次的改版中，以台電新的&lt;span class=&quot;accent&quot;&gt;吉祥物們陪伴使用者&lt;/span&gt;，透過分布在地圖上的寶藏點位，培養民眾出門散步的習慣，以及每日問答任務，將節電相關知識&lt;span class=&quot;accent&quot;&gt;潛移默化&lt;/span&gt;進入用戶的心中。使用者完成任務後皆可獲得遊戲代幣，並兌換不同類別的獎項或折抵電費。" data-en="In the first redesign, Taipower's new&lt;span class=&quot;accent&quot;&gt; mascot characters guide users&lt;/span&gt; through treasure spots on the map, encouraging daily walks, while trivia challenges&lt;span class=&quot;accent&quot;&gt; subtly embed energy-saving knowledge&lt;/span&gt;. Completing tasks earns in-game tokens redeemable for prizes or bill discounts.">在我們初次的改版中，以台電新的<span class="accent">吉祥物們陪伴使用者</span>，透過分布在地圖上的寶藏點位，培養民眾出門散步的習慣，以及每日問答任務，將節電相關知識<span class="accent">潛移默化</span>進入用戶的心中。使用者完成任務後皆可獲得遊戲代幣，並兌換不同類別的獎項或折抵電費。</p>
-      </section>
-
-      <!-- V1.0 亮點 -->
-      <section class="cs-section cs-section--breakout">
-        <div class="cs-v1-wrapper">
-          <p class="cs-section-label" data-zh="V1.0 亮點" data-en="V1.0 Highlights">V1.0 亮點</p>
-          <div class="cs-v1-grid">
-            <div class="cs-v1-card">
-              <p class="cs-v1-card-title" data-zh="新版吉祥物大量曝光" data-en="New Mascots in the Spotlight">新版吉祥物大量曝光</p>
-              <img loading="lazy" class="cs-v1-card-img" src="assets/images/cs-tapower-mascot-v1.webp" alt="電力即點吉祥物">
-              <p data-zh="建立背景故事，讓每個角色有其負責的功能項目與用戶對話，並加入升級機制，與用戶一同成長。" data-en="Built a backstory so each character owns specific features and interacts with users, with a leveling system that grows alongside them.">建立背景故事，讓每個角色有其負責的功能項目與用戶對話，並加入升級機制，與用戶一同成長。</p>
-            </div>
-            <div class="cs-v1-card">
-              <p class="cs-v1-card-title" data-zh="介面全新改版" data-en="Full UI Redesign">介面全新改版</p>
-              <img loading="lazy" class="cs-v1-card-img" src="assets/images/cs-tapower-v1-ui.webp" alt="電力即點 V1 介面">
-              <p data-zh="大範圍參考遊戲介面，建立屬於電力即點世界的全新視覺風格，改變公部門數位產品的形象。" data-en="Drew heavily from game UI conventions to establish a distinct visual style for the Taipower Points world — reshaping the image of a government digital product.">大範圍參考遊戲介面，建立屬於電力即點世界的全新視覺風格，改變公部門數位產品的形象。</p>
-            </div>
-            <div class="cs-v1-card">
-              <p class="cs-v1-card-title" data-zh="管理後台改版" data-en="Admin Backend Redesign">管理後台改版</p>
-              <img loading="lazy" class="cs-v1-card-img" src="assets/images/cs-tapower-backend.webp" alt="電力即點管理後台">
-              <p data-zh="針對問答題庫，用戶數據與寶箱點位等功能建立完整管理後台，提升承辦人員管理效率。" data-en="Built a comprehensive admin backend covering the question bank, user data, and treasure box locations — significantly improving operational efficiency for staff.">針對問答題庫，用戶數據與寶箱點位等功能建立完整管理後台，提升承辦人員管理效率。</p>
-            </div>
-          </div>
-
-          <!-- V1 成效 -->
-          <div class="cs-v1-result">
-            <p class="cs-v1-result-header" data-zh="V1.0 版本上線後" data-en="After V1.0 Launch">V1.0 版本上線後</p>
-            <p class="cs-v1-result-line" data-zh="總用戶達改版前 &lt;span class=&quot;accent&quot;&gt;5 倍以上&lt;/span&gt;成長" data-en="Total users grew by &lt;span class=&quot;accent&quot;&gt;5x+&lt;/span&gt; vs. pre-redesign">總用戶達改版前 <span class="accent">5 倍以上</span>成長</p>
-            <p class="cs-v1-result-line" data-zh="日活躍用戶數達 &lt;span class=&quot;accent&quot;&gt;9 倍以上&lt;/span&gt;成長" data-en="Daily active users grew by &lt;span class=&quot;accent&quot;&gt;9x+&lt;/span&gt; vs. pre-redesign">日活躍用戶數達 <span class="accent">9 倍以上</span>成長</p>
-            <p class="cs-v1-but">But...</p>
-          </div>
+    <!-- 設計段落 -->
+    <section class="wrap">
+      <!-- 拼圖系統 -->
+      <div class="dr rev">
+        <div class="dr-head">
+          <img class="dr-icon" src="assets/images/cs-tapower-puzzle.webp" alt="拼圖" loading="lazy">
+                    <p class="dr-label" data-zh="拿到就有，不用搶" data-en="Guaranteed Rewards, No More Racing">拿到就有，不用搶</p>
         </div>
-      </section>
-
-      <!-- Problem & Research -->
-      <section class="cs-section">
-        <div class="cs-problem-grid">
-          <!-- 左：兩個問題 -->
-          <div>
-            <p class="cs-section-label">Problem &amp; Research</p>
-            <div class="cs-problem-item">
-              <p class="cs-problem-num" data-zh="1. 採購流程繁瑣，兌換品項不足" data-en="1. Procurement Bottlenecks &amp; Insufficient Redemption Items">1. 採購流程繁瑣，兌換品項不足</p>
-              <p data-zh="公部門預算編列以季為單位，且採購流程繁瑣，民眾早已積蓄大量點數。導致可兌換品項上架時被瞬間兌換完畢，使得民眾徒有點數卻無法使用。" data-en="Government budgets are allocated quarterly, and procurement is slow — meaning users had accumulated large point balances by the time items were available. When items finally went live, they sold out instantly, leaving users with points they couldn't spend.">公部門預算編列以季為單位，且採購流程繁瑣，民眾早已積蓄大量點數。導致可兌換品項上架時被瞬間兌換完畢，使得民眾徒有點數卻無法使用。</p>
-            </div>
-            <div class="cs-problem-item">
-              <p class="cs-problem-num" data-zh="2. 寶箱點位過少且不均" data-en="2. Too Few Treasure Boxes, Poorly Distributed">2. 寶箱點位過少且不均</p>
-              <p data-zh="為避免爭議，寶箱多為公家單位 GPS 點位，導致數量較少，且分配不均。超過半數用戶無法順利達成每日開啟數量，無法取得應有的經驗值，導致無法體驗後續成長內容。" data-en="To avoid disputes, treasure boxes were limited to government-owned GPS locations — resulting in low quantity and uneven distribution. Over half of users couldn't hit their daily open quota, missing out on XP and the game's progression content.">為避免爭議，寶箱多為公家單位 GPS 點位，導致數量較少，且分配不均。超過半數用戶無法順利達成每日開啟數量，無法取得應有的經驗值，導致無法體驗後續成長內容。</p>
-            </div>
-          </div>
-          <!-- 右：設計重點 -->
-          <div>
-            <p class="cs-section-label" data-zh="設計重點" data-en="Design Focus">設計重點</p>
-            <div class="cs-focus-pills">
-              <span class="cs-focus-pill" data-zh="提供升級協助或獎勵" data-en="Assist or Reward Leveling Up">提供升級協助或獎勵</span>
-              <span class="cs-focus-pill" data-zh="強化內在遊玩動機" data-en="Strengthen Intrinsic Play Motivation">強化內在遊玩動機</span>
-              <span class="cs-focus-pill" data-zh="創造民眾互動" data-en="Create Player Interaction">創造民眾互動</span>
-            </div>
-            <img loading="lazy" src="assets/images/cs-tapower-box-icons.webp" alt="寶箱" style="width:80px; margin-top:32px; display:block;">
-          </div>
+        <div class="dr-body">
+          <h3 data-zh="拼圖系統：豐富寶箱品項隨機性" data-en="Puzzle System: Adding Variety to Treasure Box Drops">拼圖系統：豐富寶箱品項隨機性</h3>
+                    <p data-zh="在普通寶箱內，新增了可以直接兌換品項的&lt;span class=&quot;accent&quot;&gt;「拼圖碎片」&lt;/span&gt;，在一個季度內若能搜集滿一片完整的拼圖，即可&lt;span class=&quot;accent&quot;&gt;保證兌換品項&lt;/span&gt;。" data-en="Inside regular treasure boxes, we added&lt;span class=&quot;accent&quot;&gt; &quot;Puzzle Pieces&quot;&lt;/span&gt; — collect a full puzzle within a quarter and you&#x27;re&lt;span class=&quot;accent&quot;&gt; guaranteed a redemption item&lt;/span&gt;.">在普通寶箱內，新增了可以直接兌換品項的<span class="accent">「拼圖碎片」</span>，在一個季度內若能搜集滿一片完整的拼圖，即可<span class="accent">保證兌換品項</span>。</p>
+                    <p data-zh="藉此，即便在開啟普通寶箱時，也能具備一定量的隨機性，並且讓參與度較高的使用者，不需要搶購，也能得到應有的獎勵。" data-en="This introduced an element of randomness to regular box drops, while ensuring dedicated players can earn their rewards without ever having to rush for limited-time items.">藉此，即便在開啟普通寶箱時，也能具備一定量的隨機性，並且讓參與度較高的使用者，不需要搶購，也能得到應有的獎勵。</p>
         </div>
-      </section>
-
-      <!-- 拼圖系統（圖左、文右）-->
-      <div class="cs-design-row cs-design-row--phone-left">
-        <div>
-          <img loading="lazy" class="cs-design-phone" src="assets/images/cs-tapower-design-phone-1.webp" alt="電力即點拼圖系統">
-        </div>
-        <div>
-          <img loading="lazy" class="cs-design-icon" src="assets/images/cs-tapower-puzzle.webp" alt="拼圖">
-          <p class="cs-design-label" data-zh="拿到就有，不用搶" data-en="Guaranteed Rewards, No More Racing">拿到就有，不用搶</p>
-          <h3 class="cs-design-title" data-zh="拼圖系統：豐富寶箱品項隨機性" data-en="Puzzle System: Adding Variety to Treasure Box Drops">拼圖系統：豐富寶箱品項隨機性</h3>
-          <p class="cs-design-body" data-zh="在普通寶箱內，新增了可以直接兌換品項的&lt;span class=&quot;accent&quot;&gt;「拼圖碎片」&lt;/span&gt;，在一個季度內若能搜集滿一片完整的拼圖，即可&lt;span class=&quot;accent&quot;&gt;保證兌換品項&lt;/span&gt;。" data-en="Inside regular treasure boxes, we added&lt;span class=&quot;accent&quot;&gt; &quot;Puzzle Pieces&quot;&lt;/span&gt; — collect a full puzzle within a quarter and you're&lt;span class=&quot;accent&quot;&gt; guaranteed a redemption item&lt;/span&gt;.">在普通寶箱內，新增了可以直接兌換品項的<span class="accent">「拼圖碎片」</span>，在一個季度內若能搜集滿一片完整的拼圖，即可<span class="accent">保證兌換品項</span>。</p>
-          <p class="cs-design-body" style="margin-top:12px;" data-zh="藉此，即便在開啟普通寶箱時，也能具備一定量的隨機性，並且讓參與度較高的使用者，不需要搶購，也能得到應有的獎勵。" data-en="This introduced an element of randomness to regular box drops, while ensuring dedicated players can earn their rewards without ever having to rush for limited-time items.">藉此，即便在開啟普通寶箱時，也能具備一定量的隨機性，並且讓參與度較高的使用者，不需要搶購，也能得到應有的獎勵。</p>
+        <div class="dr-media c-yellow">
+          <img src="assets/images/cs-tapower-design-phone-1.webp" alt="電力即點拼圖系統" loading="lazy">
         </div>
       </div>
 
-      <!-- 連續登入 / 計步（文左、圖右）-->
-      <div class="cs-design-row">
-        <div>
-          <img loading="lazy" src="assets/images/cs-tapower-level-icons.webp" alt="角色升級" style="height:48px; width:auto; max-width:100%; object-fit:contain; margin-bottom:24px; display:block;">
-          <p class="cs-design-label" data-zh="不開寶箱，也能體驗升級的快樂" data-en="Level Up Even Without Opening a Box">不開寶箱，也能體驗升級的快樂</p>
-          <h3 class="cs-design-title" data-zh="新增連續登入獎勵、計步任務、高級派遣技能" data-en="Daily Login Streaks, Step Missions &amp; Advanced Dispatch Skill">新增連續登入獎勵、計步任務、高級派遣技能</h3>
-          <p class="cs-design-body" data-zh="除既有問答、地圖尋寶外，採用了以角色經驗值為主要獎勵的&lt;span class=&quot;accent&quot;&gt;「連續登入獎勵」&lt;/span&gt;以及&lt;span class=&quot;accent&quot;&gt;「計步任務」&lt;/span&gt;機制，讓用戶在日常生活中也能見證到角色的成長，將原先以「兌換點數」的務實需求，轉至對於&lt;span class=&quot;accent&quot;&gt;角色成長的內在驅動力&lt;/span&gt;。" data-en="Beyond existing quizzes and map hunts, we introduced XP-based rewards through&lt;span class=&quot;accent&quot;&gt; Daily Login Streaks&lt;/span&gt; and&lt;span class=&quot;accent&quot;&gt; Step Missions&lt;/span&gt; — letting users witness their character grow through daily life, shifting motivation from &quot;earn points to redeem things&quot; to an&lt;span class=&quot;accent&quot;&gt; intrinsic drive to grow their character&lt;/span&gt;.">除既有問答、地圖尋寶外，採用了以角色經驗值為主要獎勵的<span class="accent">「連續登入獎勵」</span>以及<span class="accent">「計步任務」</span>機制，讓用戶在日常生活中也能見證到角色的成長，將原先以「兌換點數」的務實需求，轉至對於<span class="accent">角色成長的內在驅動力</span>。</p>
-          <p class="cs-design-body" style="margin-top:12px;" data-zh="而當角色成長到更高階型態時，即可使用&lt;span class=&quot;accent&quot;&gt;「高級派遣技能」&lt;/span&gt;一次開啟半徑固定範圍內的所有寶箱，以獎勵認真參與遊戲的忠誠用戶。" data-en="And when a character evolves to a higher tier, they unlock the&lt;span class=&quot;accent&quot;&gt; Advanced Dispatch Skill&lt;/span&gt; — opening all treasure boxes within a fixed radius in one go, rewarding loyal players who've put in the time.">而當角色成長到更高階型態時，即可使用<span class="accent">「高級派遣技能」</span>一次開啟半徑固定範圍內的所有寶箱，以獎勵認真參與遊戲的忠誠用戶。</p>
+      <!-- 連續登入 / 計步 / 派遣 -->
+      <div class="dr">
+        <div class="dr-head">
+          <img class="dr-icon" style="height:3rem" src="assets/images/cs-tapower-level-icons.webp" alt="角色升級" loading="lazy">
+                    <p class="dr-label" data-zh="不開寶箱，也能體驗升級的快樂" data-en="Level Up Even Without Opening a Box">不開寶箱，也能體驗升級的快樂</p>
         </div>
-        <div class="cs-phones-overlap">
-          <img loading="lazy" class="cs-phone-back" src="assets/images/cs-tapower-design-phone-2.webp" alt="連續登入獎勵">
-          <img loading="lazy" class="cs-phone-front" src="assets/images/cs-tapower-design-phone-3.webp" alt="高級派遣技能">
+        <div class="dr-body">
+          <h3 data-zh="新增連續登入獎勵、計步任務、高級派遣技能" data-en="Daily Login Streaks, Step Missions &amp; Advanced Dispatch Skill">新增連續登入獎勵、計步任務、高級派遣技能</h3>
+                    <p data-zh="除既有問答、地圖尋寶外，採用了以角色經驗值為主要獎勵的&lt;span class=&quot;accent&quot;&gt;「連續登入獎勵」&lt;/span&gt;以及&lt;span class=&quot;accent&quot;&gt;「計步任務」&lt;/span&gt;機制，讓用戶在日常生活中也能見證到角色的成長，將原先以「兌換點數」的務實需求，轉至對於&lt;span class=&quot;accent&quot;&gt;角色成長的內在驅動力&lt;/span&gt;。" data-en="Beyond existing quizzes and map hunts, we introduced XP-based rewards through&lt;span class=&quot;accent&quot;&gt; Daily Login Streaks&lt;/span&gt; and&lt;span class=&quot;accent&quot;&gt; Step Missions&lt;/span&gt; — letting users witness their character grow through daily life, shifting motivation from &quot;earn points to redeem things&quot; to an&lt;span class=&quot;accent&quot;&gt; intrinsic drive to grow their character&lt;/span&gt;.">除既有問答、地圖尋寶外，採用了以角色經驗值為主要獎勵的<span class="accent">「連續登入獎勵」</span>以及<span class="accent">「計步任務」</span>機制，讓用戶在日常生活中也能見證到角色的成長，將原先以「兌換點數」的務實需求，轉至對於<span class="accent">角色成長的內在驅動力</span>。</p>
+                    <p data-zh="而當角色成長到更高階型態時，即可使用&lt;span class=&quot;accent&quot;&gt;「高級派遣技能」&lt;/span&gt;一次開啟半徑固定範圍內的所有寶箱，以獎勵認真參與遊戲的忠誠用戶。" data-en="And when a character evolves to a higher tier, they unlock the&lt;span class=&quot;accent&quot;&gt; Advanced Dispatch Skill&lt;/span&gt; — opening all treasure boxes within a fixed radius in one go, rewarding loyal players who&#x27;ve put in the time.">而當角色成長到更高階型態時，即可使用<span class="accent">「高級派遣技能」</span>一次開啟半徑固定範圍內的所有寶箱，以獎勵認真參與遊戲的忠誠用戶。</p>
         </div>
-      </div>
-
-      <!-- 成就任務（圖左、文右）-->
-      <div class="cs-design-row cs-design-row--phone-left" style="margin-bottom:80px;">
-        <div>
-          <img loading="lazy" class="cs-design-phone" src="assets/images/cs-tapower-v3-achievement.webp" alt="電力即點 成就系統">
-        </div>
-        <div>
-          <img loading="lazy" class="cs-design-icon" src="assets/images/cs-tapower-key.webp" alt="金鑰">
-          <p class="cs-design-label" data-zh="讓遊戲行為成為獎勵的一部分" data-en="Turn Game Actions into Rewards Themselves">讓遊戲行為成為獎勵的一部分</p>
-          <h3 class="cs-design-title" data-zh="新增成就任務與活動型後台" data-en="Achievement Missions &amp; Campaign Admin Backend">新增成就任務與活動型後台</h3>
-          <p class="cs-design-body" data-zh="因應台電時常出現的行銷活動需求，我們將期望用戶執行的動作列為成就解鎖列表引導用戶產生特定行為，讓單調、負面的事件也能轉化為新的樂趣。" data-en="To accommodate Taipower's frequent marketing campaign needs, we turned desired user actions into achievement unlock lists — guiding specific behaviors and transforming mundane or even negative events into new sources of fun.">因應台電時常出現的行銷活動需求，我們將期望用戶執行的動作列為成就解鎖列表引導用戶產生特定行為，讓單調、負面的事件也能轉化為新的樂趣。</p>
-          <p class="cs-design-body" style="margin-top:12px;" data-zh="同時讓承辦人員能於管理後台設定期間或地區限定的獎勵（例如活動現場的限定寶箱等），達到線上線下互相提升參與成效的效果。" data-en="Staff can also configure time- or region-limited rewards in the admin backend (e.g. exclusive event-site treasure boxes), creating an online-offline loop that amplifies engagement on both sides.">同時讓承辦人員能於管理後台設定期間或地區限定的獎勵（例如活動現場的限定寶箱等），達到線上線下互相提升參與成效的效果。</p>
+        <div class="dr-media two c-pink">
+          <img src="assets/images/cs-tapower-design-phone-2.webp" alt="連續登入獎勵" loading="lazy">
+          <img src="assets/images/cs-tapower-design-phone-3.webp" alt="高級派遣技能" loading="lazy">
         </div>
       </div>
 
-      <!-- Result：4 大數字 -->
-      <section class="cs-section cs-section--result-bg cs-section--breakout">
-        <p class="cs-section-label">Result</p>
-        <h2 class="cs-section-title" data-zh="V1 至 V2 改版後成效" data-en="Results After V1 → V2 Redesign">V1 至 V2 改版後成效</h2>
-        <div class="cs-result-4">
-          <div>
-            <p class="cs-result-4-num">641+%</p>
-            <p class="cs-result-4-desc" data-zh="V2.0 上線後一年&lt;br&gt;總用戶成長％" data-en="1 year post V2.0&lt;br&gt;Total user growth">V2.0 上線後一年<br>總用戶成長％</p>
-          </div>
-          <div>
-            <p class="cs-result-4-num">474+%</p>
-            <p class="cs-result-4-desc" data-zh="V2.0 上線後一年&lt;br&gt;每日活躍用戶成長％" data-en="1 year post V2.0&lt;br&gt;DAU growth">V2.0 上線後一年<br>每日活躍用戶成長％</p>
-          </div>
-          <div>
-            <p class="cs-result-4-num">6,000+%</p>
-            <p class="cs-result-4-desc" data-zh="V2.0 上線後一年&lt;br&gt;高等級用戶成長％" data-en="1 year post V2.0&lt;br&gt;High-level user growth">V2.0 上線後一年<br>高等級用戶成長％</p>
-          </div>
-          <div>
-            <p class="cs-result-4-num">1,700k+</p>
-            <p class="cs-result-4-desc" data-zh="V2.0 上線後一年&lt;br&gt;計步任務完成次數" data-en="1 year post V2.0&lt;br&gt;Step mission completions">V2.0 上線後一年<br>計步任務完成次數</p>
-          </div>
+      <!-- 成就任務 -->
+      <div class="dr rev" style="margin-bottom:9rem">
+        <div class="dr-head">
+          <img class="dr-icon" src="assets/images/cs-tapower-key.webp" alt="金鑰" loading="lazy">
+                    <p class="dr-label" data-zh="讓遊戲行為成為獎勵的一部分" data-en="Turn Game Actions into Rewards Themselves">讓遊戲行為成為獎勵的一部分</p>
         </div>
-      </section>
+        <div class="dr-body">
+          <h3 data-zh="新增成就任務與活動型後台" data-en="Achievement Missions &amp; Campaign Admin Backend">新增成就任務與活動型後台</h3>
+                    <p data-zh="因應台電時常出現的&lt;span class=&quot;accent&quot;&gt;行銷活動需求&lt;/span&gt;，我們將期望用戶執行的動作列為成就解鎖列表&lt;span class=&quot;accent&quot;&gt;引導用戶產生特定行為&lt;/span&gt;，讓單調、負面的事件也能轉化為新的樂趣。" data-en="To accommodate Taipower&#x27;s frequent &lt;span class=&quot;accent&quot;&gt;marketing campaign needs&lt;/span&gt;, we turned desired user actions into achievement unlock lists — &lt;span class=&quot;accent&quot;&gt;guiding specific behaviors&lt;/span&gt; and transforming mundane or even negative events into new sources of fun.">因應台電時常出現的<span class="accent">行銷活動需求</span>，我們將期望用戶執行的動作列為成就解鎖列表<span class="accent">引導用戶產生特定行為</span>，讓單調、負面的事件也能轉化為新的樂趣。</p>
+                    <p data-zh="同時讓承辦人員能於管理後台設定期間或地區限定的獎勵（例如活動現場的限定寶箱等），達到&lt;span class=&quot;accent&quot;&gt;線上線下互相提升參與成效&lt;/span&gt;的效果。" data-en="Staff can also configure time- or region-limited rewards in the admin backend (e.g. exclusive event-site treasure boxes), creating an &lt;span class=&quot;accent&quot;&gt;online-offline loop that amplifies engagement on both sides&lt;/span&gt;.">同時讓承辦人員能於管理後台設定期間或地區限定的獎勵（例如活動現場的限定寶箱等），達到<span class="accent">線上線下互相提升參與成效</span>的效果。</p>
+        </div>
+        <div class="dr-media c-blue">
+          <img src="assets/images/cs-tapower-v3-achievement.webp" alt="電力即點 成就系統" loading="lazy">
+        </div>
+      </div>
+    </section>
 
-      <!-- 好，還要再更好 -->
-      <section class="cs-section">
-        <div class="cs-row-2 cs-row-2-img-right">
+    <!-- Result -->
+    <section class="result">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2 class="sec-title" data-zh="V1 至 V2 改版後成效" data-en="Results After V1 → V2 Redesign">V1 至 V2 改版後成效</h2>
+          <p class="note">Result</p>
+        </div>
+        <dl class="nums">
           <div>
-            <p class="cs-section-label" data-zh="好，還要再更好" data-en="Good, But We Can Do Better">好，還要再更好</p>
-            <h2 class="cs-section-title" data-zh="雖在 v2 有亮眼的成長&lt;br&gt;但仍有兩個待解決的議題" data-en="Strong V2 Growth,&lt;br&gt;But Two Problems Remained">雖在 v2 有亮眼的成長<br>但仍有兩個待解決的議題</h2>
+            <dd data-count="641" data-suffix="+%">641+%</dd>
+            <dt data-zh="V2.0 上線後一年&lt;br&gt;總用戶成長％" data-en="1 year post V2.0&lt;br&gt;Total user growth">V2.0 上線後一年<br>總用戶成長％</dt>
+          </div>
+          <div>
+            <dd data-count="474" data-suffix="+%">474+%</dd>
+            <dt data-zh="V2.0 上線後一年&lt;br&gt;每日活躍用戶成長％" data-en="1 year post V2.0&lt;br&gt;DAU growth">V2.0 上線後一年<br>每日活躍用戶成長％</dt>
+          </div>
+          <div>
+            <dd data-count="6000" data-suffix="+%">6,000+%</dd>
+            <dt data-zh="V2.0 上線後一年&lt;br&gt;高等級用戶成長％" data-en="1 year post V2.0&lt;br&gt;High-level user growth">V2.0 上線後一年<br>高等級用戶成長％</dt>
+          </div>
+          <div>
+            <dd data-count="1700" data-suffix="k+">1,700k+</dd>
+            <dt data-zh="V2.0 上線後一年&lt;br&gt;計步任務完成次數" data-en="1 year post V2.0&lt;br&gt;Step mission completions">V2.0 上線後一年<br>計步任務完成次數</dt>
+          </div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 好，還要再更好 -->
+    <section class="wrap sec">
+      <div class="more">
+        <p class="note more-note" data-zh="好，還要再更好" data-en="Good, But We Can Do Better">好，還要再更好</p>
+        <div class="more-body">
+          <h2 class="sec-title" data-zh="雖在 v2 有亮眼的成長&lt;br&gt;但仍有兩個待解決的議題" data-en="Strong V2 Growth,&lt;br&gt;But Two Problems Remained">雖在 v2 有亮眼的成長<br>但仍有兩個待解決的議題</h2>
+          <div class="issues">
             <p data-zh="1. 點數的使用應有更多元的管道（在不影響採購的前提下）" data-en="1. Points should have more diverse spending channels (within procurement constraints)">1. 點數的使用應有更多元的管道（在不影響採購的前提下）</p>
             <p data-zh="2. 缺少玩家間的互動性" data-en="2. Lack of social and player-to-player interaction">2. 缺少玩家間的互動性</p>
-            <p data-zh="因此後續有提出如下功能建議，並通過客戶提案：" data-en="I proposed the following features, which were approved by the client:">因此後續有提出如下功能建議，並通過客戶提案：</p>
-            <ul style="padding-left:0; display:flex; flex-direction:column; gap:8px; margin-top:4px;">
-              <li style="font-size:15px; color:var(--text); padding-left:12px; position:relative; line-height:1.6;" data-zh="&lt;span style=&quot;position:absolute; left:0; color:var(--muted);&quot;&gt;·&lt;/span&gt; 紙娃娃系統：建立角色房間，以點數購買背景、裝飾或造型，增加點數使用範圍" data-en="&lt;span style=&quot;position:absolute; left:0; color:var(--muted);&quot;&gt;·&lt;/span&gt; Paper Doll System: a character room where players spend points on backgrounds, decorations, or outfits — expanding points utility">
-                <span style="position:absolute; left:0; color:var(--muted);">·</span>
-                紙娃娃系統：建立角色房間，以點數購買背景、裝飾或造型，增加點數使用範圍
-              </li>
-              <li style="font-size:15px; color:var(--text); padding-left:12px; position:relative; line-height:1.6;" data-zh="&lt;span style=&quot;position:absolute; left:0; color:var(--muted);&quot;&gt;·&lt;/span&gt; 排行與社交系統：用戶可看到該期別取得點數的排行榜，以及該玩家的角色造型" data-en="&lt;span style=&quot;position:absolute; left:0; color:var(--muted);&quot;&gt;·&lt;/span&gt; Leaderboard &amp; Social System: users can view the current period's points ranking and browse other players' character appearances">
-                <span style="position:absolute; left:0; color:var(--muted);">·</span>
-                排行與社交系統：用戶可看到該期別取得點數的排行榜，以及該玩家的角色造型
-              </li>
-            </ul>
-            <p style="color:var(--muted); margin-top:16px;" data-zh="唯於後續開發過程中已離職，無法取得後續用戶反饋及資料，故僅簡短說明。" data-en="I left the project before these features were completed, so I'm unable to share user feedback or outcome data — hence the brief summary.">唯於後續開發過程中已離職，無法取得後續用戶反饋及資料，故僅簡短說明。</p>
           </div>
-          <div style="display:flex; align-items:center; justify-content:center;">
-            <img loading="lazy" class="cs-img" src="assets/images/cs-tapower-v3-character.webp" alt="電力即點 V3 角色" style="max-width:200px;">
-          </div>
+          <p data-zh="因此後續有提出如下功能建議，並通過客戶提案：" data-en="I proposed the following features, which were approved by the client:">因此後續有提出如下功能建議，並通過客戶提案：</p>
+          <ul class="feat">
+            <li data-zh="&lt;b&gt;紙娃娃系統：&lt;/b&gt;建立角色房間，以點數購買背景、裝飾或造型，增加點數使用範圍" data-en="&lt;b&gt;Paper Doll System:&lt;/b&gt; a character room where players spend points on backgrounds, decorations, or outfits — expanding points utility"><b>紙娃娃系統：</b>建立角色房間，以點數購買背景、裝飾或造型，增加點數使用範圍</li>
+            <li data-zh="&lt;b&gt;排行與社交系統：&lt;/b&gt;用戶可看到該期別取得點數的排行榜，以及該玩家的角色造型" data-en="&lt;b&gt;Leaderboard &amp; Social System:&lt;/b&gt; users can view the current period&#x27;s points ranking and browse other players&#x27; character appearances"><b>排行與社交系統：</b>用戶可看到該期別取得點數的排行榜，以及該玩家的角色造型</li>
+          </ul>
         </div>
-      </section>
-
-      <!-- 學習與反思（角色左、文字右）-->
-      <section class="cs-section">
-        <div class="cs-row-2 cs-row-2-img-left" style="align-items:center;">
-          <div style="display:flex; align-items:center; justify-content:center;">
-            <img loading="lazy" src="assets/images/cs-tapower-v3-characterebo.webp" alt="電力即點吉祥物" style="width:100%; max-width:280px; object-fit:contain;">
-          </div>
-          <div>
-            <p class="cs-section-label" data-zh="學習與反思" data-en="Reflection">學習與反思</p>
-            <h2 class="cs-section-title" data-zh="公部門有自己的負擔，但也有許多轉機&lt;br&gt;除了作為設計師與玩家，更要站在客戶端立場" data-en="Government Work Has Its Constraints — But Also Real Opportunities&lt;br&gt;Think Like a Designer, a Player, &amp; a Client All at Once">公部門有自己的負擔，但也有許多轉機<br>除了作為設計師與玩家，更要站在客戶端立場</h2>
-            <p data-zh="設計公部門產品，比起一般企業更容易遇到「資源」跟「規則變動」間的困難，同時對於「客訴」問題更加敏感。" data-en="Designing for a government client means navigating constraints around resources and rule changes far more than in the private sector — and user complaints get taken far more seriously.">設計公部門產品，比起一般企業更容易遇到「資源」跟「規則變動」間的困難，同時對於「客訴」問題更加敏感。</p>
-            <p data-zh="因此在每次改版時，除了顧及是否有過度發散，導致需要客戶額外投入的資源外，也需要顧及既有已公布的遊戲規則，並在此之上試圖做出改變。" data-en="So with every redesign, beyond keeping scope in check to avoid burdening the client, I also had to respect existing published game rules — and find ways to innovate within those constraints.">因此在每次改版時，除了顧及是否有過度發散，導致需要客戶額外投入的資源外，也需要顧及既有已公布的遊戲規則，並在此之上試圖做出改變。</p>
-            <p data-zh="過程中也不時要在顧及「用戶遊戲性」以及「客戶 KPI」的角色中不斷轉換。除了前端遊戲內容外，也要不斷豐富後台的管理功能，才能真正滿足客戶的需求。" data-en="Throughout the project, I constantly shifted between two perspectives: &quot;user experience&quot; and &quot;client KPIs.&quot; Delivering on both meant not only building engaging front-end content, but continuously expanding the backend management capabilities.">過程中也不時要在顧及「用戶遊戲性」以及「客戶 KPI」的角色中不斷轉換。除了前端遊戲內容外，也要不斷豐富後台的管理功能，才能真正滿足客戶的需求。</p>
-            <p data-zh="很開心每次改版提案都能得到客戶的支持，也從數據上看出得到用戶一定程度的喜愛。這份案子是我首次主責，且連續維護改版四年的專案，陪著他一步一步成長，是我目前最為完整的設計經歷之一。雖然目前已於 Appstore 下架，但仍然是我十分滿意的案件。" data-en="I'm proud that every redesign pitch earned the client's support, and the data confirmed users genuinely responded. This was the first project I owned end-to-end, maintaining and iterating it for four years straight — watching it grow step by step is one of the most complete design experiences I've had. Even though it's been delisted from the App Store, it remains one of my most satisfying projects.">很開心每次改版提案都能得到客戶的支持，也從數據上看出得到用戶一定程度的喜愛。這份案子是我首次主責，且連續維護改版四年的專案，陪著他一步一步成長，是我目前最為完整的設計經歷之一。雖然目前已於 Appstore 下架，但仍然是我十分滿意的案件。</p>
-          </div>
+        <div class="char-panel">
+          <img src="assets/images/cs-tapower-v3-character.webp" alt="電力即點 V3 角色" loading="lazy">
         </div>
-      </section>
+        <p class="muted more-muted" data-zh="唯於後續開發過程中已離職，無法取得後續用戶反饋及資料，故僅簡短說明。" data-en="I left the project before these features were completed, so I&#x27;m unable to share user feedback or outcome data — hence the brief summary.">唯於後續開發過程中已離職，無法取得後續用戶反饋及資料，故僅簡短說明。</p>
+      </div>
+    </section>
 
-    </div><!-- cs-content -->
-
-    <!-- ── 保密聲明 ───────────────────────── -->
-    <p class="cs-disclaimer" data-zh="涉及公司營運相關數字持保密原則，僅以比例呈現" data-en="Numbers related to company operations are kept confidential and presented as relative proportions only">涉及公司營運相關數字持保密原則，僅以比例呈現</p>
-
-    <!-- ── Footer ─────────────────────────── -->
-    <footer>
-      <div class="footer-inner">
-        <nav class="footer-nav">
-          <a href="index.html#case-study">Case Study</a>
-          <a href="index.html#work">Works</a>
-          <a href="about.html">About</a>
-        </nav>
-        <div class="footer-contact">
-          <span class="footer-contact-label">Contact</span>
-          <a href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
+    <!-- 學習與反思 -->
+    <section class="wrap sec">
+      <div class="reflect">
+        <div class="panel">
+          <img src="assets/images/cs-tapower-v3-characterebo.webp" alt="電力即點吉祥物" loading="lazy">
+        </div>
+        <div>
+          <div class="head">
+            <p class="note" data-zh="學習與反思" data-en="Learnings &amp; Reflections">學習與反思</p>
+            <h2 class="sec-title" data-zh="公部門有自己的負擔，但也有許多轉機&lt;br&gt;除了作為設計師與玩家，更要站在客戶端立場" data-en="Government Work Has Its Constraints — But Also Real Opportunities&lt;br&gt;Think Like a Designer, a Player, &amp; a Client All at Once">公部門有自己的負擔，但也有許多轉機<br>除了作為設計師與玩家，更要站在客戶端立場</h2>
+          </div>
+          <p data-zh="設計公部門產品，比起一般企業更容易遇到&lt;span class=&quot;accent&quot;&gt;「資源」&lt;/span&gt;跟&lt;span class=&quot;accent&quot;&gt;「規則變動」&lt;/span&gt;間的困難，同時對於「客訴」問題更加&lt;span class=&quot;accent&quot;&gt;敏感&lt;/span&gt;。" data-en="Designing for a government client means navigating constraints around &lt;span class=&quot;accent&quot;&gt;resources&lt;/span&gt; and &lt;span class=&quot;accent&quot;&gt;rule changes&lt;/span&gt; far more than in the private sector — and user complaints get taken &lt;span class=&quot;accent&quot;&gt;far more seriously&lt;/span&gt;.">設計公部門產品，比起一般企業更容易遇到<span class="accent">「資源」</span>跟<span class="accent">「規則變動」</span>間的困難，同時對於「客訴」問題更加<span class="accent">敏感</span>。</p>
+          <p data-zh="因此在每次改版時，除了顧及是否有&lt;span class=&quot;accent&quot;&gt;過度發散&lt;/span&gt;，導致需要客戶額外投入的資源外，也需要&lt;span class=&quot;accent&quot;&gt;顧及既有已公布的遊戲規則&lt;/span&gt;，並在此之上試圖做出改變。" data-en="So with every redesign, beyond keeping &lt;span class=&quot;accent&quot;&gt;scope in check&lt;/span&gt; to avoid burdening the client, I also had to &lt;span class=&quot;accent&quot;&gt;respect existing published game rules&lt;/span&gt; — and find ways to innovate within those constraints.">因此在每次改版時，除了顧及是否有<span class="accent">過度發散</span>，導致需要客戶額外投入的資源外，也需要<span class="accent">顧及既有已公布的遊戲規則</span>，並在此之上試圖做出改變。</p>
+          <p data-zh="過程中也不時要在顧及「用戶遊戲性」以及「客戶 KPI」的角色中不斷轉換。除了前端遊戲內容外，也要不斷&lt;span class=&quot;accent&quot;&gt;豐富後台的管理功能&lt;/span&gt;，才能真正滿足客戶的需求。" data-en="Throughout the project, I constantly shifted between two perspectives: &quot;user experience&quot; and &quot;client KPIs.&quot; Delivering on both meant not only building engaging front-end content, but continuously &lt;span class=&quot;accent&quot;&gt;expanding the backend management capabilities&lt;/span&gt;.">過程中也不時要在顧及「用戶遊戲性」以及「客戶 KPI」的角色中不斷轉換。除了前端遊戲內容外，也要不斷<span class="accent">豐富後台的管理功能</span>，才能真正滿足客戶的需求。</p>
+          <p data-zh="很開心每次改版提案都能得到客戶的支持，也從數據上看出得到用戶一定程度的喜愛。這份案子是我&lt;span class=&quot;accent&quot;&gt;首次主責，且連續維護改版四年的專案&lt;/span&gt;，陪著他一步一步成長，是我目前最為完整的設計經歷之一。雖然目前已於 Appstore 下架，但仍然是我十分滿意的案件。" data-en="I&#x27;m proud that every redesign pitch earned the client&#x27;s support, and the data confirmed users genuinely responded. This was &lt;span class=&quot;accent&quot;&gt;the first project I owned end-to-end, maintaining and iterating it for four years straight&lt;/span&gt; — watching it grow step by step is one of the most complete design experiences I&#x27;ve had. Even though it&#x27;s been delisted from the App Store, it remains one of my most satisfying projects.">很開心每次改版提案都能得到客戶的支持，也從數據上看出得到用戶一定程度的喜愛。這份案子是我<span class="accent">首次主責，且連續維護改版四年的專案</span>，陪著他一步一步成長，是我目前最為完整的設計經歷之一。雖然目前已於 Appstore 下架，但仍然是我十分滿意的案件。</p>
         </div>
       </div>
-    </footer>
+    </section>
 
-  </div><!-- .page-content -->
+    <p class="disclaimer" data-zh="&lt;span&gt;涉及公司營運相關數字持保密原則，僅以比例呈現&lt;/span&gt;" data-en="Numbers related to company operations are kept confidential and presented as relative proportions only"><span>涉及公司營運相關數字持保密原則，僅以比例呈現</span></p>
 
-  <!-- ── Mobile Menu ──────────────────────── -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div class="mobile-menu-top">
-      <a href="index.html" class="header-logo">
-        <img src="assets/images/favicon.svg" alt="Rock Wu">
-      </a>
-      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="關閉選單">
-        <img src="assets/images/icon-close.svg" alt="關閉">
-      </button>
+  </main>
+
+  <footer id="contact" class="foot">
+    <div class="foot-inner">
+      <p class="foot-label">Contact</p>
+      <a class="foot-mail" href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
+      <nav class="foot-nav" aria-label="頁尾選單">
+        <a href="index.html#case-study">Case Study</a>
+        <a href="index.html#work">Works</a>
+        <a href="about.html">About</a>
+      </nav>
     </div>
-    <nav class="mobile-nav">
-      <a href="index.html#case-study" class="active">Case Study</a>
-      <a href="index.html#work">Works</a>
-      <a href="about.html">About</a>
-    </nav>
-    <div class="mobile-menu-bottom">
-      <div class="lang-toggle" id="langToggleMobile" role="button" aria-label="切換語言">
-        <span class="active" data-lang="zh">繁中</span>
-        <span data-lang="en">EN</span>
-      </div>
-    </div>
-  </div>
+  </footer>
 
-  <button id="go-to-top" aria-label="回到頂部">
-    <img src="assets/images/icon-gototop.svg" alt="">
-  </button>
+  <button id="go-top" type="button" aria-label="回到頂部"><img src="assets/images/icon-gototop.svg" alt=""></button>
 
-  <script src="js/main.js"></script>
+  <script src="js/v2.js?v=1795504133"></script>
 </body>
 </html>

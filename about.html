@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Rock Wu</title>
   <meta name="description" content="Meet Rock Wu, a UX Designer with 8+ years of experience across fintech, B2B, and consumer apps. Based in Taiwan.">
-
   <!-- Canonical -->
   <link rel="canonical" href="https://rockisworking.tw/about.html">
 
@@ -25,273 +24,166 @@
   <meta name="twitter:image"       content="https://rockisworking.tw/assets/images/og_image.webp">
 
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WFPJKY6EG"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/v2.css?v=1795504133">
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4WFPJKY6EG');
+    /* Google Analytics（GA4）：本機預覽不送資料，只把事件印在 console 與 window.__gaDebug 方便檢查 */
+    (function () {
+      var id = 'G-4WFPJKY6EG';
+      var local = ['localhost', '127.0.0.1', '[::1]'].indexOf(location.hostname) > -1;
+      window.dataLayer = window.dataLayer || [];
+      if (local) {
+        window.gtag = function () { var a = [].slice.call(arguments); (window.__gaDebug = window.__gaDebug || []).push(a); console.info('[GA debug]', a); };
+        return;
+      }
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date()); gtag('config', id);
+      var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id; document.head.appendChild(s);
+    })();
   </script>
 </head>
-<body>
+<body data-root="">
 
-  <!-- 流動背景光暈 -->
-  <div class="gradient-orbs" aria-hidden="true">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="orb orb-4"></div>
-  </div>
-
-  <div class="page-content">
-
-    <!-- ── Header ────────────────────────────── -->
-    <header>
-      <div class="header-inner">
-        <a href="index.html" class="header-logo">
-          <img src="assets/images/favicon.svg" alt="Rock Wu">
-        </a>
-        <div class="header-right">
-          <nav class="header-nav">
-            <a href="index.html#case-study">Case Study</a>
-            <a href="index.html#work">Works</a>
-            <a href="about.html" class="active">About</a>
-          </nav>
-          <div class="lang-toggle" id="langToggle" role="button" aria-label="切換語言">
-            <span class="active" data-lang="zh">繁中</span>
-            <span data-lang="en">EN</span>
-          </div>
-        </div>
-        <button class="menu-btn" id="menuBtn" aria-label="開啟選單">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </header>
-
-    <!-- ── About 主體 ──────────────────────────── -->
-    <main>
-      <div class="container">
-        <div class="about-layout">
-
-          <!-- 左欄：名稱 + 聯絡 -->
-          <aside class="about-left fade-in">
-            <h1 class="about-greeting" data-zh="大家安安" data-en="Hey there 👋">大家安安</h1>
-            <h1 class="about-name" data-zh="我是 Rock Wu" data-en="I'm Rock Wu">我是 Rock Wu</h1>
-            <p class="about-tagline" data-zh="一個永遠把自己當菜鳥來學習的 Product Designer" data-en="A Product Designer who never stops learning like it's day one">一個永遠把自己當菜鳥來學習的 Product Designer</p>
-
-            <p class="contact-label">Contact</p>
-            <div class="contact-links">
-              <span class="contact-location">Taiwan, Taipei</span>
-              <a href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
-              <a href="https://www.linkedin.com/in/rockwoo/" target="_blank" rel="noopener" data-zh="Linkedin (雖然不太更新）" data-en="LinkedIn (not very active)">Linkedin (雖然不太更新）</a>
-            </div>
-
-            <p class="contact-label resume-label">Resume</p>
-            <div class="contact-links">
-              <a href="assets/resume%20TC_202610.pdf" target="_blank" rel="noopener" onclick="gtag('event','resume_download',{resume_lang:'zh'})">下載中文履歷</a>
-              <a href="assets/resume%20EN_202610.pdf" target="_blank" rel="noopener" onclick="gtag('event','resume_download',{resume_lang:'en'})">Download EN Resume</a>
-            </div>
-          </aside>
-
-          <!-- 右欄：About me + Experience -->
-          <div class="about-right">
-
-            <!-- About me -->
-            <section class="about-me-section fade-in">
-              <h2 class="section-heading-sm">About me</h2>
-              <p data-zh="畢業於政治大學哲學系。&lt;br&gt;擅長拆解抽象與複雜需求，從用戶視角與使用情境出發，轉化為清晰且可驗證的設計邏輯，並有效與利害關係人溝通。" data-en="Philosophy graduate from National Chengchi University.&lt;br&gt;I excel at untangling abstract and complex requirements — approaching each feature from the user's perspective and context of use, then translating it into clear, verifiable design logic, and communicating it effectively with stakeholders.">畢業於政治大學哲學系。<br>擅長拆解抽象與複雜需求，從用戶視角與使用情境出發，轉化為清晰且可驗證的設計邏輯，並有效與利害關係人溝通。</p>
-              <p data-zh="習慣在快速變動的環境中工作，樂於面對不確定性，擅長在資源限制下進行功能優先排序，致力打造兼具實用與趣味的產品體驗。&lt;br&gt;曾於乙方設計公司與甲方產品團隊任職，具備從 0 到 1 與產品優化經驗，涵蓋金融、活動、IoT、SaaS 與企業系統等領域，並參與研究、分析、機制設計與專案資源管理。" data-en="I'm used to working in fast-changing environments, enjoy embracing uncertainty, and I'm skilled at prioritizing features under resource constraints to build product experiences that are both practical and enjoyable.&lt;br&gt;I've worked at both design agencies and in-house product teams, with experience spanning 0-to-1 product building and iterative optimization across finance, events, IoT, SaaS, and enterprise systems — covering research, analysis, feature design, and project resource management.">習慣在快速變動的環境中工作，樂於面對不確定性，擅長在資源限制下進行功能優先排序，致力打造兼具實用與趣味的產品體驗。<br>曾於乙方設計公司與甲方產品團隊任職，具備從 0 到 1 與產品優化經驗，涵蓋金融、活動、IoT、SaaS 與企業系統等領域，並參與研究、分析、機制設計與專案資源管理。</p>
-              <p data-zh="亦有教育科技與支付新創經驗，具備數位行銷背景，理解市場與轉換，偏好跨領域挑戰並曾獲競賽肯定。&lt;br&gt;閒暇時間是個重度的遊戲愛好者、健身人、聽團仔以及&lt;a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank' rel='noopener' class='cs-inline-link'&gt;網路迷因大師&lt;/a&gt; 熱衷不可預期的人事物，致力於活出一個精彩的人生。" data-en="I also bring experience from edtech and payments startups, with a digital marketing background and an understanding of market dynamics and conversion — I enjoy cross-domain challenges and have award-winning work to show for it.&lt;br&gt;Off the clock, I'm a hardcore gamer, a gym rat, a live-music fan, and a certified &lt;a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank' rel='noopener' class='cs-inline-link'&gt;internet meme connoisseur&lt;/a&gt;. I thrive on the unexpected and I'm on a mission to live a genuinely interesting life.">亦有教育科技與支付新創經驗，具備數位行銷背景，理解市場與轉換，偏好跨領域挑戰並曾獲競賽肯定。<br>閒暇時間是個重度的遊戲愛好者、健身人、聽團仔以及<a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" rel="noopener" class="cs-inline-link">網路迷因大師</a> 熱衷不可預期的人事物，致力於活出一個精彩的人生。</p>
-            </section>
-
-            <!-- Experience -->
-            <section class="experience-section">
-              <h2 class="section-heading-sm">Experience</h2>
-
-              <!-- 網三數據 -->
-              <div class="exp-entry fade-in">
-                <div class="exp-tags">
-                  <span class="exp-tag" data-zh="#新創" data-en="#Startup">#新創</span>
-                  <span class="exp-tag">#O2O</span>
-                  <span class="exp-tag" data-zh="#金融支付" data-en="#FinTech">#金融支付</span>
-                </div>
-                <p class="exp-company-line">
-                  <span class="exp-company" data-zh="網三數據有限公司" data-en="網三數據有限公司">網三數據有限公司</span>
-                  <span class="exp-role-date">· Product Designer/COO 2025~2026</span>
-                </p>
-                <ul class="exp-bullets">
-                  <li data-zh="主責產品需求整合與規劃，橫跨商業目標、用戶研究與工程可行性，制定功能開發優先排序決策" data-en="Owned product requirement integration and planning across business goals, user research, and engineering feasibility, driving feature prioritization decisions">主責產品需求整合與規劃，橫跨商業目標、用戶研究與工程可行性，制定功能開發優先排序決策</li>
-                  <li data-zh="整合實地觀察、用戶訪談、問卷、評論等多方資料來源，發掘問題並驗證假設，持續迭代產品方向" data-en="Synthesized field observations, user interviews, surveys, and app reviews to uncover problems, validate hypotheses, and continuously iterate on product direction">整合實地觀察、用戶訪談、問卷、評論等多方資料來源，發掘問題並驗證假設，持續迭代產品方向</li>
-                  <li data-zh="與外包開發團隊協作，負責專案時程與資源管理，確保產品如期如質上線" data-en="Collaborated with outsourced dev teams, managing project timelines and resources to ensure on-time, on-quality launches">與外包開發團隊協作，負責專案時程與資源管理，確保產品如期如質上線</li>
-                  <li data-zh="產品上線一年即取得 10k 使用者，驗證產品方向正確性" data-en="Reached 10K users within one year of launch, validating the product direction">產品上線一年即取得 10k 使用者，驗證產品方向正確性</li>
-                </ul>
-              </div>
-
-              <!-- 禾亞數位 -->
-              <div class="exp-entry fade-in">
-                <div class="exp-tags">
-                  <span class="exp-tag">#Web3</span>
-                  <span class="exp-tag" data-zh="#加密貨幣" data-en="#Crypto">#加密貨幣</span>
-                  <span class="exp-tag" data-zh="#金融科技" data-en="#FinTech">#金融科技</span>
-                </div>
-                <p class="exp-company-line">
-                  <span class="exp-company" data-zh="禾亞數位科技有限公司" data-en="禾亞數位科技有限公司">禾亞數位科技有限公司</span>
-                  <span class="exp-role-date">· UX Designer 2023~2025</span>
-                </p>
-                <ul class="exp-bullets">
-                  <li data-zh="主導 Web/App 設計，整理需求、梳理法規與程式邏輯，規劃功能流程並協助評估開發優先順序" data-en="Led Web/App design — gathered requirements, untangled regulatory and technical logic, defined feature flows, and helped assess development priorities">主導 Web/App 設計，整理需求、梳理法規與程式邏輯，規劃功能流程並協助評估開發優先順序</li>
-                  <li data-zh="協助 Junior UI designer 進行 Guideline 整理，並維持設計一致性" data-en="Supported junior UI designers in building and maintaining the design guideline and visual consistency">協助 Junior UI designer 進行 Guideline 整理，並維持設計一致性</li>
-                  <li data-zh="完成多次產品迭代，成為台灣前三大加密貨幣交易所" data-en="Drove multiple product iterations, helping the platform grow to become one of Taiwan's top 3 crypto exchanges">完成多次產品迭代，成為台灣前三大加密貨幣交易所</li>
-                </ul>
-              </div>
-
-              <!-- 果思設計 -->
-              <div class="exp-entry fade-in">
-                <div class="exp-tags">
-                  <span class="exp-tag" data-zh="#乙方公司" data-en="#DesignAgency">#乙方公司</span>
-                  <span class="exp-tag" data-zh="#多元領域" data-en="#MultiDomain">#多元領域</span>
-                  <span class="exp-tag" data-zh="#設計提案" data-en="#DesignPitch">#設計提案</span>
-                </div>
-                <p class="exp-company-line">
-                  <span class="exp-company" data-zh="果思設計有限公司" data-en="果思設計有限公司">果思設計有限公司</span>
-                  <span class="exp-role-date">· UX Designer 2019~2023</span>
-                </p>
-                <ul class="exp-bullets">
-                  <li data-zh="主導各式設計案，從客戶訪談、研究、規劃、提案到畫面與流程設計，並依商業目標與人天資源限制訂定功能優先順序" data-en="Led end-to-end design projects — from client interviews, research, and planning through pitching, screen, and flow design — prioritizing features against business goals and person-day constraints">主導各式設計案，從客戶訪談、研究、規劃、提案到畫面與流程設計，並依商業目標與人天資源限制訂定功能優先順序</li>
-                  <li data-zh="在職期間內完成 4 檔 Web 專案、6 檔 App 專案及 6 次設計提案" data-en="Delivered 4 web projects, 6 app projects, and 6 design pitches during tenure">在職期間內完成 4 檔 Web 專案、6 檔 App 專案及 6 次設計提案</li>
-                  <li data-zh="超過七成專案獲得客戶信賴，取得長期合作與新專案發包" data-en="Over 70% of projects led to long-term partnerships or new project engagements">超過七成專案獲得客戶信賴，取得長期合作與新專案發包</li>
-                </ul>
-              </div>
-
-              <!-- 鴻鼎 -->
-              <div class="exp-entry fade-in">
-                <div class="exp-tags">
-                  <span class="exp-tag" data-zh="#乙方公司" data-en="#DesignAgency">#乙方公司</span>
-                  <span class="exp-tag" data-zh="#政府標案" data-en="#GovernmentTender">#政府標案</span>
-                  <span class="exp-tag" data-zh="#醫療健康產業" data-en="#Healthcare">#醫療健康產業</span>
-                </div>
-                <p class="exp-company-line">
-                  <span class="exp-company" data-zh="鴻鼎資訊有限公司" data-en="鴻鼎資訊有限公司">鴻鼎資訊有限公司</span>
-                  <span class="exp-role-date">· UX/UI Designer 2017~2019</span>
-                </p>
-                <ul class="exp-bullets">
-                  <li data-zh="主導 Mobile 產品開發案，從需求、規劃到設計產出" data-en="Led mobile product development from requirements and planning through to final design deliverables">主導 Mobile 產品開發案，從需求、規劃到設計產出</li>
-                  <li data-zh="制定專案標準設計與開發流程，並依商業與技術限制進行功能優先排序" data-en="Established standardized design and development workflows, prioritizing features against business and technical constraints">制定專案標準設計與開發流程，並依商業與技術限制進行功能優先排序</li>
-                  <li data-zh="規劃與執行內部員工教育訓練，建立設計與開發團隊共識，提升會議品質" data-en="Planned and ran internal training programs to align design and dev teams, improving meeting quality">規劃與執行內部員工教育訓練，建立設計與開發團隊共識，提升會議品質</li>
-                  <li data-zh="兩年內完成 9 支 App 專案" data-en="Delivered 9 app projects within two years">兩年內完成 9 支 App 專案</li>
-                </ul>
-              </div>
-
-              <!-- 群體資訊（固定顯示，不在收合區） -->
-              <div class="exp-entry fade-in">
-                <div class="exp-tags">
-                  <span class="exp-tag" data-zh="#新創" data-en="#Startup">#新創</span>
-                  <span class="exp-tag" data-zh="#教育科技" data-en="#EdTech">#教育科技</span>
-                  <span class="exp-tag" data-zh="#線上平台" data-en="#OnlinePlatform">#線上平台</span>
-                  <span class="exp-tag">#SaaS</span>
-                </div>
-                <p class="exp-company-line">
-                  <span class="exp-company" data-zh="群體資訊有限公司" data-en="群體資訊有限公司">群體資訊有限公司</span>
-                  <span class="exp-role-date" data-zh="· 共同創辦人 2016~2017" data-en="· Co-Founder 2016~2017">· 共同創辦人 2016~2017</span>
-                </p>
-                <ul class="exp-bullets">
-                  <li data-zh="主導產品與品牌CIS設計，並負責行銷規劃" data-en="Led product and brand identity design, and owned marketing strategy">主導產品與品牌CIS設計，並負責行銷規劃</li>
-                  <li data-zh="獲得 Appuniverz #2016 最佳潛力獎" data-en="Won Best Potential Award at Appuniverz #2016">獲得 Appuniverz #2016 最佳潛力獎</li>
-                  <li data-zh="成功加入 Appworks Accelerator #13 培訓團隊" data-en="Selected into AppWorks Accelerator Batch #13">成功加入 Appworks Accelerator #13 培訓團隊</li>
-                </ul>
-              </div>
-
-              <!-- 展開按鈕 -->
-              <button class="exp-expand-btn" id="expExpandBtn" data-zh="如果你對行銷的經歷有興趣↓" data-en="Curious about my marketing background? ↓">
-                如果你對行銷的經歷有興趣↓
-              </button>
-
-              <!-- 隱藏的行銷經歷（米斯克、記憶家） -->
-              <div class="exp-hidden" id="expHidden">
-
-                <!-- 米斯克科技 -->
-                <div class="exp-entry fade-in">
-                  <p class="exp-company-line">
-                    <span class="exp-company" data-zh="米斯克科技股份有限公司" data-en="米斯克科技股份有限公司">米斯克科技股份有限公司</span>
-                    <span class="exp-role-date" data-zh="· 平面設計/行銷 2017" data-en="· Graphic Design / Marketing 2017">· 平面設計/行銷 2017</span>
-                  </p>
-                  <ul class="exp-bullets">
-                    <li data-zh="設計行銷素材，並協助執行社群媒體行銷策略" data-en="Designed marketing creatives and assisted in executing social media marketing strategies">設計行銷素材，並協助執行社群媒體行銷策略</li>
-                    <li data-zh="管理並訓練 8 名實習生" data-en="Managed and mentored 8 interns">管理並訓練 8 名實習生</li>
-                    <li data-zh="單次廣告素材獲超過 3,000 次下載" data-en="A single ad creative achieved over 3,000 downloads">單次廣告素材獲超過 3,000 次下載</li>
-                  </ul>
-                </div>
-
-                <!-- 記憶家 -->
-                <div class="exp-entry fade-in">
-                  <p class="exp-company-line">
-                    <span class="exp-company" data-zh="記憶家資訊有限公司" data-en="記憶家資訊有限公司">記憶家資訊有限公司</span>
-                    <span class="exp-role-date" data-zh="· 網路行銷 2015~2016" data-en="· Digital Marketing 2015~2016">· 網路行銷 2015~2016</span>
-                  </p>
-                  <ul class="exp-bullets">
-                    <li data-zh="負責行銷策略規劃與廣告投放優化" data-en="Owned marketing strategy planning and ad campaign optimization">負責行銷策略規劃與廣告投放優化</li>
-                    <li data-zh="成功降低廣告 CPA 至 8 元台幣" data-en="Successfully reduced ad CPA to NTD 8">成功降低廣告 CPA 至 8 元台幣</li>
-                    <li data-zh="單週取得有效名單近兩百筆" data-en="Generated close to 200 qualified leads in a single week">單週取得有效名單近兩百筆</li>
-                  </ul>
-                </div>
-
-              </div><!-- .exp-hidden -->
-
-            </section>
-
-          </div><!-- .about-right -->
-
-        </div><!-- .about-layout -->
-      </div><!-- .container -->
-    </main>
-
-    <!-- ── Footer ─────────────────────────────── -->
-    <footer>
-      <div class="footer-inner">
-        <nav class="footer-nav">
-          <a href="index.html#case-study">Case Study</a>
-          <a href="index.html#work">Works</a>
-          <a href="about.html">About</a>
-        </nav>
-        <div class="footer-contact">
-          <span class="footer-contact-label">Contact</span>
-          <a href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
-        </div>
-      </div>
-    </footer>
-
-  </div><!-- .page-content -->
-
-  <!-- ── Go-to-top ──────────────────────────── -->
-  <!-- ── Mobile Menu ──────────────────────── -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div class="mobile-menu-top">
-      <a href="index.html" class="header-logo">
-        <img src="assets/images/favicon.svg" alt="Rock Wu">
+  <header class="bar">
+    <div class="bar-inner">
+      <a class="logo" href="index.html" aria-label="Rock Wu">
+        <img src="assets/images/favicon.svg" alt="">
       </a>
-      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="關閉選單">
-        <img src="assets/images/icon-close.svg" alt="關閉">
-      </button>
+      <nav class="bar-nav" aria-label="主選單">
+        <a href="index.html#case-study">Case Study</a>
+        <a href="index.html#work">Works</a>
+        <a class="active" href="about.html">About</a>
+      </nav>
+      <div class="lang" role="group" aria-label="語言"><span class="on" data-lang="zh" role="button" tabindex="0">繁中</span><span data-lang="en" role="button" tabindex="0">EN</span></div>
     </div>
-    <nav class="mobile-nav">
-      <a href="index.html#case-study">Case Study</a>
-      <a href="index.html#work">Works</a>
-      <a href="about.html" class="active">About</a>
-    </nav>
-    <div class="mobile-menu-bottom">
-      <div class="lang-toggle" id="langToggleMobile" role="button" aria-label="切換語言">
-        <span class="active" data-lang="zh">繁中</span>
-        <span data-lang="en">EN</span>
+  </header>
+
+<main>
+  <div class="about">
+
+    <aside class="about-side">
+      <p class="hello" data-zh="大家安安" data-en="Hey there 👋">大家安安</p>
+      <h1 class="about-name" data-zh="我是&lt;br&gt;&lt;em&gt;Rock&lt;/em&gt; Wu" data-en="I'm&lt;br&gt;&lt;em&gt;Rock&lt;/em&gt; Wu">我是<br><em>Rock</em> Wu</h1>
+      <p class="about-tag" data-zh="一個永遠把自己當菜鳥來學習的 Product Designer" data-en="A Product Designer who never stops learning like it&#x27;s day one">一個永遠把自己當菜鳥來學習的 Product Designer</p>
+
+      <h2>Contact</h2>
+      <ul>
+        <li>Taiwan, Taipei</li>
+        <li><a href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a></li>
+        <li data-zh="&lt;a href=&quot;https://www.linkedin.com/in/rockwoo/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Linkedin (雖然不太更新）&lt;/a&gt;" data-en="LinkedIn (not very active)"><a href="https://www.linkedin.com/in/rockwoo/" target="_blank" rel="noopener">Linkedin (雖然不太更新）</a></li>
+      </ul>
+
+      <h2>Resume</h2>
+      <div class="btns">
+        <a class="btn btn-ink" href="assets/resume%20TC_202610.pdf" target="_blank" rel="noopener" onclick="if(typeof gtag==='function')gtag('event','resume_download',{resume_lang:'zh'})">下載中文履歷</a>
+        <a class="btn" href="assets/resume%20EN_202610.pdf" target="_blank" rel="noopener" onclick="if(typeof gtag==='function')gtag('event','resume_download',{resume_lang:'en'})">Download EN Resume</a>
       </div>
+    </aside>
+
+    <div class="about-main">
+
+      <h2 class="sec-title">About me</h2>
+      <div class="about-me">
+        <p data-zh="畢業於政治大學哲學系。&lt;br&gt;擅長拆解抽象與複雜需求，從用戶視角與使用情境出發，轉化為清晰且可驗證的設計邏輯，並有效與利害關係人溝通。" data-en="Philosophy graduate from National Chengchi University.&lt;br&gt;I excel at untangling abstract and complex requirements — approaching each feature from the user&#x27;s perspective and context of use, then translating it into clear, verifiable design logic, and communicating it effectively with stakeholders.">畢業於政治大學哲學系。<br>擅長拆解抽象與複雜需求，從用戶視角與使用情境出發，轉化為清晰且可驗證的設計邏輯，並有效與利害關係人溝通。</p>
+        <p data-zh="習慣在快速變動的環境中工作，樂於面對不確定性，擅長在資源限制下進行功能優先排序，致力打造兼具實用與趣味的產品體驗。&lt;br&gt;曾於乙方設計公司與甲方產品團隊任職，具備從 0 到 1 與產品優化經驗，涵蓋金融、活動、IoT、SaaS 與企業系統等領域，並參與研究、分析、機制設計與專案資源管理。" data-en="I&#x27;m used to working in fast-changing environments, enjoy embracing uncertainty, and I&#x27;m skilled at prioritizing features under resource constraints to build product experiences that are both practical and enjoyable.&lt;br&gt;I&#x27;ve worked at both design agencies and in-house product teams, with experience spanning 0-to-1 product building and iterative optimization across finance, events, IoT, SaaS, and enterprise systems — covering research, analysis, feature design, and project resource management.">習慣在快速變動的環境中工作，樂於面對不確定性，擅長在資源限制下進行功能優先排序，致力打造兼具實用與趣味的產品體驗。<br>曾於乙方設計公司與甲方產品團隊任職，具備從 0 到 1 與產品優化經驗，涵蓋金融、活動、IoT、SaaS 與企業系統等領域，並參與研究、分析、機制設計與專案資源管理。</p>
+        <p data-zh="亦有教育科技與支付新創經驗，具備數位行銷背景，理解市場與轉換，偏好跨領域挑戰並曾獲競賽肯定。&lt;br&gt;閒暇時間是個重度的遊戲愛好者、健身人、聽團仔以及&lt;a href=&#x27;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#x27; target=&#x27;_blank&#x27; rel=&#x27;noopener&#x27; class=&#x27;cs-inline-link&#x27;&gt;網路迷因大師&lt;/a&gt; 熱衷不可預期的人事物，致力於活出一個精彩的人生。" data-en="I also bring experience from edtech and payments startups, with a digital marketing background and an understanding of market dynamics and conversion — I enjoy cross-domain challenges and have award-winning work to show for it.&lt;br&gt;Off the clock, I&#x27;m a hardcore gamer, a gym rat, a live-music fan, and a certified &lt;a href=&#x27;https://www.youtube.com/watch?v=dQw4w9WgXcQ&#x27; target=&#x27;_blank&#x27; rel=&#x27;noopener&#x27; class=&#x27;cs-inline-link&#x27;&gt;internet meme connoisseur&lt;/a&gt;. I thrive on the unexpected and I&#x27;m on a mission to live a genuinely interesting life.">亦有教育科技與支付新創經驗，具備數位行銷背景，理解市場與轉換，偏好跨領域挑戰並曾獲競賽肯定。<br>閒暇時間是個重度的遊戲愛好者、健身人、聽團仔以及<a href='https://www.youtube.com/watch?v=dQw4w9WgXcQ' target='_blank' rel='noopener' class='cs-inline-link'>網路迷因大師</a> 熱衷不可預期的人事物，致力於活出一個精彩的人生。</p>
+      </div>
+
+      <h2 class="sec-title">Experience</h2>
+
+      <article class="exp c-yellow">
+        <div class="exp-head"><span class="co">網三數據有限公司</span><span class="rd">· Product Designer/COO 2025~2026</span></div>
+        <div class="exp-tags"><span data-zh="#新創" data-en="#Startup">#新創</span><span>#O2O</span><span data-zh="#金融支付" data-en="#FinTech">#金融支付</span></div>
+        <ul>
+          <li data-zh="主責產品需求整合與規劃，橫跨商業目標、用戶研究與工程可行性，制定功能開發優先排序決策" data-en="Owned product requirement integration and planning across business goals, user research, and engineering feasibility, driving feature prioritization decisions">主責產品需求整合與規劃，橫跨商業目標、用戶研究與工程可行性，制定功能開發優先排序決策</li>
+          <li data-zh="整合實地觀察、用戶訪談、問卷、評論等多方資料來源，發掘問題並驗證假設，持續迭代產品方向" data-en="Synthesized field observations, user interviews, surveys, and app reviews to uncover problems, validate hypotheses, and continuously iterate on product direction">整合實地觀察、用戶訪談、問卷、評論等多方資料來源，發掘問題並驗證假設，持續迭代產品方向</li>
+          <li data-zh="與外包開發團隊協作，負責專案時程與資源管理，確保產品如期如質上線" data-en="Collaborated with outsourced dev teams, managing project timelines and resources to ensure on-time, on-quality launches">與外包開發團隊協作，負責專案時程與資源管理，確保產品如期如質上線</li>
+          <li data-zh="產品上線一年即取得 10k 使用者，驗證產品方向正確性" data-en="Reached 10K users within one year of launch, validating the product direction">產品上線一年即取得 10k 使用者，驗證產品方向正確性</li>
+        </ul>
+      </article>
+
+      <article class="exp c-pink">
+        <div class="exp-head"><span class="co">禾亞數位科技有限公司</span><span class="rd">· UX Designer 2023~2025</span></div>
+        <div class="exp-tags"><span>#Web3</span><span data-zh="#加密貨幣" data-en="#Crypto">#加密貨幣</span><span data-zh="#金融科技" data-en="#FinTech">#金融科技</span></div>
+        <ul>
+          <li data-zh="主導 Web/App 設計，整理需求、梳理法規與程式邏輯，規劃功能流程並協助評估開發優先順序" data-en="Led Web/App design — gathered requirements, untangled regulatory and technical logic, defined feature flows, and helped assess development priorities">主導 Web/App 設計，整理需求、梳理法規與程式邏輯，規劃功能流程並協助評估開發優先順序</li>
+          <li data-zh="協助 Junior UI designer 進行 Guideline 整理，並維持設計一致性" data-en="Supported junior UI designers in building and maintaining the design guideline and visual consistency">協助 Junior UI designer 進行 Guideline 整理，並維持設計一致性</li>
+          <li data-zh="完成多次產品迭代，成為台灣前三大加密貨幣交易所" data-en="Drove multiple product iterations, helping the platform grow to become one of Taiwan&#x27;s top 3 crypto exchanges">完成多次產品迭代，成為台灣前三大加密貨幣交易所</li>
+        </ul>
+      </article>
+
+      <article class="exp c-mint">
+        <div class="exp-head"><span class="co">果思設計有限公司</span><span class="rd">· UX Designer 2019~2023</span></div>
+        <div class="exp-tags"><span data-zh="#乙方公司" data-en="#DesignAgency">#乙方公司</span><span data-zh="#多元領域" data-en="#MultiDomain">#多元領域</span><span data-zh="#設計提案" data-en="#DesignPitch">#設計提案</span></div>
+        <ul>
+          <li data-zh="主導各式設計案，從客戶訪談、研究、規劃、提案到畫面與流程設計，並依商業目標與人天資源限制訂定功能優先順序" data-en="Led end-to-end design projects — from client interviews, research, and planning through pitching, screen, and flow design — prioritizing features against business goals and person-day constraints">主導各式設計案，從客戶訪談、研究、規劃、提案到畫面與流程設計，並依商業目標與人天資源限制訂定功能優先順序</li>
+          <li data-zh="在職期間內完成 4 檔 Web 專案、6 檔 App 專案及 6 次設計提案" data-en="Delivered 4 web projects, 6 app projects, and 6 design pitches during tenure">在職期間內完成 4 檔 Web 專案、6 檔 App 專案及 6 次設計提案</li>
+          <li data-zh="超過七成專案獲得客戶信賴，取得長期合作與新專案發包" data-en="Over 70% of projects led to long-term partnerships or new project engagements">超過七成專案獲得客戶信賴，取得長期合作與新專案發包</li>
+        </ul>
+      </article>
+
+      <article class="exp c-yellow">
+        <div class="exp-head"><span class="co">鴻鼎資訊有限公司</span><span class="rd">· UX/UI Designer 2017~2019</span></div>
+        <div class="exp-tags"><span data-zh="#乙方公司" data-en="#DesignAgency">#乙方公司</span><span data-zh="#政府標案" data-en="#GovernmentTender">#政府標案</span><span data-zh="#醫療健康產業" data-en="#Healthcare">#醫療健康產業</span></div>
+        <ul>
+          <li data-zh="主導 Mobile 產品開發案，從需求、規劃到設計產出" data-en="Led mobile product development from requirements and planning through to final design deliverables">主導 Mobile 產品開發案，從需求、規劃到設計產出</li>
+          <li data-zh="制定專案標準設計與開發流程，並依商業與技術限制進行功能優先排序" data-en="Established standardized design and development workflows, prioritizing features against business and technical constraints">制定專案標準設計與開發流程，並依商業與技術限制進行功能優先排序</li>
+          <li data-zh="規劃與執行內部員工教育訓練，建立設計與開發團隊共識，提升會議品質" data-en="Planned and ran internal training programs to align design and dev teams, improving meeting quality">規劃與執行內部員工教育訓練，建立設計與開發團隊共識，提升會議品質</li>
+          <li data-zh="兩年內完成 9 支 App 專案" data-en="Delivered 9 app projects within two years">兩年內完成 9 支 App 專案</li>
+        </ul>
+      </article>
+
+      <article class="exp c-pink">
+        <div class="exp-head"><span class="co">群體資訊有限公司</span><span class="rd" data-zh="· 共同創辦人 2016~2017" data-en="· Co-Founder 2016~2017">· 共同創辦人 2016~2017</span></div>
+        <div class="exp-tags"><span data-zh="#新創" data-en="#Startup">#新創</span><span data-zh="#教育科技" data-en="#EdTech">#教育科技</span><span data-zh="#線上平台" data-en="#OnlinePlatform">#線上平台</span><span>#SaaS</span></div>
+        <ul>
+          <li data-zh="主導產品與品牌CIS設計，並負責行銷規劃" data-en="Led product and brand identity design, and owned marketing strategy">主導產品與品牌CIS設計，並負責行銷規劃</li>
+          <li data-zh="獲得 Appuniverz #2016 最佳潛力獎" data-en="Won Best Potential Award at Appuniverz #2016">獲得 Appuniverz #2016 最佳潛力獎</li>
+          <li data-zh="成功加入 Appworks Accelerator #13 培訓團隊" data-en="Selected into AppWorks Accelerator Batch #13">成功加入 Appworks Accelerator #13 培訓團隊</li>
+        </ul>
+      </article>
+
+      <button class="btn btn-ink exp-btn" id="expBtn" type="button" aria-expanded="false" aria-controls="expHidden" data-zh="如果你對行銷的經歷有興趣↓" data-en="Curious about my marketing background? ↓">如果你對行銷的經歷有興趣↓</button>
+
+      <div class="exp-hidden" id="expHidden">
+        <article class="exp c-yellow">
+          <div class="exp-head"><span class="co">米斯克科技股份有限公司</span><span class="rd" data-zh="· 平面設計/行銷 2017" data-en="· Graphic Design / Marketing 2017">· 平面設計/行銷 2017</span></div>
+          <ul>
+            <li data-zh="設計行銷素材，並協助執行社群媒體行銷策略" data-en="Designed marketing creatives and assisted in executing social media marketing strategies">設計行銷素材，並協助執行社群媒體行銷策略</li>
+            <li data-zh="管理並訓練 8 名實習生" data-en="Managed and mentored 8 interns">管理並訓練 8 名實習生</li>
+            <li data-zh="單次廣告素材獲超過 3,000 次下載" data-en="A single ad creative achieved over 3,000 downloads">單次廣告素材獲超過 3,000 次下載</li>
+          </ul>
+        </article>
+        <article class="exp c-pink">
+          <div class="exp-head"><span class="co">記憶家資訊有限公司</span><span class="rd" data-zh="· 網路行銷 2015~2016" data-en="· Digital Marketing 2015~2016">· 網路行銷 2015~2016</span></div>
+          <ul>
+            <li data-zh="負責行銷策略規劃與廣告投放優化" data-en="Owned marketing strategy planning and ad campaign optimization">負責行銷策略規劃與廣告投放優化</li>
+            <li data-zh="成功降低廣告 CPA 至 8 元台幣" data-en="Successfully reduced ad CPA to NTD 8">成功降低廣告 CPA 至 8 元台幣</li>
+            <li data-zh="單週取得有效名單近兩百筆" data-en="Generated close to 200 qualified leads in a single week">單週取得有效名單近兩百筆</li>
+          </ul>
+        </article>
+      </div>
+
     </div>
   </div>
+</main>
 
-  <button id="go-to-top" aria-label="回到頂部">
-    <img src="assets/images/icon-gototop.svg" alt="">
-  </button>
+  <footer id="contact" class="foot">
+    <div class="foot-inner">
+      <p class="foot-label">Contact</p>
+      <a class="foot-mail" href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
+      <nav class="foot-nav" aria-label="頁尾選單">
+        <a href="index.html#case-study">Case Study</a>
+        <a href="index.html#work">Works</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </footer>
 
-  <script src="js/main.js"></script>
+  <button id="go-top" type="button" aria-label="回到頂部"><img src="assets/images/icon-gototop.svg" alt=""></button>
+
+  <script src="js/v2.js?v=1795504133"></script>
 </body>
 </html>

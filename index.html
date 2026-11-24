@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Rock Wu — UX Designer</title>
   <meta name="description" content="Rock Wu (Rockisworking) — UX design portfolio with 8+ years of experience in fintech, gamification, and enterprise apps.">
-
   <!-- Canonical -->
   <link rel="canonical" href="https://rockisworking.tw/">
 
@@ -39,448 +38,180 @@
   </script>
 
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="stylesheet" href="css/style.css">
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4WFPJKY6EG"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/v2.css?v=1795504133">
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-4WFPJKY6EG');
+    /* Google Analytics（GA4）：本機預覽不送資料，只把事件印在 console 與 window.__gaDebug 方便檢查 */
+    (function () {
+      var id = 'G-4WFPJKY6EG';
+      var local = ['localhost', '127.0.0.1', '[::1]'].indexOf(location.hostname) > -1;
+      window.dataLayer = window.dataLayer || [];
+      if (local) {
+        window.gtag = function () { var a = [].slice.call(arguments); (window.__gaDebug = window.__gaDebug || []).push(a); console.info('[GA debug]', a); };
+        return;
+      }
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date()); gtag('config', id);
+      var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id; document.head.appendChild(s);
+    })();
   </script>
 </head>
-<body>
+<body data-root="">
 
-  <!-- 流動背景光暈 -->
-  <div class="gradient-orbs" aria-hidden="true">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-    <div class="orb orb-4"></div>
-  </div>
-
-  <div class="page-content">
-
-    <!-- ── Header ────────────────────────────── -->
-    <header>
-      <div class="header-inner">
-        <a href="index.html" class="header-logo">
-          <img src="assets/images/favicon.svg" alt="Rock Wu">
-        </a>
-        <div class="header-right">
-          <nav class="header-nav">
-            <a href="#case-study">Case Study</a>
-            <a href="#work">Works</a>
-            <a href="about.html">About</a>
-          </nav>
-          <div class="lang-toggle" id="langToggle" role="button" aria-label="切換語言">
-            <span class="active" data-lang="zh">繁中</span>
-            <span data-lang="en">EN</span>
-          </div>
-        </div>
-        <button class="menu-btn" id="menuBtn" aria-label="開啟選單">
-          <span></span><span></span><span></span>
-        </button>
-      </div>
-    </header>
-
-    <!-- ── Hero 區塊 ─────────────────────────── -->
-    <section id="hero" class="hero-section">
-      <!-- Hero 專屬光暈（動態更強烈） -->
-      <div class="hero-orbs" aria-hidden="true">
-        <div class="hero-orb hero-orb-a"></div>
-        <div class="hero-orb hero-orb-b"></div>
-        <div class="hero-orb hero-orb-c"></div>
-      </div>
-      <div class="container hero-inner">
-        <div class="hero-text">
-          <p class="hero-greeting fade-in" style="transition-delay:0.05s"
-             data-zh="安安，我是" data-en="Hey, I'm">安安，我是</p>
-          <h1 class="hero-name fade-in" style="transition-delay:0.15s">
-            <span class="hero-name-accent">Rock</span> Wu
-          </h1>
-          <p class="hero-title fade-in" style="transition-delay:0.25s"
-             data-zh="UX Designer / Product Designer"
-             data-en="UX Designer / Product Designer">UX Designer / Product Designer</p>
-          <div class="hero-stats fade-in" style="transition-delay:0.45s">
-            <div class="hero-stat">
-              <span class="stat-num">10+</span>
-              <span class="stat-label" data-zh="年設計經驗" data-en="Years Experience">年設計經驗</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat">
-              <span class="stat-num">20+</span>
-              <span class="stat-label" data-zh="專案經驗" data-en="Projects">專案經驗</span>
-            </div>
-            <div class="hero-stat-divider"></div>
-            <div class="hero-stat">
-              <span class="stat-num">2</span>
-              <span class="stat-label" data-zh="次創業經驗" data-en="Startups">次創業經驗</span>
-            </div>
-          </div>
-          <div class="hero-ctas fade-in" style="transition-delay:0.55s">
-            <a href="#case-study" class="btn-primary"
-               data-zh="查看案例 ↓" data-en="View Case Studies ↓">查看案例 ↓</a>
-            <a href="about.html" class="btn-ghost"
-               data-zh="關於我" data-en="About Me">關於我</a>
-          </div>
-        </div>
-      </div>
-      <div class="hero-scroll-hint" aria-hidden="true">
-        <span class="scroll-line"></span>
-      </div>
-    </section>
-
-    <!-- ── Case Study 區塊 ────────────────────── -->
-    <section id="case-study">
-      <div class="container">
-        <p class="section-label" data-zh="案例分享" data-en="Case Studies">案例分享</p>
-        <h1>Case Study</h1>
-        <div class="cs-grid">
-
-          <!-- PaperPlane -->
-          <a href="case-study-paperplane.html" class="cs-card fade-in">
-            <div class="cs-card-inner">
-              <div class="cs-card-bg" style="background-image: url('assets/images/cs-paperplane-bg.webp');"></div>
-              <div class="cs-card-overlay"></div>
-              <div class="cs-card-content">
-                <div class="cs-card-tags">
-                  <span class="tag-outline" data-zh="#新創" data-en="#Startup">#新創</span>
-                  <span class="tag-outline" data-zh="#金融支付" data-en="#FinTech">#金融支付</span>
-                  <span class="tag-outline">#O2O</span>
-                </div>
-                <p class="cs-card-sub" data-zh="品牌重新定位的產品改版" data-en="Product Redesign for Brand Repositioning">品牌重新定位的產品改版</p>
-                <h2 class="cs-card-title">PaperPlane App</h2>
-              </div>
-            </div>
-            <img loading="lazy" class="cs-card-phone"
-                 src="assets/images/cs-pp-v2-home@3x.webp"
-                 alt="PaperPlane App">
-          </a>
-
-          <!-- 台電 -->
-          <a href="case-study-tapower.html" class="cs-card fade-in">
-            <div class="cs-card-inner">
-              <div class="cs-card-bg" style="background-image: url('assets/images/cs-tapower-bg.webp');"></div>
-              <div class="cs-card-overlay"></div>
-              <div class="cs-card-content">
-                <div class="cs-card-tags">
-                  <span class="tag-outline" data-zh="#公部門" data-en="#Government">#公部門</span>
-                  <span class="tag-outline" data-zh="#遊戲化" data-en="#Gamification">#遊戲化</span>
-                  <span class="tag-outline" data-zh="#改版" data-en="#Redesign">#改版</span>
-                </div>
-                <p class="cs-card-sub" data-zh="擺脫公部門既有形象" data-en="Breaking Free from a Government App Stereotype">擺脫公部門既有形象</p>
-                <h2 class="cs-card-title" data-zh="電力即點 App" data-en="Taipower Points App">電力即點 App</h2>
-              </div>
-            </div>
-            <img loading="lazy" class="cs-card-phone"
-                 src="assets/images/cs-tapower-v3-map.webp"
-                 alt="電力即點 App">
-          </a>
-
-          <!-- 健身紀錄 Web App -->
-          <a href="case-study-fitness.html" class="cs-card cs-card--wide fade-in">
-            <div class="cs-card-inner">
-              <div class="cs-card-bg" style="background-image: url('assets/images/cs-fitness-bg.webp');"></div>
-              <div class="cs-card-overlay"></div>
-              <div class="cs-card-content">
-                <div class="cs-card-tags">
-                  <span class="tag-outline">#AI</span>
-                  <span class="tag-outline" data-zh="#健身紀錄" data-en="#FitnessTracker">#健身紀錄</span>
-                  <span class="tag-outline">#PWA</span>
-                </div>
-                <p class="cs-card-sub" data-zh="從個人需求出發的自主開發實驗" data-en="A Self-Initiated Build, Born from Personal Need">從個人需求出發的自主開發實驗</p>
-                <h2 class="cs-card-title" data-zh="健身紀錄 Web App" data-en="Fitness Tracker Web App">健身紀錄 Web App</h2>
-              </div>
-            </div>
-            <picture>
-              <source media="(max-width: 600px)" srcset="assets/images/cs-fitness-card-phone-front.webp">
-              <img loading="lazy" class="cs-card-phone"
-                   src="assets/images/cs-fitness-card-phone.webp"
-                   alt="健身紀錄 Web App">
-            </picture>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Works 區塊 ──────────────────────────── -->
-    <section id="work">
-      <div class="container">
-        <p class="section-label" data-zh="更多作品" data-en="More Works">更多作品</p>
-        <h1>Works</h1>
-        <div class="works-grid">
-
-          <!-- HOYA Bit -->
-          <div class="work-card fade-in"
-               data-title="HOYA Bit"
-               data-subtitle="最簡單易用的 Web3 交易所 App"
-               data-subtitle-en="The Simplest Web3 Exchange App"
-               data-tags="#Web3,#金融科技,#加密貨幣"
-               data-tags-en="#Web3,#FinTech,#Crypto"
-               data-role="UX Designer"
-               data-exec="前期功能規劃、流程與線稿實作"
-               data-exec-en="Feature planning, user flows, and wireframes"
-               data-metrics="在職期間與公司一同成長至全台前三大交易所（2023~2025）"
-               data-metrics-en="Grew to become one of Taiwan's top 3 crypto exchanges during my tenure (2023–2025)"
-               data-desc="以友善、易用的普惠金融為核心概念，進行每一次的app改版。並協助PM重新梳理既有功能規則，將跨部門溝通與開發時的模糊地帶降到最低。"
-               data-desc-en="With inclusive, easy-to-use finance as the core concept, I led iterative redesigns of the app and helped the PM clarify existing feature logic, minimizing ambiguity across cross-functional communication and development."
-               data-image="assets/images/work-hoya-lightbox.jpg"
-               data-link="https://hoyabit.com/">
-            <div class="work-card-bg" style="background-image: url('assets/images/work-hoya-card.jpg');"></div>
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <p class="work-card-title">HOYA Bit</p>
-              <p class="work-card-sub" data-zh="最簡單易用的 Web3 交易所 App" data-en="The Simplest Web3 Exchange App">最簡單易用的 Web3 交易所 App</p>
-            </div>
-          </div>
-
-          <!-- 新光信用卡 -->
-          <div class="work-card fade-in"
-               data-title="新光信用卡 App"
-               data-title-en="Shin Kong Credit Card App"
-               data-subtitle="更精打細算的信用卡管理"
-               data-subtitle-en="Smarter Credit Card Management"
-               data-tags="#金融科技,#銀行業"
-               data-tags-en="#FinTech,#Banking"
-               data-role="UX Designer"
-               data-exec="前期研究、設計策略與實作、易用性測試、管理後台"
-               data-exec-en="Research, design strategy & execution, usability testing, admin backend"
-               data-metrics="現已結合進新光銀行app，仍保留部分既有架構"
-               data-metrics-en="Now integrated into the Shin Kong Bank app, with key architecture retained"
-               data-desc="以大量的用戶研究與訪談為出發，重新定義信用卡app的權重與操作流程，並整合新光銀行多部門系統，建立符合銀行內規的管理後台。"
-               data-desc-en="Starting from extensive user research and interviews, I redefined the information hierarchy and flows of the credit card app, integrated multi-department systems, and built a compliance-ready admin backend."
-               data-image="assets/images/work-skcard-lightbox.jpg"
-               data-link="">
-            <div class="work-card-bg" style="background-image: url('assets/images/work-skcard-card.jpg');"></div>
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <p class="work-card-title" data-zh="新光信用卡 App" data-en="Shin Kong Credit Card App">新光信用卡 App</p>
-              <p class="work-card-sub" data-zh="更精打細算的信用卡管理" data-en="Smarter Credit Card Management">更精打細算的信用卡管理</p>
-            </div>
-          </div>
-
-          <!-- 金控公文 -->
-          <div class="work-card fade-in"
-               data-title="金控內部公文系統"
-               data-title-en="Financial Group Document System"
-               data-subtitle="集團內部系統的大幅改版"
-               data-subtitle-en="Major Overhaul of an Enterprise Internal System"
-               data-tags="#企業應用,#B2B,#多權限設計"
-               data-tags-en="#EnterpriseApp,#B2B,#MultiRoleDesign"
-               data-role="UX Designer"
-               data-exec="前期研究、設計策略與實作、易用性測試"
-               data-exec-en="Research, design strategy & execution, usability testing"
-               data-metrics="受客戶內部好評，後續引進更多合作專案"
-               data-metrics-en="Well-received internally, leading to additional project collaborations"
-               data-desc="以集團多事業體、職務、權限皆適用為目標，逐一釐清既有需求與機制，重構數位化公文流程，建立通用的權限架構，有效提高公文運轉效率。"
-               data-desc-en="With the goal of supporting diverse business units, roles, and permission levels across the group, I clarified existing requirements, rebuilt the digital document workflow, and established a universal permission architecture to significantly improve document processing efficiency."
-               data-image="assets/images/work-katai-lightbox.jpg"
-               data-link="">
-            <div class="work-card-bg" style="background-image: url('assets/images/work-katai-card.jpg');"></div>
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <p class="work-card-title" data-zh="金控內部公文系統" data-en="Financial Group Document System">金控內部公文系統</p>
-              <p class="work-card-sub" data-zh="集團內部系統的大幅改版" data-en="Major Overhaul of an Enterprise Internal System">集團內部系統的大幅改版</p>
-            </div>
-          </div>
-
-          <!-- FLH 智慧桌 -->
-          <div class="work-card fade-in"
-               data-title="FLH 智慧桌 App"
-               data-title-en="FLH Smart Desk App"
-               data-subtitle="個人/商業化 IoT 升降桌 App"
-               data-subtitle-en="Personal & Commercial IoT Sit-Stand Desk App"
-               data-tags="#IoT,#軟硬整合"
-               data-tags-en="#IoT,#HardwareSoftwareIntegration"
-               data-role="UX Designer"
-               data-exec="前期研究、設計策略與實作、易用性測試"
-               data-exec-en="Research, design strategy & execution, usability testing"
-               data-metrics="產品銷售良好，廠商成功拓展海外市場"
-               data-metrics-en="Strong product sales; manufacturer successfully expanded to overseas markets"
-               data-desc="不只是調整高度，而是深入探討每個使用情境下的需求，讓共享場域也能順暢操作，並結合聲控與提醒功能，進一步優化用戶的使用體驗。"
-               data-desc-en="More than just height adjustment — I explored every usage context in depth, enabling smooth operation in shared spaces, and integrated voice control and reminder features to further enhance the user experience."
-               data-image="assets/images/work-flh-lightbox.jpg"
-               data-link="">
-            <div class="work-card-bg" style="background-image: url('assets/images/work-flh-card.jpg');"></div>
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <p class="work-card-title">FLH 智慧桌 App</p>
-              <p class="work-card-sub" data-zh="個人/商業化 IoT 升降桌 App" data-en="Personal & Commercial IoT Sit-Stand Desk App">個人/商業化 IoT 升降桌 App</p>
-            </div>
-          </div>
-
-          <!-- Hello Boss -->
-          <div class="work-card fade-in"
-               data-title="Hello Boss"
-               data-subtitle="企業主管內部管理工具"
-               data-subtitle-en="Internal Management Tool for Executives"
-               data-tags="#企業應用,#管理系統,#多權限設計"
-               data-tags-en="#EnterpriseApp,#ManagementSystem,#MultiRoleDesign"
-               data-role="UX Designer"
-               data-exec="前期研究、設計策略、流程與線稿實作"
-               data-exec-en="Research, design strategy, user flows and wireframes"
-               data-metrics="受客戶內部好評，於2022年推出中國版本"
-               data-metrics-en="Well-received internally; a China version was launched in 2022"
-               data-desc="統整集團內所有事業體的管理需求，並因應從主管到總經理等各層級的使用內容進行分眾，無論是掌握員工KPI、公文簽核或是業績考察，都能一目瞭然，一手掌握。"
-               data-desc-en="Consolidated management needs across all business units within the group, with role-based content tailored from team leads to CEOs. Whether tracking employee KPIs, signing off on documents, or reviewing performance — everything at a glance."
-               data-image="assets/images/work-helloboss-lightbox.jpg"
-               data-link="">
-            <div class="work-card-bg" style="background-image: url('assets/images/work-helloboss-card.jpg');"></div>
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <p class="work-card-title">Hello Boss</p>
-              <p class="work-card-sub" data-zh="企業主管內部管理工具" data-en="Internal Management Tool for Executives">企業主管內部管理工具</p>
-            </div>
-          </div>
-
-          <!-- 年度風雲車 -->
-          <div class="work-card fade-in"
-               data-title="年度風雲車投票網站"
-               data-title-en="Car of the Year Taiwan"
-               data-subtitle="四輪界指標性投票網站"
-               data-subtitle-en="Taiwan's Premier Car Voting Platform"
-               data-tags="#活動型網站,#維護後台"
-               data-tags-en="#CampaignSite,#AdminBackend"
-               data-role="UX Designer"
-               data-exec="前期研究、設計策略與實作、管理後台設計規劃"
-               data-exec-en="Research, design strategy & execution, admin backend planning"
-               data-metrics="改版後參與人數上升約 500%"
-               data-metrics-en="~500% increase in participation after redesign"
-               data-desc="從整體投票流程與機制設計為基石出發，搭配完善的管理後台，使網站在不需要過多繁瑣操作下，也能每年重複使用，展現不同的樣貌。"
-               data-desc-en="Starting from a solid voting flow and mechanism design, paired with a robust admin backend, the site can be reused annually with minimal effort while presenting a fresh look each year."
-               data-image="assets/images/work-cars-lightbox.jpg"
-               data-link="https://twcoty.buycartv.com/">
-            <div class="work-card-bg" style="background-image: url('assets/images/work-cars-card.jpg');"></div>
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <p class="work-card-title" data-zh="年度風雲車投票網站" data-en="Car of the Year Taiwan">年度風雲車投票網站</p>
-              <p class="work-card-sub" data-zh="四輪界指標性投票網站" data-en="Taiwan's Premier Car Voting Platform">四輪界指標性投票網站</p>
-            </div>
-          </div>
-
-          <!-- Rock Wu 作品集 -->
-          <div class="work-card fade-in"
-               data-title="Rock Wu 作品集"
-               data-title-en="Rock Wu Portfolio"
-               data-subtitle="希望 AI 不會取代我..."
-               data-subtitle-en="Hope AI won't replace me..."
-               data-tags="#個人作品,#AI協作,#Vibe Coding"
-               data-tags-en="#PersonalProject,#AICollaboration,#VibeCoding"
-               data-role="Designer / Vibe coder"
-               data-exec="文案撰寫、內容規劃、線稿流程實作、Vibe coding"
-               data-exec-en="Copywriting, content planning, wireframe implementation, Vibe coding"
-               data-metrics="感謝你的觀看，希望你會喜歡：）"
-               data-metrics-en="Thanks for viewing — hope you like it :)"
-               data-desc="全程使用AI以問答形式建構完整履歷與介紹，並以自我風格潤飾文案。後以Figma MCP + Claude code 還原設計稿，並加以上線，作為與AI協作的有趣體驗。"
-               data-desc-en="Built the entire portfolio through AI-assisted conversations, then refined the copy in my own voice. Rebuilt the design into code using Figma MCP + Claude Code and published it online — a rewarding experiment in human-AI collaboration."
-               data-image="assets/images/work-portfolio-lightbox.webp"
-               data-link="https://rockisworking.tw">
-            <div class="work-card-bg" style="background-image: url('assets/images/work-portfolio-card.webp');"></div>
-            <div class="work-card-overlay"></div>
-            <div class="work-card-content">
-              <p class="work-card-title" data-zh="Rock Wu 作品集" data-en="Rock Wu Portfolio">Rock Wu 作品集</p>
-              <p class="work-card-sub" data-zh="希望 AI 不會取代我..." data-en="Hope AI won't replace me...">希望 AI 不會取代我...</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Footer ─────────────────────────────── -->
-    <footer>
-      <div class="footer-inner">
-        <nav class="footer-nav">
-          <a href="#case-study">Case Study</a>
-          <a href="#work">Works</a>
-          <a href="about.html">About</a>
-        </nav>
-        <div class="footer-contact">
-          <span class="footer-contact-label">Contact</span>
-          <a href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
-        </div>
-      </div>
-    </footer>
-
-  </div><!-- .page-content -->
-
-  <!-- ── Lightbox ───────────────────────────── -->
-  <div class="lightbox-backdrop" id="lightboxBackdrop">
-    <div class="lightbox" role="dialog" aria-modal="true">
-      <button class="lightbox-close" id="lightboxClose" aria-label="關閉">
-        <img src="assets/images/icon-close.svg" alt="關閉">
-      </button>
-      <!-- 封面圖（tags + 標題疊在圖片上） -->
-      <div class="lightbox-cover-wrap">
-        <img class="lightbox-cover" id="lbCover" src="" alt="">
-        <div class="lightbox-cover-content">
-          <div class="lightbox-tags" id="lbTags"></div>
-          <h2 class="lightbox-title" id="lbTitle"></h2>
-          <p class="lightbox-subtitle" id="lbSubtitle"></p>
-        </div>
-      </div>
-      <!-- 內容區 -->
-      <div class="lightbox-body">
-        <!-- 角色 / 執行 -->
-        <div class="lightbox-meta">
-          <div>
-            <p class="lightbox-meta-label" data-zh="角色" data-en="Role">角色</p>
-            <p class="lightbox-meta-value" id="lbRole"></p>
-          </div>
-          <div>
-            <p class="lightbox-meta-label" data-zh="執行" data-en="Scope">執行</p>
-            <p class="lightbox-meta-value" id="lbExec"></p>
-          </div>
-        </div>
-        <!-- 關鍵數據 -->
-        <div class="lightbox-section">
-          <p class="lightbox-section-label" data-zh="關鍵數據" data-en="Key Metrics">關鍵數據</p>
-          <p class="lightbox-section-value" id="lbMetrics"></p>
-        </div>
-        <!-- 說明 -->
-        <div class="lightbox-section">
-          <p class="lightbox-section-label" data-zh="說明" data-en="Overview">說明</p>
-          <p class="lightbox-section-value" id="lbDesc"></p>
-        </div>
-        <!-- 連結（有才顯示） -->
-        <div class="lightbox-section" id="lbLinkSection" style="display:none;">
-          <p class="lightbox-section-label" data-zh="連結" data-en="Link">連結</p>
-          <a class="lightbox-link" id="lbLink" href="#" target="_blank" rel="noopener"></a>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── Go-to-top ──────────────────────────── -->
-  <!-- ── Mobile Menu ──────────────────────── -->
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <div class="mobile-menu-top">
-      <a href="index.html" class="header-logo">
-        <img src="assets/images/favicon.svg" alt="Rock Wu">
+  <header class="bar">
+    <div class="bar-inner">
+      <a class="logo" href="index.html" aria-label="Rock Wu">
+        <img src="assets/images/favicon.svg" alt="">
       </a>
-      <button class="mobile-menu-close" id="mobileMenuClose" aria-label="關閉選單">
-        <img src="assets/images/icon-close.svg" alt="關閉">
-      </button>
+      <nav class="bar-nav" aria-label="主選單">
+        <a href="#case-study">Case Study</a>
+        <a href="#work">Works</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="lang" role="group" aria-label="語言"><span class="on" data-lang="zh" role="button" tabindex="0">繁中</span><span data-lang="en" role="button" tabindex="0">EN</span></div>
     </div>
-    <nav class="mobile-nav">
-      <a href="#case-study">Case Study</a>
-      <a href="#work">Works</a>
-      <a href="about.html">About</a>
-    </nav>
-    <div class="mobile-menu-bottom">
-      <div class="lang-toggle" id="langToggleMobile" role="button" aria-label="切換語言">
-        <span class="active" data-lang="zh">繁中</span>
-        <span data-lang="en">EN</span>
+  </header>
+
+<main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-text">
+        <p class="hello" data-zh="安安，我是" data-en="Hey, I&#x27;m">安安，我是</p>
+        <h1 class="big"><span class="rock">Rock</span><span class="wu">Wu</span></h1>
+        <p class="role">UX Designer / Product Designer</p>
+        <div class="ctas">
+          <a class="btn btn-ink" href="#case-study" data-zh="查看案例 ↓" data-en="View Case Studies ↓">查看案例 ↓</a>
+          <a class="btn" href="about.html" data-zh="關於我" data-en="About Me">關於我</a>
+        </div>
+      </div>
+
+      <div class="stage" aria-label="可拖曳的標籤貼紙">
+        <span class="sticker c-yellow" style="--x:6%;  --y:8%;  --r:-7deg" data-zh="#新創" data-en="#Startup">#新創</span>
+        <span class="sticker c-mint"   style="--x:44%; --y:2%;  --r:5deg" data-zh="#乙方顧問" data-en="#AgencyConsulting">#乙方顧問</span>
+        <span class="sticker c-pink"   style="--x:10%; --y:28%; --r:4deg" data-zh="#金融支付" data-en="#FinTech">#金融支付</span>
+        <span class="sticker c-blue"   style="--x:58%; --y:24%; --r:-5deg" data-zh="#Web3" data-en="#Web3">#Web3</span>
+        <span class="sticker c-orange" style="--x:4%;  --y:48%; --r:-3deg" data-zh="#AI協作" data-en="#AICollaboration">#AI協作</span>
+        <span class="sticker c-yellow" style="--x:36%; --y:46%; --r:6deg" data-zh="#產品設計提案" data-en="#ProductDesignPitch">#產品設計提案</span>
+        <span class="sticker c-mint"   style="--x:10%; --y:70%; --r:3deg" data-zh="#遊戲化" data-en="#Gamification">#遊戲化</span>
+        <span class="sticker c-pink"   style="--x:50%; --y:70%; --r:-6deg" data-zh="#O2O" data-en="#O2O">#O2O</span>
+      </div>
+    </section>
+
+    <!-- 跑馬燈 -->
+    <div class="tape" aria-hidden="true">
+      <div class="tape-track">
+        <span>Let’s make some handy and beautiful product.</span><i></i><span>Feel free to contact me anytime.</span><i></i>
+        <span>Let’s make some handy and beautiful product.</span><i></i><span>Feel free to contact me anytime.</span><i></i>
+        <span>Let’s make some handy and beautiful product.</span><i></i><span>Feel free to contact me anytime.</span><i></i>
+        <span>Let’s make some handy and beautiful product.</span><i></i><span>Feel free to contact me anytime.</span><i></i>
+      </div>
+    </div>
+
+    <!-- 數字 -->
+    <dl class="stats">
+      <div><dd>10+</dd><dt data-zh="年設計經驗" data-en="Years Experience">年設計經驗</dt></div>
+      <div><dd>20+</dd><dt data-zh="專案經驗" data-en="Projects">專案經驗</dt></div>
+      <div><dd>2</dd><dt data-zh="次創業經驗" data-en="Startups">次創業經驗</dt></div>
+    </dl>
+
+    <!-- Case Study -->
+    <section id="case-study" class="block">
+      <div class="sec-head"><h2>Case Study</h2><span class="note" data-zh="案例分享" data-en="Case Studies">案例分享</span></div>
+
+      <a class="case c-yellow" href="case-study-paperplane.html">
+        <div class="case-media">
+          <img class="case-bg" src="assets/images/cs-paperplane-bg.webp" alt="" loading="lazy">
+          <img class="case-phone" src="assets/images/cs-pp-v2-home@3x.webp" alt="PaperPlane App" loading="lazy">
+        </div>
+        <div class="case-info">
+          <p class="tags"><span data-zh="#新創" data-en="#Startup">#新創</span> <span data-zh="#金融支付" data-en="#FinTech">#金融支付</span> <span>#O2O</span></p>
+          <p class="sub" data-zh="品牌重新定位的產品改版" data-en="Product Redesign for Brand Repositioning">品牌重新定位的產品改版</p>
+          <h3>PaperPlane App</h3>
+        </div>
+      </a>
+
+      <a class="case c-mint flip" href="case-study-tapower.html">
+        <div class="case-media">
+          <img class="case-bg" src="assets/images/cs-tapower-bg.webp" alt="" loading="lazy">
+          <img class="case-phone" src="assets/images/cs-tapower-v3-map.webp" alt="電力即點 App" loading="lazy">
+        </div>
+        <div class="case-info">
+          <p class="tags"><span data-zh="#公部門" data-en="#Government">#公部門</span> <span data-zh="#遊戲化" data-en="#Gamification">#遊戲化</span> <span data-zh="#改版" data-en="#Redesign">#改版</span></p>
+          <p class="sub" data-zh="擺脫公部門既有形象" data-en="Breaking Free from a Government App Stereotype">擺脫公部門既有形象</p>
+          <h3 data-zh="電力即點 App" data-en="Taipower Points App">電力即點 App</h3>
+        </div>
+      </a>
+
+      <a class="case c-orange" href="case-study-fitness.html">
+        <div class="case-media">
+          <img class="case-bg" src="assets/images/cs-fitness-bg.webp" alt="" loading="lazy">
+          <img class="case-phone" src="assets/images/cs-fitness-card-phone.webp" alt="健身紀錄 Web App" loading="lazy">
+        </div>
+        <div class="case-info">
+          <p class="tags"><span>#AI</span> <span data-zh="#健身紀錄" data-en="#FitnessTracker">#健身紀錄</span> <span>#PWA</span></p>
+          <p class="sub" data-zh="從個人需求出發的自主開發實驗" data-en="A Self-Initiated Build, Born from Personal Need">從個人需求出發的自主開發實驗</p>
+          <h3 data-zh="健身紀錄 Web App" data-en="Fitness Tracker Web App">健身紀錄 Web App</h3>
+        </div>
+      </a>
+    </section>
+
+    <!-- Works -->
+    <section id="work" class="block">
+      <div class="sec-head"><h2>Works</h2><span class="note" data-zh="更多作品" data-en="More Works">更多作品</span></div>
+
+      <ul class="works">
+        <li><button class="work c-yellow" type="button" data-title="HOYA Bit" data-subtitle="最簡單易用的 Web3 交易所 App" data-subtitle-en="The Simplest Web3 Exchange App" data-tags="#Web3,#金融科技,#加密貨幣" data-tags-en="#Web3,#FinTech,#Crypto" data-role="UX Designer" data-exec="前期功能規劃、流程與線稿實作" data-exec-en="Feature planning, user flows, and wireframes" data-metrics="在職期間與公司一同成長至全台前三大交易所（2023~2025）" data-metrics-en="Grew to become one of Taiwan&#x27;s top 3 crypto exchanges during my tenure (2023–2025)" data-desc="以友善、易用的普惠金融為核心概念，進行每一次的app改版。並協助PM重新梳理既有功能規則，將跨部門溝通與開發時的模糊地帶降到最低。" data-desc-en="With inclusive, easy-to-use finance as the core concept, I led iterative redesigns of the app and helped the PM clarify existing feature logic, minimizing ambiguity across cross-functional communication and development." data-image="assets/images/work-hoya-lightbox.jpg" data-link="https://hoyabit.com/"><img src="assets/images/work-hoya-card.jpg" alt="" loading="lazy"><div><h3 data-zh="HOYA Bit" data-en="HOYA Bit">HOYA Bit</h3><p data-zh="最簡單易用的 Web3 交易所 App" data-en="The Simplest Web3 Exchange App">最簡單易用的 Web3 交易所 App</p></div></button></li>
+        <li><button class="work c-pink" type="button" data-title="新光信用卡 App" data-title-en="Shin Kong Credit Card App" data-subtitle="更精打細算的信用卡管理" data-subtitle-en="Smarter Credit Card Management" data-tags="#金融科技,#銀行業" data-tags-en="#FinTech,#Banking" data-role="UX Designer" data-exec="前期研究、設計策略與實作、易用性測試、管理後台" data-exec-en="Research, design strategy &amp; execution, usability testing, admin backend" data-metrics="現已結合進新光銀行app，仍保留部分既有架構" data-metrics-en="Now integrated into the Shin Kong Bank app, with key architecture retained" data-desc="以大量的用戶研究與訪談為出發，重新定義信用卡app的權重與操作流程，並整合新光銀行多部門系統，建立符合銀行內規的管理後台。" data-desc-en="Starting from extensive user research and interviews, I redefined the information hierarchy and flows of the credit card app, integrated multi-department systems, and built a compliance-ready admin backend." data-image="assets/images/work-skcard-lightbox.jpg" data-link=""><img src="assets/images/work-skcard-card.jpg" alt="" loading="lazy"><div><h3 data-zh="新光信用卡 App" data-en="Shin Kong Credit Card App">新光信用卡 App</h3><p data-zh="更精打細算的信用卡管理" data-en="Smarter Credit Card Management">更精打細算的信用卡管理</p></div></button></li>
+        <li><button class="work c-mint" type="button" data-title="金控內部公文系統" data-title-en="Financial Group Document System" data-subtitle="集團內部系統的大幅改版" data-subtitle-en="Major Overhaul of an Enterprise Internal System" data-tags="#企業應用,#B2B,#多權限設計" data-tags-en="#EnterpriseApp,#B2B,#MultiRoleDesign" data-role="UX Designer" data-exec="前期研究、設計策略與實作、易用性測試" data-exec-en="Research, design strategy &amp; execution, usability testing" data-metrics="受客戶內部好評，後續引進更多合作專案" data-metrics-en="Well-received internally, leading to additional project collaborations" data-desc="以集團多事業體、職務、權限皆適用為目標，逐一釐清既有需求與機制，重構數位化公文流程，建立通用的權限架構，有效提高公文運轉效率。" data-desc-en="With the goal of supporting diverse business units, roles, and permission levels across the group, I clarified existing requirements, rebuilt the digital document workflow, and established a universal permission architecture to significantly improve document processing efficiency." data-image="assets/images/work-katai-lightbox.jpg" data-link=""><img src="assets/images/work-katai-card.jpg" alt="" loading="lazy"><div><h3 data-zh="金控內部公文系統" data-en="Financial Group Document System">金控內部公文系統</h3><p data-zh="集團內部系統的大幅改版" data-en="Major Overhaul of an Enterprise Internal System">集團內部系統的大幅改版</p></div></button></li>
+        <li><button class="work c-blue" type="button" data-title="FLH 智慧桌 App" data-title-en="FLH Smart Desk App" data-subtitle="個人/商業化 IoT 升降桌 App" data-subtitle-en="Personal &amp; Commercial IoT Sit-Stand Desk App" data-tags="#IoT,#軟硬整合" data-tags-en="#IoT,#HardwareSoftwareIntegration" data-role="UX Designer" data-exec="前期研究、設計策略與實作、易用性測試" data-exec-en="Research, design strategy &amp; execution, usability testing" data-metrics="產品銷售良好，廠商成功拓展海外市場" data-metrics-en="Strong product sales; manufacturer successfully expanded to overseas markets" data-desc="不只是調整高度，而是深入探討每個使用情境下的需求，讓共享場域也能順暢操作，並結合聲控與提醒功能，進一步優化用戶的使用體驗。" data-desc-en="More than just height adjustment — I explored every usage context in depth, enabling smooth operation in shared spaces, and integrated voice control and reminder features to further enhance the user experience." data-image="assets/images/work-flh-lightbox.jpg" data-link=""><img src="assets/images/work-flh-card.jpg" alt="" loading="lazy"><div><h3 data-zh="FLH 智慧桌 App" data-en="FLH Smart Desk App">FLH 智慧桌 App</h3><p data-zh="個人/商業化 IoT 升降桌 App" data-en="Personal &amp; Commercial IoT Sit-Stand Desk App">個人/商業化 IoT 升降桌 App</p></div></button></li>
+        <li><button class="work c-orange" type="button" data-title="Hello Boss" data-subtitle="企業主管內部管理工具" data-subtitle-en="Internal Management Tool for Executives" data-tags="#企業應用,#管理系統,#多權限設計" data-tags-en="#EnterpriseApp,#ManagementSystem,#MultiRoleDesign" data-role="UX Designer" data-exec="前期研究、設計策略、流程與線稿實作" data-exec-en="Research, design strategy, user flows and wireframes" data-metrics="受客戶內部好評，於2022年推出中國版本" data-metrics-en="Well-received internally; a China version was launched in 2022" data-desc="統整集團內所有事業體的管理需求，並因應從主管到總經理等各層級的使用內容進行分眾，無論是掌握員工KPI、公文簽核或是業績考察，都能一目瞭然，一手掌握。" data-desc-en="Consolidated management needs across all business units within the group, with role-based content tailored from team leads to CEOs. Whether tracking employee KPIs, signing off on documents, or reviewing performance — everything at a glance." data-image="assets/images/work-helloboss-lightbox.jpg" data-link=""><img src="assets/images/work-helloboss-card.jpg" alt="" loading="lazy"><div><h3 data-zh="Hello Boss" data-en="Hello Boss">Hello Boss</h3><p data-zh="企業主管內部管理工具" data-en="Internal Management Tool for Executives">企業主管內部管理工具</p></div></button></li>
+        <li><button class="work c-yellow" type="button" data-title="年度風雲車投票網站" data-title-en="Car of the Year Taiwan" data-subtitle="四輪界指標性投票網站" data-subtitle-en="Taiwan&#x27;s Premier Car Voting Platform" data-tags="#活動型網站,#維護後台" data-tags-en="#CampaignSite,#AdminBackend" data-role="UX Designer" data-exec="前期研究、設計策略與實作、管理後台設計規劃" data-exec-en="Research, design strategy &amp; execution, admin backend planning" data-metrics="改版後參與人數上升約 500%" data-metrics-en="~500% increase in participation after redesign" data-desc="從整體投票流程與機制設計為基石出發，搭配完善的管理後台，使網站在不需要過多繁瑣操作下，也能每年重複使用，展現不同的樣貌。" data-desc-en="Starting from a solid voting flow and mechanism design, paired with a robust admin backend, the site can be reused annually with minimal effort while presenting a fresh look each year." data-image="assets/images/work-cars-lightbox.jpg" data-link="https://twcoty.buycartv.com/"><img src="assets/images/work-cars-card.jpg" alt="" loading="lazy"><div><h3 data-zh="年度風雲車投票網站" data-en="Car of the Year Taiwan">年度風雲車投票網站</h3><p data-zh="四輪界指標性投票網站" data-en="Taiwan&#x27;s Premier Car Voting Platform">四輪界指標性投票網站</p></div></button></li>
+        <li class="wide"><button class="work c-pink" type="button" data-title="Rock Wu 作品集" data-title-en="Rock Wu Portfolio" data-subtitle="希望 AI 不會取代我..." data-subtitle-en="Hope AI won&#x27;t replace me..." data-tags="#個人作品,#AI協作,#Vibe Coding" data-tags-en="#PersonalProject,#AICollaboration,#VibeCoding" data-role="Designer / Vibe coder" data-exec="文案撰寫、內容規劃、線稿流程實作、Vibe coding" data-exec-en="Copywriting, content planning, wireframe implementation, Vibe coding" data-metrics="感謝你的觀看，希望你會喜歡：）" data-metrics-en="Thanks for viewing — hope you like it :)" data-desc="全程使用AI以問答形式建構完整履歷與介紹，並以自我風格潤飾文案。後以Figma MCP + Claude code 還原設計稿，並加以上線，作為與AI協作的有趣體驗。" data-desc-en="Built the entire portfolio through AI-assisted conversations, then refined the copy in my own voice. Rebuilt the design into code using Figma MCP + Claude Code and published it online — a rewarding experiment in human-AI collaboration." data-image="assets/images/work-portfolio-rockwu.webp" data-link="https://rockisworking.tw"><img src="assets/images/work-portfolio-rockwu.webp" alt="" loading="lazy"><div><h3 data-zh="Rock Wu 作品集" data-en="Rock Wu Portfolio">Rock Wu 作品集</h3><p data-zh="希望 AI 不會取代我..." data-en="Hope AI won&#x27;t replace me...">希望 AI 不會取代我...</p></div></button></li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- 作品彈窗 -->
+  <div class="modal" id="lbBackdrop">
+    <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="lbTitle">
+      <button class="modal-close" id="lbClose" type="button" aria-label="關閉"><img src="assets/images/icon-close.svg" alt=""></button>
+      <div class="lb-cover">
+        <img id="lbCover" src="" alt="">
+        <div class="lb-tags" id="lbTags"></div>
+      </div>
+      <div class="lb-body">
+        <h2 id="lbTitle"></h2>
+        <p class="lb-sub" id="lbSub"></p>
+        <div class="lb-meta">
+          <div><p class="lb-label" data-zh="角色" data-en="Role">角色</p><p class="lb-val" id="lbRole"></p></div>
+          <div><p class="lb-label" data-zh="執行" data-en="Scope">執行</p><p class="lb-val" id="lbExec"></p></div>
+        </div>
+        <div class="lb-sec key"><p class="lb-label" data-zh="關鍵數據" data-en="Key Metrics">關鍵數據</p><p class="lb-val" id="lbMetrics"></p></div>
+        <div class="lb-sec"><p class="lb-label" data-zh="說明" data-en="Overview">說明</p><p class="lb-val" id="lbDesc"></p></div>
+        <div class="lb-sec" id="lbLinkSec" style="display:none"><p class="lb-label" data-zh="連結" data-en="Link">連結</p><p><a class="lb-link" id="lbLink" href="#" target="_blank" rel="noopener"></a></p></div>
       </div>
     </div>
   </div>
 
-  <button id="go-to-top" aria-label="回到頂部">
-    <img src="assets/images/icon-gototop.svg" alt="">
-  </button>
+  <footer id="contact" class="foot">
+    <div class="foot-inner">
+      <p class="foot-label">Contact</p>
+      <a class="foot-mail" href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
+      <nav class="foot-nav" aria-label="頁尾選單">
+        <a href="index.html#case-study">Case Study</a>
+        <a href="index.html#work">Works</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </footer>
 
-  <script src="js/main.js"></script>
+  <button id="go-top" type="button" aria-label="回到頂部"><img src="assets/images/icon-gototop.svg" alt=""></button>
+
+  <script src="js/v2.js?v=1795504133"></script>
+  <script src="js/v2-home.js?v=1795504133"></script>
 </body>
 </html>

@@ -1,89 +1,74 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
+<!doctype html>
+<html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>404 Not Found — Rock Wu</title>
+  <meta name="description" content="找不到這個頁面。">
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    body { background: #1A1A1D; }
-
-    .page-404 {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 24px;
-    }
-
-    .page-404-inner {
-      display: flex;
-      align-items: center;
-      gap: 56px;
-    }
-
-    .page-404-img {
-      width: 260px;
-      height: 260px;
-      object-fit: cover;
-      border-radius: 12px;
-      flex-shrink: 0;
-    }
-
-    .page-404-label {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--muted);
-      margin-bottom: 12px;
-    }
-
-    .page-404-title {
-      font-size: 48px;
-      font-weight: 700;
-      color: var(--text);
-      line-height: 1.1;
-      margin-bottom: 36px;
-    }
-
-    .page-404-btn {
-      display: inline-block;
-      padding: 12px 28px;
-      border: 1.5px solid rgba(255,255,255,0.3);
-      border-radius: 8px;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--text);
-      transition: border-color 0.2s, color 0.2s;
-    }
-    .page-404-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-    }
-
-    @media (max-width: 600px) {
-      .page-404-inner {
-        flex-direction: column;
-        text-align: center;
-        gap: 32px;
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Noto+Sans+TC:wght@500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/v2.css?v=1795504133">
+  <script>
+    /* Google Analytics（GA4）：本機預覽不送資料，只把事件印在 console 與 window.__gaDebug 方便檢查 */
+    (function () {
+      var id = 'G-4WFPJKY6EG';
+      var local = ['localhost', '127.0.0.1', '[::1]'].indexOf(location.hostname) > -1;
+      window.dataLayer = window.dataLayer || [];
+      if (local) {
+        window.gtag = function () { var a = [].slice.call(arguments); (window.__gaDebug = window.__gaDebug || []).push(a); console.info('[GA debug]', a); };
+        return;
       }
-      .page-404-img { width: 200px; height: 200px; }
-      .page-404-title { font-size: 36px; }
-    }
-  </style>
+      window.gtag = function () { dataLayer.push(arguments); };
+      gtag('js', new Date()); gtag('config', id);
+      var s = document.createElement('script'); s.async = true; s.src = 'https://www.googletagmanager.com/gtag/js?id=' + id; document.head.appendChild(s);
+    })();
+  </script>
 </head>
-<body>
-  <div class="page-404">
-    <div class="page-404-inner">
-      <img class="page-404-img" src="assets/images/404.webp" alt="窩不知道">
-      <div>
-        <p class="page-404-label">Something is wrong</p>
-        <h1 class="page-404-title">404 Not Found</h1>
-        <a class="page-404-btn" href="index.html">Return</a>
-      </div>
+<body data-root="">
+
+  <header class="bar">
+    <div class="bar-inner">
+      <a class="logo" href="index.html" aria-label="Rock Wu">
+        <img src="assets/images/favicon.svg" alt="">
+      </a>
+      <nav class="bar-nav" aria-label="主選單">
+        <a href="index.html#case-study">Case Study</a>
+        <a href="index.html#work">Works</a>
+        <a href="about.html">About</a>
+      </nav>
+      <div class="lang" role="group" aria-label="語言"><span class="on" data-lang="zh" role="button" tabindex="0">繁中</span><span data-lang="en" role="button" tabindex="0">EN</span></div>
+    </div>
+  </header>
+
+<main class="nf">
+  <div class="nf-in">
+    <div class="nf-art">
+      <img src="assets/images/404.webp" alt="窩不知道">
+    </div>
+    <div class="nf-text">
+      <p class="note">Something is wrong</p>
+      <h1>404<br>Not Found</h1>
+      <a class="btn btn-ink" href="index.html">Return</a>
     </div>
   </div>
+</main>
 
-  <script src="js/main.js"></script>
+  <footer id="contact" class="foot">
+    <div class="foot-inner">
+      <p class="foot-label">Contact</p>
+      <a class="foot-mail" href="mailto:rockisworking@gmail.com">rockisworking@gmail.com</a>
+      <nav class="foot-nav" aria-label="頁尾選單">
+        <a href="index.html#case-study">Case Study</a>
+        <a href="index.html#work">Works</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </footer>
+
+  <button id="go-top" type="button" aria-label="回到頂部"><img src="assets/images/icon-gototop.svg" alt=""></button>
+
+  <script src="js/v2.js?v=1795504133"></script>
 </body>
 </html>
